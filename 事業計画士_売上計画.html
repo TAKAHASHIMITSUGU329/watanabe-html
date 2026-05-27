@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>事業計画士 売上計画</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #626b7b;
+      --line: #d9dee8;
+      --paper: #f7f8fb;
+      --panel: #ffffff;
+      --navy: #1d3761;
+      --green: #1f7a5a;
+      --gold: #b78a2c;
+      --red: #a8463d;
+      --blue-soft: #e9f0f8;
+      --green-soft: #e9f6f0;
+      --gold-soft: #fbf4e5;
+      --red-soft: #f8ecea;
+      --shadow: 0 14px 35px rgba(23, 32, 51, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.75;
+    }
+    a { color: var(--green); font-weight: 800; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { background: #fff; border-bottom: 1px solid var(--line); }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 36px;
+      align-items: end;
+      padding: 52px 0 36px;
+    }
+    .eyebrow { margin: 0 0 12px; color: var(--green); font-size: 14px; font-weight: 800; }
+    h1 { margin: 0; font-size: clamp(34px, 5vw, 58px); line-height: 1.12; letter-spacing: 0; }
+    .lead { margin: 18px 0 0; color: var(--muted); font-size: 17px; }
+    main { padding: 34px 0 70px; }
+    section { margin-top: 34px; }
+    h2 { margin: 0 0 16px; font-size: 26px; line-height: 1.35; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: 18px; line-height: 1.45; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    ul, ol { margin: 8px 0 0; padding-left: 1.3em; }
+    li { margin: 5px 0; }
+    .grid { display: grid; gap: 18px; }
+    .cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .flat {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .meta {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--blue-soft);
+    }
+    .quick-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      color: var(--navy);
+      background: #fff;
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .pill.primary { color: #fff; background: var(--green); border-color: var(--green); }
+    .kpi {
+      display: grid;
+      gap: 8px;
+      min-height: 128px;
+      padding: 18px;
+      border-left: 5px solid var(--green);
+      background: var(--green-soft);
+      border-radius: 8px;
+    }
+    .kpi b { font-size: 25px; color: var(--green); line-height: 1.2; }
+    .kpi span { color: var(--muted); }
+    .note { padding: 18px 20px; border-left: 5px solid var(--gold); border-radius: 8px; background: var(--gold-soft); }
+    .highlight { padding: 18px 20px; border-left: 5px solid var(--green); border-radius: 8px; background: var(--green-soft); }
+    .warning { padding: 18px 20px; border-left: 5px solid var(--red); border-radius: 8px; background: var(--red-soft); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+      font-size: 14px;
+    }
+    th { color: var(--navy); background: var(--blue-soft); font-weight: 800; }
+    tr:last-child td { border-bottom: 0; }
+    .phase {
+      display: grid;
+      grid-template-columns: 160px 1fr 270px;
+      gap: 18px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .phase-name {
+      color: var(--green);
+      font-size: 21px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+    .phase-name span { display: block; margin-top: 6px; color: var(--muted); font-size: 12px; }
+    .small { color: var(--muted); font-size: 13px; }
+    footer { padding: 28px 0 44px; border-top: 1px solid var(--line); color: var(--muted); background: #fff; font-size: 13px; }
+    @media (max-width: 980px) {
+      .hero, .cols-2, .cols-3, .cols-4, .phase { grid-template-columns: 1fr; }
+      .hero { padding-top: 38px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <p class="eyebrow">事業計画士 売上計画</p>
+        <h1>第1期で実績を作り、3年で認定事業へ育てる</h1>
+        <p class="lead">短期は「最初の5〜10人」と成功事例づくり、中期は年3〜4回の講座運営、長期は認定制度・コミュニティ・法人連携で積み上げる。</p>
+        <div class="quick-links">
+          <a class="pill primary" href="index.html">資料一覧</a>
+          <a class="pill" href="事業計画士_マーケティング計画.html">マーケティング計画</a>
+          <a class="pill" href="事業計画士_KPI達成アクションプラン.html">KPIアクション</a>
+          <a class="pill" href="#phase">短中長期</a>
+          <a class="pill" href="#model">売上モデル</a>
+        </div>
+      </div>
+      <div class="meta">
+        <h3>基本方針</h3>
+        <p>最初から大きく取りにいかず、第1期で実績と声を作る。第2〜3期で型を固め、3年目以降に地域展開・認定制度化する。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>1. 売上計画の全体像</h2>
+      <div class="grid cols-3">
+        <div class="kpi">
+          <b>短期</b>
+          <span>0〜6ヶ月 / 100万〜300万円</span>
+          <p>第1期5〜10人で、成功事例を3件以上作る。</p>
+        </div>
+        <div class="kpi">
+          <b>中期</b>
+          <span>6〜18ヶ月 / 年商1,500万〜2,000万円</span>
+          <p>年3〜4回の講座と継続コミュニティを回す。</p>
+        </div>
+        <div class="kpi">
+          <b>長期</b>
+          <span>18ヶ月〜3年 / 年商3,000万〜8,000万円</span>
+          <p>認定制度、地域ネットワーク、法人・自治体連携へ拡張する。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="phase">
+      <h2>2. 短期・中期・長期の計画</h2>
+      <div class="grid">
+        <article class="phase">
+          <div class="phase-name">短期<span>0〜6ヶ月</span></div>
+          <div>
+            <h3>第1期を成立させ、成功事例を作る</h3>
+            <ul>
+              <li>第1期は「創設メンバー」「モニター枠」として募集する</li>
+              <li>利益最大化より、受講生の声・実績・事例化を優先する</li>
+              <li>個別伴走を厚くし、最初の成果を確実に出す</li>
+            </ul>
+          </div>
+          <div class="note">
+            <strong>売上目安</strong>
+            <p>5〜10名 × 20万円 = 100万〜200万円</p>
+            <p class="small">体験セミナー等を含め、100万〜300万円を目安にする。</p>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase-name">中期<span>6〜18ヶ月</span></div>
+          <div>
+            <h3>年3〜4回の講座開催モデルを作る</h3>
+            <ul>
+              <li>1期10〜15名、単価20万〜30万円へ引き上げる</li>
+              <li>講座後の継続コミュニティを月額制で開始する</li>
+              <li>個別支援・上位講座を追加し、客単価を上げる</li>
+            </ul>
+          </div>
+          <div class="note">
+            <strong>年商目安</strong>
+            <p>1,500万〜2,000万円</p>
+            <p class="small">講座売上を中心に、コミュニティと個別支援で補強する。</p>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase-name">長期<span>18ヶ月〜3年</span></div>
+          <div>
+            <h3>認定制度・地域ネットワークへ拡張する</h3>
+            <ul>
+              <li>年4〜6回の講座開催へ拡大する</li>
+              <li>アソシエイト、プロフェッショナル、マスター認定を設計する</li>
+              <li>商工会議所、自治体、金融機関との連携案件を作る</li>
+            </ul>
+          </div>
+          <div class="note">
+            <strong>年商目安</strong>
+            <p>3,000万〜8,000万円</p>
+            <p class="small">講座、認定、コミュニティ、法人連携の4本柱にする。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. フェーズ別の数字</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>フェーズ</th>
+            <th>受講生・会員</th>
+            <th>単価</th>
+            <th>売上目安</th>
+            <th>最重要成果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>短期</td>
+            <td>第1期 5〜10名</td>
+            <td>20万円</td>
+            <td>100万〜300万円</td>
+            <td>成功事例3件、受講生の声、講座改善点</td>
+          </tr>
+          <tr>
+            <td>中期</td>
+            <td>年3〜4期 / 1期10〜15名</td>
+            <td>20万〜30万円</td>
+            <td>年商1,500万〜2,000万円</td>
+            <td>講座運営の型、継続コミュニティ、紹介導線</td>
+          </tr>
+          <tr>
+            <td>長期</td>
+            <td>年間80〜150名 / 会員100〜300名</td>
+            <td>25万〜35万円 + 月額課金</td>
+            <td>年商3,000万〜8,000万円</td>
+            <td>認定制度、地域展開、法人・自治体連携</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="model">
+      <h2>4. 売上モデル</h2>
+      <div class="grid cols-2">
+        <div class="panel">
+          <h3>中期の理想モデル</h3>
+          <table>
+            <tbody>
+              <tr>
+                <td>養成講座</td>
+                <td>年間1,200万円前後</td>
+              </tr>
+              <tr>
+                <td>継続コミュニティ</td>
+                <td>年間300万円前後</td>
+              </tr>
+              <tr>
+                <td>個別コンサル・上位講座</td>
+                <td>年間300万〜500万円</td>
+              </tr>
+              <tr>
+                <td><strong>合計</strong></td>
+                <td><strong>年間1,500万〜2,000万円</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="panel">
+          <h3>長期の4本柱</h3>
+          <ol>
+            <li>養成講座売上: 基礎講座を年4〜6回開催</li>
+            <li>継続課金売上: Japan Revival Networkなどの卒業生コミュニティ</li>
+            <li>認定制度売上: 上位認定・専門分野認定・更新講座</li>
+            <li>法人・地域連携売上: 商工会議所、自治体、金融機関との連携</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>5. 短期で成功確率を上げる重点施策</h2>
+      <div class="grid cols-3">
+        <div class="highlight">
+          <h3>1. 創設メンバー化</h3>
+          <p>第1期は一般募集ではなく、選ばれた初期メンバーとして位置づける。</p>
+        </div>
+        <div class="highlight">
+          <h3>2. 個別伴走を厚く</h3>
+          <p>初期は効率より成果優先。個別相談・案件獲得支援を厚くする。</p>
+        </div>
+        <div class="highlight">
+          <h3>3. 事例化を前提にする</h3>
+          <p>受講生の声、Before/After、初回支援事例を必ず残す。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>6. 注意点</h2>
+      <div class="warning">
+        <ul>
+          <li>第1期は利益率より成功事例を優先する</li>
+          <li>講座価格20万円は、提供範囲・保証内容・個別伴走の有無と合わせて決める</li>
+          <li>月収・案件獲得率などの数字は、実績値か目標値かを明確にする</li>
+          <li>資格販売に見えすぎないよう、「経験を社会の役に立てる実践共同体」として見せる</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>作成日: 2026年5月28日 / 関連資料: マーケティング計画、KPI達成アクションプラン</p>
+    </div>
+  </footer>
+</body>
+</html>
