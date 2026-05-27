@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>事業計画士 マーケティング計画</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #626b7b;
+      --line: #d9dee8;
+      --paper: #f7f8fb;
+      --panel: #ffffff;
+      --navy: #1d3761;
+      --green: #1f7a5a;
+      --gold: #b78a2c;
+      --red: #a8463d;
+      --blue-soft: #e9f0f8;
+      --green-soft: #e9f6f0;
+      --gold-soft: #fbf4e5;
+      --red-soft: #f8ecea;
+      --shadow: 0 14px 35px rgba(23, 32, 51, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.75;
+    }
+    a { color: var(--green); font-weight: 800; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { background: #fff; border-bottom: 1px solid var(--line); }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 36px;
+      align-items: end;
+      padding: 52px 0 36px;
+    }
+    .eyebrow { margin: 0 0 12px; color: var(--green); font-size: 14px; font-weight: 800; }
+    h1 { margin: 0; font-size: clamp(34px, 5vw, 58px); line-height: 1.12; letter-spacing: 0; }
+    .lead { margin: 18px 0 0; color: var(--muted); font-size: 17px; }
+    main { padding: 34px 0 70px; }
+    section { margin-top: 34px; }
+    h2 { margin: 0 0 16px; font-size: 26px; line-height: 1.35; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: 18px; line-height: 1.45; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    ul, ol { margin: 8px 0 0; padding-left: 1.3em; }
+    li { margin: 5px 0; }
+    .grid { display: grid; gap: 18px; }
+    .cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .flat {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .meta {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--blue-soft);
+    }
+    .quick-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      color: var(--navy);
+      background: #fff;
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .pill.primary { color: #fff; background: var(--green); border-color: var(--green); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: var(--navy);
+      background: var(--blue-soft);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .tag.green { color: var(--green); background: var(--green-soft); }
+    .tag.gold { color: #7a5c1f; background: var(--gold-soft); }
+    .highlight { padding: 18px 20px; border-left: 5px solid var(--green); border-radius: 8px; background: var(--green-soft); }
+    .note { padding: 18px 20px; border-left: 5px solid var(--gold); border-radius: 8px; background: var(--gold-soft); }
+    .warning { padding: 18px 20px; border-left: 5px solid var(--red); border-radius: 8px; background: var(--red-soft); }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .step {
+      min-height: 138px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .step span { display: inline-block; margin-bottom: 8px; color: var(--gold); font-size: 13px; font-weight: 900; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+      font-size: 14px;
+    }
+    th { color: var(--navy); background: var(--blue-soft); font-weight: 800; }
+    tr:last-child td { border-bottom: 0; }
+    .phase {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 18px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .day {
+      color: var(--green);
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+    .day span { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; }
+    .kpi {
+      display: grid;
+      gap: 8px;
+      padding: 18px;
+      border-left: 5px solid var(--green);
+      background: var(--green-soft);
+      border-radius: 8px;
+    }
+    .kpi b { font-size: 23px; color: var(--green); line-height: 1.2; }
+    .small { color: var(--muted); font-size: 13px; }
+    footer { padding: 28px 0 44px; border-top: 1px solid var(--line); color: var(--muted); background: #fff; font-size: 13px; }
+    @media (max-width: 980px) {
+      .hero, .cols-2, .cols-3, .cols-4, .flow, .phase { grid-template-columns: 1fr; }
+      .hero { padding-top: 38px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <p class="eyebrow">事業計画士 マーケティング計画</p>
+        <h1>経験資産化を、講座申込までつなげる90日計画</h1>
+        <p class="lead">事業計画士を「資格」ではなく、50〜60代の第二の人生の役割として提示し、電子書籍・診断・動画・ウェビナー・体験セミナー・本講座を一本の導線にする。</p>
+        <div class="quick-links">
+          <a class="pill primary" href="2026-05-28_渡邉社長MTG_アジェンダ.html">本日のアジェンダ</a>
+          <a class="pill" href="事業計画士_資料まとめ.html">事業計画士 資料まとめ</a>
+          <a class="pill" href="#funnel">商品導線</a>
+          <a class="pill" href="#plan90">90日計画</a>
+          <a class="pill" href="#kpi">KPI</a>
+        </div>
+      </div>
+      <div class="meta">
+        <h3>コアメッセージ</h3>
+        <p>あなたの経験が、日本を動かす羅針盤になる。</p>
+        <div class="tag-row">
+          <span class="tag green">経験資産化</span>
+          <span class="tag">人間力</span>
+          <span class="tag gold">Japan Revival Project</span>
+          <span class="tag">AI時代の伴走者</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>1. マーケティングの前提</h2>
+      <div class="grid cols-2">
+        <div class="panel">
+          <h3>位置づけ</h3>
+          <p>事業計画士は、ミドルシニア世代の経験価値を再定義し、個人事業主・小規模事業者・地域中小企業を支える専門職ブランドである。</p>
+        </div>
+        <div class="panel">
+          <h3>基本方針</h3>
+          <ul>
+            <li>資格ではなく、第二の人生の役割を提示する</li>
+            <li>収入、社会貢献、仲間、存在価値を同時に訴求する</li>
+            <li>AI不安を、人間力の価値へ転換する</li>
+            <li>第2巻・第3巻を信頼形成コンテンツとして使う</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. ターゲット設計</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>セグメント</th>
+            <th>心理状態</th>
+            <th>主なニーズ</th>
+            <th>訴求軸</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>50代前半</td>
+            <td>まだ働き盛りだが、将来がぼんやり不安</td>
+            <td>早めに次の人生設計をしたい</td>
+            <td>早期準備、経験の棚卸し、複線型キャリア</td>
+          </tr>
+          <tr>
+            <td>50代後半</td>
+            <td>定年・役職定年が現実になってきた</td>
+            <td>専門性を社会的価値に変えたい</td>
+            <td>経験資産化、社会的役割、副業スタート</td>
+          </tr>
+          <tr>
+            <td>60代前半</td>
+            <td>第二の人生への期待と経済的不安が混在</td>
+            <td>健康なうちに社会とつながりたい</td>
+            <td>生きがい、収入、地域貢献、仲間づくり</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>3. 不安と提供価値</h2>
+      <div class="grid cols-2">
+        <div class="warning">
+          <h3>ターゲットの主な不安</h3>
+          <ol>
+            <li>定年後、社会から取り残されるのではないか</li>
+            <li>年金だけでは不安だが、新しい仕事を始めるには遅いのではないか</li>
+            <li>会社を離れたら、自分の価値がなくなるのではないか</li>
+            <li>AI時代に自分の経験は通用しないのではないか</li>
+            <li>一人で始めても、案件を取れる自信がない</li>
+          </ol>
+        </div>
+        <div class="highlight">
+          <h3>提供する価値</h3>
+          <ol>
+            <li>経験を社会の財産として再定義できる</li>
+            <li>副業から段階的に始められる</li>
+            <li>小規模事業者の支援で社会貢献を実感できる</li>
+            <li>同じ志を持つ仲間とつながれる</li>
+            <li>AIを支援力を高める道具として使える</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="funnel">
+      <h2>4. 商品導線</h2>
+      <div class="flow">
+        <div class="step"><span>1 認知</span><p>電子書籍、SNS、ブログ、動画、紹介</p></div>
+        <div class="step"><span>2 興味</span><p>無料診断、無料動画、無料ebook</p></div>
+        <div class="step"><span>3 共感</span><p>無料ウェビナー、メール講座、事例記事</p></div>
+        <div class="step"><span>4 検討</span><p>体験セミナー、個別相談、説明会</p></div>
+        <div class="step"><span>5 申込</span><p>3ヶ月講座への参加</p></div>
+        <div class="step"><span>6 実践</span><p>初回案件獲得支援、コミュニティ参加</p></div>
+        <div class="step"><span>7 継続</span><p>月次勉強会、上位認定、案件紹介</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>5. フロント商品とバックエンド</h2>
+      <div class="grid cols-2">
+        <div class="panel">
+          <h3>フロント商品</h3>
+          <table>
+            <tbody>
+              <tr><td>無料診断</td><td>AI時代キャリア適性診断、経験資産化診断</td></tr>
+              <tr><td>無料動画</td><td>50代からの新しい働き方7選</td></tr>
+              <tr><td>無料ebook</td><td>事業計画士入門ガイド、第3巻の抜粋版</td></tr>
+              <tr><td>無料ウェビナー</td><td>定年後の経験価値再発見セミナー</td></tr>
+              <tr><td>体験セミナー</td><td>事業計画士体験講座、経験棚卸しワーク</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="panel">
+          <h3>バックエンド商品</h3>
+          <table>
+            <tbody>
+              <tr><td>3ヶ月養成講座</td><td>基礎学習、実践、案件獲得準備</td></tr>
+              <tr><td>継続コミュニティ</td><td>月次勉強会、案件共有、事例研究</td></tr>
+              <tr><td>上位認定講座</td><td>プロフェッショナル、マスター認定</td></tr>
+              <tr><td>法人・自治体連携</td><td>地域人材育成、商工会議所連携</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>6. コンテンツマーケティング</h2>
+      <div class="grid cols-3">
+        <div class="panel">
+          <h3>認知段階</h3>
+          <ul>
+            <li>定年後 セカンドキャリア</li>
+            <li>50代 副業 始め方</li>
+            <li>ミドルシニア リスキリング</li>
+            <li>経験を活かす仕事</li>
+            <li>AI時代 シニア活躍</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>興味・検討段階</h3>
+          <ul>
+            <li>事業計画 コンサルタント なり方</li>
+            <li>個人事業主 支援 方法</li>
+            <li>シニア起業 成功例</li>
+            <li>ビジネス経験 活かし方</li>
+            <li>事業計画士 収入</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>決断段階</h3>
+          <ul>
+            <li>事業計画士 講座</li>
+            <li>事業計画士 認定</li>
+            <li>事業計画士 口コミ</li>
+            <li>渡邉ひとし セミナー</li>
+            <li>Japan Revival Project</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="plan90">
+      <h2>7. 90日実行計画</h2>
+      <div class="grid">
+        <article class="phase">
+          <div class="day">1-30日<span>基盤整備</span></div>
+          <div>
+            <h3>メッセージと導線を整える</h3>
+            <ul>
+              <li>LP原稿、無料診断、無料ebookを作成</li>
+              <li>第3巻コンセプトと講座導線を整理</li>
+              <li>メルマガ登録フォーム、体験セミナー構成を準備</li>
+            </ul>
+          </div>
+        </article>
+        <article class="phase">
+          <div class="day">31-60日<span>集客開始</span></div>
+          <div>
+            <h3>見込み客を集め、共感を形成する</h3>
+            <ul>
+              <li>note / ブログ週1本、無料動画3本を公開</li>
+              <li>無料ウェビナー1回、メルマガ週1回を実施</li>
+              <li>既存人脈、商工会議所、士業、金融機関への紹介依頼</li>
+            </ul>
+          </div>
+        </article>
+        <article class="phase">
+          <div class="day">61-90日<span>申込獲得</span></div>
+          <div>
+            <h3>体験セミナーから本講座へつなげる</h3>
+            <ul>
+              <li>体験セミナー2回、個別相談10件を実施</li>
+              <li>FAQと先行モニター枠を準備</li>
+              <li>第1期講座の募集ページを公開</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="kpi">
+      <h2>8. 主要KPI</h2>
+      <div class="grid cols-4">
+        <div class="kpi"><b>1,000人</b><span>LP訪問者数</span></div>
+        <div class="kpi"><b>150件</b><span>無料診断回答数</span></div>
+        <div class="kpi"><b>100件</b><span>メルマガ登録数</span></div>
+        <div class="kpi"><b>5-10人</b><span>第1期講座申込</span></div>
+      </div>
+      <p class="small">案件獲得率、平均月収、3年生存率などの数値は、実績値か目標値かを明確にしてから対外表示する。</p>
+    </section>
+
+    <section>
+      <h2>9. LP構成案</h2>
+      <div class="flat">
+        <ol>
+          <li>ファーストビュー: あなたの経験が、日本を動かす羅針盤に。</li>
+          <li>問題提起: 定年後の不安、経済的不安、存在価値の喪失、AI不安</li>
+          <li>新しい選択肢: 経験を支援価値に変える事業計画士</li>
+          <li>事業計画士とは: 個人事業主・小規模事業者を支える伴走型専門職</li>
+          <li>AI時代に必要な理由: 問いを立て、解釈し、寄り添うのは人間</li>
+          <li>講座で得られるもの: 経験棚卸し、支援スキル、AI活用、案件獲得</li>
+          <li>体験セミナー案内、FAQ、申込導線</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <h2>10. 体験セミナー構成案</h2>
+      <div class="grid cols-2">
+        <div class="panel">
+          <h3>タイトル案</h3>
+          <ul>
+            <li>50代からの経験資産化セミナー</li>
+            <li>あなたの経験を、誰かの経営支援に変える90分</li>
+            <li>AI時代に求められる「事業計画士」という新しい働き方</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>90分構成</h3>
+          <ol>
+            <li>なぜ今、50〜60代の経験が必要なのか</li>
+            <li>個人事業主・小規模事業者が抱える現実</li>
+            <li>AI時代に人間が担うべき役割</li>
+            <li>事業計画士の仕事と可能性</li>
+            <li>経験棚卸しミニワーク</li>
+            <li>3ヶ月講座と個別相談の案内</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>11. 第3巻との接続</h2>
+      <div class="highlight">
+        <p>第3巻は、事業計画士マーケティングにおいて最も重要な信頼形成コンテンツになる。第2巻でリボーンした読者に、「自分軸」を「他者支援」へ接続する次の行動を示す。</p>
+        <ul>
+          <li>巻末チェックリスト「あなたの経験資産診断」</li>
+          <li>無料診断へのQRコード</li>
+          <li>体験セミナー案内</li>
+          <li>事業計画士という働き方の紹介</li>
+          <li>渡邉氏の起源ストーリー</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>12. 注意点と次アクション</h2>
+      <div class="grid cols-2">
+        <div class="warning">
+          <h3>注意点</h3>
+          <ul>
+            <li>数値は実績値か目標値かを明確にする</li>
+            <li>講座価格20万円は提供範囲・保証内容と整合させる</li>
+            <li>事業計画士と経営計画士の違いを整理する</li>
+            <li>資格ビジネスに見えすぎないよう、思想・実践・コミュニティを前面に出す</li>
+          </ul>
+        </div>
+        <div class="note">
+          <h3>次アクション</h3>
+          <ul>
+            <li>第3巻コンセプト案と章立て案を作成</li>
+            <li>LPのファーストビュー案を3案作成</li>
+            <li>無料診断「経験資産化診断」の設問案を作成</li>
+            <li>体験セミナーの90分構成案を作成</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>作成日: 2026年5月28日 / 元資料: 事業計画士フォルダ内PDF 3件、事業計画士_資料まとめ.html</p>
+    </div>
+  </footer>
+</body>
+</html>

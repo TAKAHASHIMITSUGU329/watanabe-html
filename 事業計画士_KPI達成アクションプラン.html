@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>事業計画士 KPI達成アクションプラン</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #626b7b;
+      --line: #d9dee8;
+      --paper: #f7f8fb;
+      --panel: #ffffff;
+      --navy: #1d3761;
+      --green: #1f7a5a;
+      --gold: #b78a2c;
+      --red: #a8463d;
+      --blue-soft: #e9f0f8;
+      --green-soft: #e9f6f0;
+      --gold-soft: #fbf4e5;
+      --red-soft: #f8ecea;
+      --shadow: 0 14px 35px rgba(23, 32, 51, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.75;
+    }
+    a { color: var(--green); font-weight: 800; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { background: #fff; border-bottom: 1px solid var(--line); }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 36px;
+      align-items: end;
+      padding: 52px 0 36px;
+    }
+    .eyebrow { margin: 0 0 12px; color: var(--green); font-size: 14px; font-weight: 800; }
+    h1 { margin: 0; font-size: clamp(34px, 5vw, 58px); line-height: 1.12; letter-spacing: 0; }
+    .lead { margin: 18px 0 0; color: var(--muted); font-size: 17px; }
+    main { padding: 34px 0 70px; }
+    section { margin-top: 34px; }
+    h2 { margin: 0 0 16px; font-size: 26px; line-height: 1.35; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: 18px; line-height: 1.45; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    ul, ol { margin: 8px 0 0; padding-left: 1.3em; }
+    li { margin: 5px 0; }
+    .grid { display: grid; gap: 18px; }
+    .cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .flat {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .meta {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--blue-soft);
+    }
+    .quick-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      color: var(--navy);
+      background: #fff;
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .pill.primary { color: #fff; background: var(--green); border-color: var(--green); }
+    .kpi {
+      display: grid;
+      gap: 8px;
+      padding: 18px;
+      border-left: 5px solid var(--green);
+      border-radius: 8px;
+      background: var(--green-soft);
+    }
+    .kpi b { font-size: 25px; color: var(--green); line-height: 1.2; }
+    .note { padding: 18px 20px; border-left: 5px solid var(--gold); border-radius: 8px; background: var(--gold-soft); }
+    .highlight { padding: 18px 20px; border-left: 5px solid var(--green); border-radius: 8px; background: var(--green-soft); }
+    .warning { padding: 18px 20px; border-left: 5px solid var(--red); border-radius: 8px; background: var(--red-soft); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+      font-size: 14px;
+    }
+    th { color: var(--navy); background: var(--blue-soft); font-weight: 800; }
+    tr:last-child td { border-bottom: 0; }
+    .week {
+      display: grid;
+      grid-template-columns: 104px 1fr 220px;
+      gap: 18px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .week-no {
+      color: var(--green);
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+    .week-no span { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; }
+    .check {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .check li {
+      position: relative;
+      margin: 6px 0;
+      padding-left: 24px;
+    }
+    .check li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      background: var(--green);
+    }
+    .small { color: var(--muted); font-size: 13px; }
+    footer { padding: 28px 0 44px; border-top: 1px solid var(--line); color: var(--muted); background: #fff; font-size: 13px; }
+    @media (max-width: 980px) {
+      .hero, .cols-2, .cols-3, .cols-4, .week { grid-template-columns: 1fr; }
+      .hero { padding-top: 38px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <p class="eyebrow">事業計画士 KPI達成アクションプラン</p>
+        <h1>90日で第1期申込5〜10人へつなげる実行表</h1>
+        <p class="lead">LP訪問、無料診断、メルマガ登録、ウェビナー参加、体験セミナー、個別相談、本講座申込までを、週次アクションに分解する。</p>
+        <div class="quick-links">
+          <a class="pill primary" href="2026-05-28_渡邉社長MTG_アジェンダ.html">本日のアジェンダ</a>
+          <a class="pill" href="事業計画士_マーケティング計画.html">マーケティング計画</a>
+          <a class="pill" href="事業計画士_資料まとめ.html">資料まとめ</a>
+          <a class="pill" href="#weekly">週次計画</a>
+          <a class="pill" href="#daily">毎週の運用</a>
+        </div>
+      </div>
+      <div class="meta">
+        <h3>最終KPI</h3>
+        <p>90日後に、第1期講座申込 <strong>5〜10人</strong> を目指す。初期は実績づくりを重視し、モニター枠・紹介枠も活用する。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>1. KPIツリー</h2>
+      <div class="grid cols-4">
+        <div class="kpi"><b>1,000</b><span>LP訪問者</span></div>
+        <div class="kpi"><b>150</b><span>無料診断回答</span></div>
+        <div class="kpi"><b>100</b><span>メルマガ登録</span></div>
+        <div class="kpi"><b>5〜10</b><span>第1期講座申込</span></div>
+      </div>
+      <div class="flat" style="margin-top: 18px;">
+        <h3>想定コンバージョン</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>段階</th>
+              <th>目標</th>
+              <th>目安率</th>
+              <th>達成のために必要なこと</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>LP訪問 → 診断回答</td>
+              <td>1,000 → 150</td>
+              <td>15%</td>
+              <td>ファーストビューで「自分ごと化」し、診断の入口を目立たせる</td>
+            </tr>
+            <tr>
+              <td>診断回答 → メルマガ登録</td>
+              <td>150 → 100</td>
+              <td>67%</td>
+              <td>診断結果をメールで送る設計にし、登録理由を明確にする</td>
+            </tr>
+            <tr>
+              <td>登録 → ウェビナー参加</td>
+              <td>100 → 50</td>
+              <td>50%</td>
+              <td>登録直後、3日前、前日、当日に案内する</td>
+            </tr>
+            <tr>
+              <td>ウェビナー → 体験セミナー</td>
+              <td>50 → 20</td>
+              <td>40%</td>
+              <td>経験棚卸しワークを体験セミナーの価値として提示する</td>
+            </tr>
+            <tr>
+              <td>体験セミナー → 個別相談</td>
+              <td>20 → 10</td>
+              <td>50%</td>
+              <td>その場で日程予約を受ける</td>
+            </tr>
+            <tr>
+              <td>個別相談 → 講座申込</td>
+              <td>10 → 5〜10</td>
+              <td>50〜100%</td>
+              <td>第1期はモニター特典と成果支援を厚くする</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. チャネル別アクション</h2>
+      <div class="grid cols-3">
+        <div class="panel">
+          <h3>既存人脈・紹介</h3>
+          <ul class="check">
+            <li>渡邉社長の既存顧客・知人へ個別案内</li>
+            <li>商工会議所、士業、金融機関へ紹介依頼</li>
+            <li>50〜60代の管理職経験者リストを作る</li>
+            <li>紹介文テンプレートを用意する</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>コンテンツ発信</h3>
+          <ul class="check">
+            <li>週1本のnote / ブログ</li>
+            <li>週2本の短文SNS投稿</li>
+            <li>月3本の短尺動画</li>
+            <li>電子書籍から診断への導線設置</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>イベント導線</h3>
+          <ul class="check">
+            <li>無料ウェビナーを月1回以上開催</li>
+            <li>体験セミナーを90日で2回開催</li>
+            <li>個別相談枠を毎週2枠確保</li>
+            <li>参加者フォローを48時間以内に行う</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="weekly">
+      <h2>3. 90日 週次アクションプラン</h2>
+      <div class="grid">
+        <article class="week">
+          <div class="week-no">Week 1<span>設計</span></div>
+          <div>
+            <h3>メッセージとターゲットを固定する</h3>
+            <ul class="check">
+              <li>ターゲットを50代前半・後半・60代前半に分けて訴求文を作る</li>
+              <li>コアメッセージ「あなたの経験が、日本を動かす羅針盤になる」をLP冒頭に置く</li>
+              <li>講座名、対象、期間、価格、保証の暫定方針を整理する</li>
+            </ul>
+          </div>
+          <div class="note">成果物: LP構成、訴求文、講座概要1枚</div>
+        </article>
+
+        <article class="week">
+          <div class="week-no">Week 2<span>LP</span></div>
+          <div>
+            <h3>LPと無料診断を作る</h3>
+            <ul class="check">
+              <li>LP初版を作成する</li>
+              <li>無料診断「経験資産化診断」の設問10問を作る</li>
+              <li>診断結果を3タイプに分ける</li>
+              <li>メルマガ登録フォームを設置する</li>
+            </ul>
+          </div>
+          <div class="note">目標: LP公開、診断回答10件</div>
+        </article>
+
+        <article class="week">
+          <div class="week-no">Week 3<span>無料資料</span></div>
+          <div>
+            <h3>リード獲得資料を整える</h3>
+            <ul class="check">
+              <li>無料ebook「事業計画士入門ガイド」を作る</li>
+              <li>診断回答者向けメール3通を作る</li>
+              <li>ウェビナー告知ページを作る</li>
+              <li>既存人脈向け案内文を作る</li>
+            </ul>
+          </div>
+          <div class="note">目標: メルマガ登録20件</div>
+        </article>
+
+        <article class="week">
+          <div class="week-no">Week 4<span>初回発信</span></div>
+          <div>
+            <h3>発信と個別案内を開始する</h3>
+            <ul class="check">
+              <li>note / ブログ1本を公開する</li>
+              <li>短尺動画1本を公開する</li>
+              <li>既存人脈30名へ個別案内する</li>
+              <li>商工会議所・士業・金融機関の紹介候補を10件リスト化する</li>
+            </ul>
+          </div>
+          <div class="note">目標: LP訪問200、診断回答30</div>
+        </article>
+
+        <article class="week">
+          <div class="week-no">Week 5<span>ウェビナー準備</span></div>
+          <div>
+            <h3>無料ウェビナーを募集する</h3>
+            <ul class="check">
+              <li>ウェビナー資料を作成する</li>
+              <li>告知メールを2通配信する</li>
+              <li>SNSで告知投稿を3本出す</li>
+              <li>紹介依頼先へウェビナー案内を送る</li>
+            </ul>
+          </div>
+          <div class="note">目標: 参加申込30人</div>
+        </article>
+
+        <article class="week">
+          <div class="week-no">Week 6<span>第1回</span></div>
+          <div>
+            <h3>無料ウェビナーを開催する</h3>
+            <ul class="check">
+              <li>無料ウェビナーを開催する</li>
+              <li>参加者アンケートを回収する</li>
+              <li>体験セミナーへの案内をその場で行う</li>
+              <li>欠席者へ録画または要約メールを送る</li>
+            </ul>
+          </div>
+          <div class="note">目標: 参加20人、体験申込8人</div>
+        </article>
+
+        <article class="week">
+          <div class="week-no">Week 7<span>体験設計</span></div>
+          <div>
+            <h3>体験セミナーを仕上げる</h3>
+            <ul class="check">
+              <li>90分体験セミナー資料を作る</li>
+              <li>経験棚卸しワークシートを作る</li>
+              <li>個別相談予約フォームを準備する</li>
+              <li>FAQを10項目作る</li>
+            </ul>
+          </div>
+          <div class="note">目標: 体験申込10人</div>
+        </article>
+
+        <article class="week">
+          <div class="week-no">Week 8<span>体験1</span></div>
+          <div>
+            <h3>体験セミナー1回目を開催する</h3>
+            <ul class="check">
+              <li>体験セミナーを開催する</li>
+              <li>終了前に個別相談枠を案内する</li>
+              <li>参加者へ48時間以内に個別フォローする</li>
+              <li>参加者の不安をFAQへ反映する</li>
+            </ul>
+          </div>
+          <div class="note">目標: 個別相談5件</div>
+        </article>
+
+        <article class="week">
+          <div class="week-no">Week 9<span>相談</span></div>
+          <div>
+            <h3>個別相談と講座提案を行う</h3>
+            <ul class="check">
+              <li>個別相談を実施する</li>
+              <li>候補者ごとに参加目的を整理する</li>
+              <li>第1期モニター特典を提示する</li>
+              <li>講座申込ページを公開する</li>
+            </ul>
+          </div>
+          <div class="note">目標: 仮申込2〜3人</div>
+        </article>
+
+        <article class="week">
+          <div class="week-no">Week 10<span>第2回募集</span></div>
+          <div>
+            <h3>2回目の集客波を作る</h3>
+            <ul class="check">
+              <li>第1回参加者の声を匿名で整理する</li>
+              <li>note / ブログで事例記事を公開する</li>
+              <li>無料ウェビナーまたは説明会を再告知する</li>
+              <li>紹介依頼を追加で20名に送る</li>
+            </ul>
+          </div>
+          <div class="note">目標: LP訪問800、診断回答120</div>
+        </article>
+
+        <article class="week">
+          <div class="week-no">Week 11<span>体験2</span></div>
+          <div>
+            <h3>体験セミナー2回目を開催する</h3>
+            <ul class="check">
+              <li>改善版の体験セミナーを開催する</li>
+              <li>個別相談をその場で予約してもらう</li>
+              <li>参加者の見込み度をA/B/Cに分類する</li>
+              <li>申込締切日を明確に伝える</li>
+            </ul>
+          </div>
+          <div class="note">目標: 個別相談累計10件</div>
+        </article>
+
+        <article class="week">
+          <div class="week-no">Week 12<span>クロージング</span></div>
+          <div>
+            <h3>第1期申込を確定する</h3>
+            <ul class="check">
+              <li>個別相談後のフォローメールを送る</li>
+              <li>迷っている候補者へ不安解消面談を行う</li>
+              <li>第1期の開始日、初回課題、参加者特典を案内する</li>
+              <li>未申込者を次回ウェビナー・メルマガへ残す</li>
+            </ul>
+          </div>
+          <div class="note">目標: 講座申込5〜10人</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="daily">
+      <h2>4. 毎週の固定運用</h2>
+      <div class="grid cols-3">
+        <div class="panel">
+          <h3>月曜：数字確認</h3>
+          <ul class="check">
+            <li>LP訪問者数</li>
+            <li>診断回答数</li>
+            <li>登録数</li>
+            <li>ウェビナー申込数</li>
+            <li>個別相談数</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>水曜：発信</h3>
+          <ul class="check">
+            <li>note / ブログ公開</li>
+            <li>SNS投稿2本</li>
+            <li>メルマガ1通</li>
+            <li>既存人脈への個別連絡</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>金曜：改善</h3>
+          <ul class="check">
+            <li>LPの離脱箇所を確認</li>
+            <li>FAQを追加</li>
+            <li>セミナー案内文を改善</li>
+            <li>見込み客リストを更新</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>5. すぐ作るべき素材</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>優先度</th>
+            <th>素材</th>
+            <th>目的</th>
+            <th>担当</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>高</td>
+            <td>LP初版</td>
+            <td>全導線の受け皿</td>
+            <td>高橋</td>
+          </tr>
+          <tr>
+            <td>高</td>
+            <td>経験資産化診断</td>
+            <td>診断回答150件の入口</td>
+            <td>高橋</td>
+          </tr>
+          <tr>
+            <td>高</td>
+            <td>体験セミナー資料</td>
+            <td>個別相談への転換</td>
+            <td>高橋・渡邉</td>
+          </tr>
+          <tr>
+            <td>中</td>
+            <td>無料ebook</td>
+            <td>信頼形成と登録獲得</td>
+            <td>高橋</td>
+          </tr>
+          <tr>
+            <td>中</td>
+            <td>紹介依頼文</td>
+            <td>初期集客の加速</td>
+            <td>高橋・渡邉</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>6. リスクと対策</h2>
+      <div class="grid cols-2">
+        <div class="warning">
+          <h3>起こりやすいリスク</h3>
+          <ul>
+            <li>LP訪問はあるが診断回答されない</li>
+            <li>登録はあるがウェビナーに来ない</li>
+            <li>興味はあるが講座申込に踏み切れない</li>
+            <li>資格ビジネスに見えて警戒される</li>
+            <li>価格20万円の納得材料が不足する</li>
+          </ul>
+        </div>
+        <div class="highlight">
+          <h3>対策</h3>
+          <ul>
+            <li>診断結果を具体的にし、回答する意味を強くする</li>
+            <li>ウェビナー前のリマインドを4回入れる</li>
+            <li>個別相談で参加目的と不安を言語化する</li>
+            <li>資格より「経験を活かす実践共同体」として見せる</li>
+            <li>モニター特典、伴走支援、案件獲得サポートを明確にする</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>作成日: 2026年5月28日 / 関連資料: 事業計画士_マーケティング計画.html、2026-05-28_渡邉社長MTG_アジェンダ.html</p>
+    </div>
+  </footer>
+</body>
+</html>

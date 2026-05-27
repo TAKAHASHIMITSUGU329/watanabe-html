@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>事業計画士 資料まとめ</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5f6878;
+      --line: #d9dee8;
+      --paper: #f7f8fb;
+      --panel: #ffffff;
+      --navy: #1d3761;
+      --green: #1f7a5a;
+      --gold: #b78a2c;
+      --red: #a8463d;
+      --blue-soft: #e9f0f8;
+      --green-soft: #e9f6f0;
+      --gold-soft: #fbf4e5;
+      --red-soft: #f8ecea;
+      --shadow: 0 14px 35px rgba(23, 32, 51, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.75;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: end;
+      padding: 56px 0 38px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-note {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--blue-soft);
+    }
+
+    .hero-note strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 15px;
+    }
+
+    .hero-note p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 15px;
+    }
+
+    main {
+      padding: 34px 0 70px;
+    }
+
+    section {
+      margin-top: 34px;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 26px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.45;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid.cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid.cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .flat {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .summary:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .summary b {
+      color: var(--navy);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: var(--navy);
+      background: var(--blue-soft);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tag.green {
+      color: var(--green);
+      background: var(--green-soft);
+    }
+
+    .tag.gold {
+      color: #7a5c1f;
+      background: var(--gold-soft);
+    }
+
+    .kpi {
+      display: grid;
+      gap: 8px;
+      padding: 18px;
+      border-left: 5px solid var(--green);
+      background: var(--green-soft);
+      border-radius: 8px;
+    }
+
+    .kpi b {
+      font-size: 23px;
+      color: var(--green);
+      line-height: 1.2;
+    }
+
+    ul, ol {
+      margin: 8px 0 0;
+      padding-left: 1.3em;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      color: var(--navy);
+      background: var(--blue-soft);
+      font-weight: 800;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .step {
+      min-height: 132px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .step span {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .note {
+      padding: 18px 20px;
+      border-left: 5px solid var(--gold);
+      background: var(--gold-soft);
+      border-radius: 8px;
+    }
+
+    .warning {
+      padding: 18px 20px;
+      border-left: 5px solid var(--red);
+      background: var(--red-soft);
+      border-radius: 8px;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer {
+      padding: 28px 0 44px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: #fff;
+      font-size: 13px;
+    }
+
+    @media (max-width: 880px) {
+      .hero,
+      .grid.cols-2,
+      .grid.cols-3,
+      .summary,
+      .flow {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 38px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <p class="eyebrow">事業計画士 資料まとめ</p>
+        <h1>経験を財産に変え、日本再生へつなぐ構想</h1>
+        <p class="lead">事業計画士は、ミドルシニアの経験価値を再定義し、個人事業主・小規模事業者・地域経済を支える専門職ブランドとして設計されている。</p>
+        <div class="tag-row">
+          <span class="tag green">経験資産化</span>
+          <span class="tag">人間力</span>
+          <span class="tag gold">Japan Revival Project</span>
+          <span class="tag">AI時代の伴走者</span>
+        </div>
+      </div>
+      <div class="hero-note">
+        <strong>このHTMLの位置づけ</strong>
+        <p>事業計画士フォルダ内の3つのPDFを読み取り、ブランド構想、講座設計、マーケティング戦略、第3巻への接続ポイントを統合して整理した作業用サマリー。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>参照した資料</h2>
+      <div class="grid cols-3">
+        <div class="panel">
+          <h3>Concept BOOK</h3>
+          <p>事業計画士を「経験価値の再定義」を体現するブランドとして説明。渡邉氏自身の転機から資格創設に至る起源ストーリーも含む。</p>
+          <p class="small">PDF: 9ページ / 2025年5月22日</p>
+        </div>
+        <div class="panel">
+          <h3>養成講座の全体構想</h3>
+          <p>50代前半から60代前半までの心理、競合との差別化、成果保証、KPI、価格設計、成功事例まで講座商品として整理。</p>
+          <p class="small">PDF: 6ページ / 2025年9月4日</p>
+        </div>
+        <div class="panel">
+          <h3>ブランディング戦略</h3>
+          <p>ブランドエッセンス、タグライン、メッセージ、顧客導線、コミュニティ、認定レベルなどを体系化。</p>
+          <p class="small">PDF: 5ページ / 2025年5月22日</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>一言でいうと</h2>
+      <div class="flat">
+        <div class="summary">
+          <b>ブランドの本質</b>
+          <div>「経験を資産に変える、日本再生の主役」。単なる資格ではなく、50〜60代の経験を地域経済の支援力へ変換するためのプロフェッション。</div>
+        </div>
+        <div class="summary">
+          <b>社会課題</b>
+          <div>ミドルシニアの経験が活かされない一方で、個人事業主・小規模事業者は事業収益化や計画づくりに悩んでいる。ここに「経験継承の断絶」がある。</div>
+        </div>
+        <div class="summary">
+          <b>解決策</b>
+          <div>ミドルシニアを、経営者の想いに寄り添い、問いを立て、事業計画・マーケティング・資金調達・デジタル化を伴走支援する人材へ育てる。</div>
+        </div>
+        <div class="summary">
+          <b>最終ゴール</b>
+          <div>個人のセカンドキャリアを、地域経済の活性化と日本再生プロジェクトへ接続する。</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>5つのブランド価値</h2>
+      <div class="grid cols-3">
+        <div class="panel">
+          <h3>1. 人間力の専門家</h3>
+          <p>AIが代替しにくい、経営者の想いへの共感、本質課題の見極め、複雑な状況の整理を価値にする。</p>
+        </div>
+        <div class="panel">
+          <h3>2. 経験を社会の宝へ</h3>
+          <p>営業、交渉、組織運営、マネジメントなど、本人には当たり前の知識を小規模事業者の羅針盤に変える。</p>
+        </div>
+        <div class="panel">
+          <h3>3. 経済的自立と生きがい</h3>
+          <p>副業から始め、社会貢献しながら定年後の収入源を育てる。収入と役割の両方を設計する。</p>
+        </div>
+        <div class="panel">
+          <h3>4. AIリスキリング</h3>
+          <p>AIツール、マーケティング、ビジネスモデル設計を学び、経験知と新しい技術を掛け合わせる。</p>
+        </div>
+        <div class="panel">
+          <h3>5. 日本再生への誇り</h3>
+          <p>個人事業主や地域企業を支援する活動を、日本経済の活性化と世代間継承へつなげる。</p>
+        </div>
+        <div class="panel">
+          <h3>核となる言葉</h3>
+          <p>「あなたの経験が、日本を動かす羅針盤に。」というメッセージが、資料全体の中心に置かれている。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>ターゲットの心理とニーズ</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>対象</th>
+            <th>心理状態</th>
+            <th>深層ニーズ</th>
+            <th>必要な支援</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>50代前半</td>
+            <td>まだ働き盛りだが、将来への漠然とした不安がある</td>
+            <td>現在の地位を保ちながら、次の人生設計を模索したい</td>
+            <td>早期準備の動機づけとロードマップ</td>
+          </tr>
+          <tr>
+            <td>50代後半</td>
+            <td>定年が現実的に見えてきて緊迫感がある</td>
+            <td>専門性を活かした新たな社会的役割を得たい</td>
+            <td>経験・専門性の棚卸しと社会価値化</td>
+          </tr>
+          <tr>
+            <td>60代前半</td>
+            <td>第二の人生への期待と経済的不安が混在している</td>
+            <td>健康なうちに社会とつながり続けたい</td>
+            <td>段階的な実践設計と仲間づくり</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>受講者の悩みと得られる価値</h2>
+      <div class="grid cols-2">
+        <div class="warning">
+          <h3>これまでの悩み</h3>
+          <ul>
+            <li>定年後に社会から取り残されるのではないか</li>
+            <li>年金だけでは生活が不安だが、新しい挑戦には遅すぎるのではないか</li>
+            <li>会社を離れたら自分の価値がなくなるのではないか</li>
+            <li>AI時代についていけず、若い世代に代替されるのではないか</li>
+          </ul>
+        </div>
+        <div class="note">
+          <h3>得られる価値</h3>
+          <ul>
+            <li>長年の経験が社会的価値を持つと実感できる</li>
+            <li>副業から始め、定年後の収入源を育てられる</li>
+            <li>若手起業家や個人事業主の成長支援で社会貢献を実感できる</li>
+            <li>志を同じくする仲間とのコミュニティが生まれる</li>
+            <li>AI時代の新しい知識と自分の経験を融合できる</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>事業計画士に必要な力</h2>
+      <div class="grid cols-3">
+        <div class="panel">
+          <h3>経験資産の3要素</h3>
+          <ul>
+            <li>深度: 20〜30年の業界・職種経験</li>
+            <li>広度: 複数部署・プロジェクト経験</li>
+            <li>人脈: 長年築いた信頼関係</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>共感力の4段階</h3>
+          <ul>
+            <li>感情共感</li>
+            <li>認知共感</li>
+            <li>体験共感</li>
+            <li>未来共感</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>伴走力の5スキル</h3>
+          <ul>
+            <li>傾聴技術</li>
+            <li>質問技術</li>
+            <li>提案技術</li>
+            <li>継続技術</li>
+            <li>成長技術</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>講座商品としての設計</h2>
+      <div class="grid cols-2">
+        <div class="panel">
+          <h3>支援領域</h3>
+          <ul>
+            <li>事業計画書作成サポート</li>
+            <li>資金調達・補助金申請支援</li>
+            <li>マーケティング戦略立案</li>
+            <li>経営改善コンサルティング</li>
+            <li>デジタル化推進サポート</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>競争優位性</h3>
+          <ul>
+            <li>50〜65歳に完全特化した年齢心理学ベース設計</li>
+            <li>AI共存戦略を中心に置く</li>
+            <li>実践から成果までを重視する</li>
+            <li>継続成長型コミュニティを持つ</li>
+            <li>副業、独立、社会貢献へ段階的に進む</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>成果保証とKPI</h2>
+      <div class="grid cols-3">
+        <div class="kpi">
+          <b>90%以上</b>
+          <span>受講完了率の目標</span>
+        </div>
+        <div class="kpi">
+          <b>70%以上</b>
+          <span>3ヶ月以内の案件獲得率目標</span>
+        </div>
+        <div class="kpi">
+          <b>80%以上</b>
+          <span>6ヶ月継続活動率の目標</span>
+        </div>
+      </div>
+      <div class="flat" style="margin-top: 18px;">
+        <h3>3層の成果保証構造</h3>
+        <ol>
+          <li>学習成果保証: Phaseごとの達成度測定、理解不足者への個別補講、修了証発行</li>
+          <li>実践成果保証: 3ヶ月以内の初回案件獲得支援、未獲得者への6ヶ月延長サポート</li>
+          <li>継続成果保証: 卒業生コミュニティ、月次セミナー、案件マッチング基盤</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <h2>ブランド導線</h2>
+      <div class="flow">
+        <div class="step">
+          <span>1 認知</span>
+          <p>無料診断、動画、ebookで現状の危機感と可能性に気づく。</p>
+        </div>
+        <div class="step">
+          <span>2 共感</span>
+          <p>有料セミナーで同じ境遇の仲間と出会い、希望を持つ。</p>
+        </div>
+        <div class="step">
+          <span>3 学習</span>
+          <p>本講座で知識、AI活用、事業計画支援のスキルを学ぶ。</p>
+        </div>
+        <div class="step">
+          <span>4 実践</span>
+          <p>コミュニティ支援を受けながら最初のクライアントを獲得する。</p>
+        </div>
+        <div class="step">
+          <span>5 成長</span>
+          <p>継続学習と実践で支援領域と収益を広げる。</p>
+        </div>
+        <div class="step">
+          <span>6 還元</span>
+          <p>後進育成に関わり、コミュニティへ価値を戻す。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>渡邉氏の起源ストーリー</h2>
+      <div class="flat">
+        <div class="summary">
+          <b>喪失</b>
+          <div>電通系プロダクションの代表取締役社長として成果を出した後、予期せぬ退任を経験。積み重ねた経験の価値が失われたような虚無感に直面する。</div>
+        </div>
+        <div class="summary">
+          <b>迷走</b>
+          <div>独立後、農業の企業化、有機肥料、外国人受け入れ、中国進出支援、中小企業支援などに取り組むが、チャンス追求型の動きになり、満たされなさが残る。</div>
+        </div>
+        <div class="summary">
+          <b>気づき</b>
+          <div>8つの経営者交流会を退会し、自分と向き合う中で「チャンス追求型」から「戦略構築型」への転換に気づく。</div>
+        </div>
+        <div class="summary">
+          <b>天命</b>
+          <div>個人事業主や脱サラ志望者への相談支援で、相談者が笑顔で帰る瞬間に最上の幸福感を覚える。自分の使命を「1社でも多くの中小企業を健全経営が継続できる会社にすること」と定める。</div>
+        </div>
+        <div class="summary">
+          <b>実証</b>
+          <div>コロナ禍でも支援先が倒産せず、コロナ後に成長したことが、事業計画士メソッドの正しさを裏付ける物語として位置づけられている。</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>第3巻への接続ポイント</h2>
+      <div class="grid cols-2">
+        <div class="panel">
+          <h3>第2巻との自然な橋渡し</h3>
+          <p>第2巻の「リボーン」「自分軸」「老益」「背中を押す」を、実務的な社会貢献へ変換するのが事業計画士構想。第3巻は「自分軸を取り戻した人が、誰かの事業を支える側に回る」実践編にできる。</p>
+        </div>
+        <div class="panel">
+          <h3>第3巻の仮テーマ</h3>
+          <p>50〜60代の経験知を、地域の中小企業・個人事業主を支える力に変える。AI時代に、問いを立て、解釈し、伴走する人間の価値を示す。</p>
+        </div>
+      </div>
+      <div class="note" style="margin-top: 18px;">
+        <h3>第3巻の章立てに使える核</h3>
+        <ul>
+          <li>なぜ今、事業計画士が必要なのか</li>
+          <li>あなたの経験は、誰かの経営課題を解く鍵になる</li>
+          <li>社長は孤独であり、悩みを吐き出せる相手を必要としている</li>
+          <li>AI時代に残る価値は、問いの設計、解釈、共感、伴走である</li>
+          <li>セカンドキャリアは、誰かの第一歩を支える人生にできる</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>確認したい論点</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>論点</th>
+            <th>確認内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>資格名称</td>
+            <td>事業計画士と経営計画士をどう使い分けるか。第3巻で両方出すのか、まずは事業計画士に絞るのか。</td>
+          </tr>
+          <tr>
+            <td>講座の見せ方</td>
+            <td>電子書籍内で講座名を明示するか、まずは思想と役割を示し、巻末で自然に案内するか。</td>
+          </tr>
+          <tr>
+            <td>成果数値</td>
+            <td>案件獲得率、平均月収、3年生存率などは魅力的だが、実績値か目標値かを明確にする必要がある。</td>
+          </tr>
+          <tr>
+            <td>価格</td>
+            <td>20万円という講座価格を現時点で打ち出すか、資料内の事業設計用メモとして扱うか。</td>
+          </tr>
+          <tr>
+            <td>商標・認定制度</td>
+            <td>アソシエイト、プロフェッショナル、マスターのレベル設計をいつ公開するか。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>作成日: 2026年5月28日 / 参照元: 事業計画士フォルダ内PDF 3件</p>
+    </div>
+  </footer>
+</body>
+</html>

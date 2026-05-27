@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-05-28 渡邉社長MTG アジェンダ</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #626b7b;
+      --line: #d9dee8;
+      --paper: #f7f8fb;
+      --panel: #ffffff;
+      --navy: #1d3761;
+      --green: #1f7a5a;
+      --gold: #b78a2c;
+      --red: #a8463d;
+      --blue-soft: #e9f0f8;
+      --green-soft: #e9f6f0;
+      --gold-soft: #fbf4e5;
+      --red-soft: #f8ecea;
+      --shadow: 0 14px 35px rgba(23, 32, 51, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--green);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 36px;
+      align-items: end;
+      padding: 52px 0 36px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .meta {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--blue-soft);
+    }
+
+    .meta dl {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 8px 14px;
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .meta dt {
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    .meta dd {
+      margin: 0;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      color: var(--navy);
+      background: #fff;
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .pill.primary {
+      color: #fff;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    main {
+      padding: 34px 0 70px;
+    }
+
+    section {
+      margin-top: 34px;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 26px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.45;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    ul, ol {
+      margin: 8px 0 0;
+      padding-left: 1.3em;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .flat {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .goal-list {
+      counter-reset: goal;
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .goal-list li {
+      counter-increment: goal;
+      position: relative;
+      min-height: 58px;
+      margin: 0;
+      padding: 15px 16px 15px 58px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .goal-list li::before {
+      content: counter(goal);
+      position: absolute;
+      top: 14px;
+      left: 16px;
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--green);
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .agenda-item {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 18px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .time {
+      color: var(--green);
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .time span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .note {
+      padding: 18px 20px;
+      border-left: 5px solid var(--gold);
+      border-radius: 8px;
+      background: var(--gold-soft);
+    }
+
+    .highlight {
+      padding: 18px 20px;
+      border-left: 5px solid var(--green);
+      border-radius: 8px;
+      background: var(--green-soft);
+    }
+
+    .warning {
+      padding: 18px 20px;
+      border-left: 5px solid var(--red);
+      border-radius: 8px;
+      background: var(--red-soft);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: var(--navy);
+      background: var(--blue-soft);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .tag.green {
+      color: var(--green);
+      background: var(--green-soft);
+    }
+
+    .tag.gold {
+      color: #7a5c1f;
+      background: var(--gold-soft);
+    }
+
+    .memo {
+      min-height: 76px;
+      margin-top: 10px;
+      padding: 12px 14px;
+      border: 1px dashed #bac2d1;
+      border-radius: 8px;
+      background: #fbfcfe;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      color: var(--navy);
+      background: var(--blue-soft);
+      font-weight: 800;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer {
+      padding: 28px 0 44px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: #fff;
+      font-size: 13px;
+    }
+
+    @media (max-width: 880px) {
+      .hero,
+      .cols-2,
+      .cols-3,
+      .agenda-item {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 38px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <p class="eyebrow">渡邉社長ミーティング アジェンダ</p>
+        <h1>第2巻の最終確認と、第3巻・事業計画士構想の接続</h1>
+        <p class="lead">前回5月13日の議事録を受け、第2巻は最終微修正へ進めつつ、第3巻を「50〜60代の支援者化」と「事業計画士・経営計画士養成講座の入口」として整理する。</p>
+        <div class="quick-links">
+          <a class="pill primary" href="事業計画士_資料まとめ.html">事業計画士 資料まとめ</a>
+          <a class="pill primary" href="事業計画士_マーケティング計画.html">マーケティング計画</a>
+          <a class="pill primary" href="事業計画士_KPI達成アクションプラン.html">KPI達成アクション</a>
+          <a class="pill" href="#agenda">60分アジェンダ</a>
+          <a class="pill" href="#decisions">本日決めたいこと</a>
+          <a class="pill" href="#memo">MTGメモ</a>
+        </div>
+      </div>
+      <div class="meta">
+        <dl>
+          <dt>日時</dt>
+          <dd>2026年5月28日（木）11:00〜12:00</dd>
+          <dt>参加者</dt>
+          <dd>高橋、渡邉ひとし</dd>
+          <dt>場所</dt>
+          <dd>オンライン（Zoom想定）</dd>
+          <dt>前回</dt>
+          <dd>2026年5月13日</dd>
+          <dt>参照</dt>
+          <dd><a href="事業計画士_資料まとめ.html">事業計画士 資料まとめHTML</a> / <a href="事業計画士_マーケティング計画.html">マーケティング計画HTML</a> / <a href="事業計画士_KPI達成アクションプラン.html">KPI達成アクションHTML</a></dd>
+        </dl>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="goals">
+      <h2>本日のゴール</h2>
+      <ol class="goal-list">
+        <li>第2巻修正版のレビュー状況を確認し、最終FIXまでの残課題を整理する</li>
+        <li>第3巻のコンセプトを「事業計画士・経営計画士養成講座の入口」として再定義する</li>
+        <li>第3巻の想定読者・提供価値・章立てのたたき台を合意する</li>
+        <li>事業計画士・経営計画士講座資料の位置づけを確認し、電子書籍との接続方法を決める</li>
+        <li>次回までの具体アクションを明確にする</li>
+      </ol>
+    </section>
+
+    <section id="agenda">
+      <h2>アジェンダ（60分）</h2>
+      <div class="timeline">
+        <article class="agenda-item">
+          <div class="time">0. 5分<span>11:00-11:05</span></div>
+          <div>
+            <h3>オープニング：前回からの進捗確認</h3>
+            <div class="grid cols-2">
+              <div>
+                <strong>高橋から</strong>
+                <ul>
+                  <li>第2巻修正版の状況確認</li>
+                  <li>事業計画士関連資料の受領・確認状況</li>
+                  <li>本日の進め方共有</li>
+                </ul>
+              </div>
+              <div>
+                <strong>渡邉社長から</strong>
+                <ul>
+                  <li>第2巻レビューの進捗</li>
+                  <li>5/13以降に浮かんだ追加アイデア</li>
+                  <li>事業計画士・経営計画士講座の最新状況</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="agenda-item">
+          <div class="time">1. 10分<span>11:05-11:15</span></div>
+          <div>
+            <h3>第2巻レビュー状況と最終FIXに向けた確認</h3>
+            <p>前回確認した主な反映項目を短く確認する。</p>
+            <div class="tag-row">
+              <span class="tag green">人生二期論</span>
+              <span class="tag">タイム・イズ・マネー再定義</span>
+              <span class="tag">もの／こと表現</span>
+              <span class="tag">睡眠章</span>
+              <span class="tag gold">新緑グリーン表紙</span>
+            </div>
+            <div class="highlight">
+              <strong>本日確認したいこと</strong>
+              <ul>
+                <li>第1〜6部・あとがきのレビューで大きな修正点はあるか</li>
+                <li>あとがきの方向性はこのままでよいか</li>
+                <li>第2巻は「最終微修正」段階に入ってよいか</li>
+                <li>表紙デザインは別途集中して進めるか</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="agenda-item">
+          <div class="time">2. 8分<span>11:15-11:23</span></div>
+          <div>
+            <h3>プロジェクトの原点確認：電子書籍は何のための道具か</h3>
+            <ul>
+              <li>電子書籍は目的ではなく、渡邉社長の考えを届けるための入口</li>
+              <li>50〜60代を元気にし、地域の中小企業・個人事業主を支える人材を育てる</li>
+              <li>経験あるシニア層が地域経済に戻って貢献する流れをつくる</li>
+              <li>その受け皿として、事業計画士・経営計画士養成講座がある</li>
+            </ul>
+            <div class="note">
+              <strong>確認したい問い</strong>
+              <p>第3巻は「70代編」よりも「50〜60代が支援者になる実践編」として設計する理解でよいか。</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="agenda-item">
+          <div class="time">3. 15分<span>11:23-11:38</span></div>
+          <div>
+            <h3>第3巻コンセプト整理</h3>
+            <p>第3巻は、50〜60代が自分の経験・スキルを棚卸しし、地域の中小企業・個人事業主を支える「事業計画士・経営計画士」的な役割へ踏み出すための実践書とする。</p>
+            <div class="grid cols-2">
+              <div class="flat">
+                <h3>想定読者</h3>
+                <ul>
+                  <li>第2巻を読んで、まだ社会の役に立ちたいと感じた50〜60代</li>
+                  <li>管理職、営業、企画、財務、人事などの経験者</li>
+                  <li>定年後・役職定年後に経験を地域へ還元したい人</li>
+                  <li>中小企業支援、個人事業主支援、地域活性化に関心がある人</li>
+                </ul>
+              </div>
+              <div class="flat">
+                <h3>読者が得るもの</h3>
+                <ul>
+                  <li>経験知を支援価値として言語化する方法</li>
+                  <li>経営者の悩みを聞き、整理し、行動へ落とす姿勢</li>
+                  <li>AI時代でも残る、問い・解釈・伴走の価値</li>
+                  <li>事業計画士・経営計画士講座への自然な関心</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="agenda-item">
+          <div class="time">4. 12分<span>11:38-11:50</span></div>
+          <div>
+            <h3>第3巻 章立てたたき台の議論</h3>
+            <div class="grid cols-2">
+              <div class="panel">
+                <h3>案A：講座フロント型</h3>
+                <ol>
+                  <li>なぜ今、50〜60代の経験知が必要なのか</li>
+                  <li>会社軸の経験を、自分軸の支援価値に変える</li>
+                  <li>中小企業・個人事業主が本当に困っていること</li>
+                  <li>経営者の悩みを聞く力、問いを立てる力</li>
+                  <li>AI時代の事業計画士・経営計画士の役割</li>
+                  <li>地域に戻り、若い経営者の背中を押す</li>
+                </ol>
+              </div>
+              <div class="panel">
+                <h3>案B：読者変容型</h3>
+                <ol>
+                  <li>定年後に「何者でもない自分」から抜け出す</li>
+                  <li>あなたの経験は、誰かの経営課題を解く鍵になる</li>
+                  <li>社長はなぜ孤独なのか</li>
+                  <li>計画をつくる前に、問いを整える</li>
+                  <li>AIを使う人、AIに使われる人</li>
+                  <li>地域経済を支える第二のキャリアへ</li>
+                </ol>
+              </div>
+            </div>
+            <div class="highlight">
+              <strong>確認したいこと</strong>
+              <ul>
+                <li>どちらの型が渡邉社長の意図に近いか</li>
+                <li>「事業計画士」と「経営計画士」の違いを本文でどう説明するか</li>
+                <li>読者にどこまで実務ノウハウを出すか</li>
+                <li>講座で扱う内容との線引き</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="agenda-item">
+          <div class="time">5. 7分<span>11:50-11:57</span></div>
+          <div>
+            <h3>事業計画士・経営計画士講座との接続</h3>
+            <p>講座は3ヶ月プログラム構想。個人事業主・中小企業を支えるコンサルタントを育て、AI時代における「問いの設計」と「回答の解釈」を人間の役割として位置づける。</p>
+            <ul>
+              <li>講座の正式名称</li>
+              <li>第3巻でどこまで講座名を出すか</li>
+              <li>電子書籍から講座へつなげる自然な流れ</li>
+              <li>巻末に入れる候補：チェックリスト、体験セミナー案内、自己診断ワーク、事業計画士への第一歩</li>
+            </ul>
+            <p class="small">参考: <a href="事業計画士_資料まとめ.html">事業計画士 資料まとめHTML</a></p>
+            <p class="small">実行計画: <a href="事業計画士_マーケティング計画.html">事業計画士 マーケティング計画HTML</a></p>
+            <p class="small">KPI分解: <a href="事業計画士_KPI達成アクションプラン.html">KPI達成アクションプランHTML</a></p>
+          </div>
+        </article>
+
+        <article class="agenda-item">
+          <div class="time">6. 3分<span>11:57-12:00</span></div>
+          <div>
+            <h3>次回アクション・スケジュール確認</h3>
+            <div class="grid cols-2">
+              <div>
+                <strong>高橋</strong>
+                <ul>
+                  <li>第3巻コンセプトメモを作成</li>
+                  <li>章立て案を2〜3パターンに整理</li>
+                  <li>第2巻の残修正があれば反映</li>
+                  <li>講座資料との接続ポイントを抽出</li>
+                </ul>
+              </div>
+              <div>
+                <strong>渡邉社長</strong>
+                <ul>
+                  <li>第2巻の最終レビューコメント共有</li>
+                  <li>講座の核となる考え方を追加共有</li>
+                  <li>第3巻に入れたい実体験・コンサル事例をピックアップ</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="decisions">
+      <h2>本日決めたいこと</h2>
+      <div class="flat">
+        <ol>
+          <li>第2巻を最終微修正フェーズに移してよいか</li>
+          <li>第3巻の主テーマを「50〜60代の支援者化／事業計画士・経営計画士への入口」とするか</li>
+          <li>第3巻の想定読者</li>
+          <li>第3巻の章立て方向性</li>
+          <li>電子書籍と講座の接続の強さ</li>
+          <li>次回までの作業範囲</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="materials">
+      <h2>事前共有・参照資料</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>資料</th>
+            <th>用途</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="2026-05-13_渡邉社長MTG_議事録.md">2026-05-13 議事録</a></td>
+            <td>前回決定事項、プロジェクトの原点、第3巻・講座構想の確認</td>
+          </tr>
+          <tr>
+            <td><a href="事業計画士_資料まとめ.html">事業計画士 資料まとめHTML</a></td>
+            <td>3つのPDFを統合したブランド・講座・第3巻接続のサマリー</td>
+          </tr>
+          <tr>
+            <td><a href="事業計画士_マーケティング計画.html">事業計画士 マーケティング計画HTML</a></td>
+            <td>講座申込までの導線、コンテンツ計画、90日実行計画、KPI</td>
+          </tr>
+          <tr>
+            <td><a href="事業計画士_KPI達成アクションプラン.html">事業計画士 KPI達成アクションプランHTML</a></td>
+            <td>KPI達成までの週次実行表、チャネル別施策、固定運用、リスク対策</td>
+          </tr>
+          <tr>
+            <td><a href="原稿/">原稿/ 配下 第2巻原稿一式</a></td>
+            <td>第2巻の最終レビュー確認</td>
+          </tr>
+          <tr>
+            <td><a href="事業計画士/">事業計画士/ 配下 PDF資料</a></td>
+            <td>講座構想、ブランド戦略、Concept Bookの原資料</td>
+          </tr>
+          <tr>
+            <td><a href="第2巻_構成案_v3_MTG反映版.md">第2巻 構成案 v3</a></td>
+            <td>第2巻と第3巻の接続確認</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="memo">
+      <h2>MTG中メモ</h2>
+      <div class="grid cols-2">
+        <div class="panel">
+          <h3>第2巻レビューコメント</h3>
+          <div class="memo">ここに記入</div>
+        </div>
+        <div class="panel">
+          <h3>第3巻コンセプト</h3>
+          <div class="memo">ここに記入</div>
+        </div>
+        <div class="panel">
+          <h3>第3巻タイトル候補</h3>
+          <div class="memo">ここに記入</div>
+        </div>
+        <div class="panel">
+          <h3>講座との接続アイデア</h3>
+          <div class="memo">ここに記入</div>
+        </div>
+        <div class="panel">
+          <h3>渡邉社長から出た事例・エピソード</h3>
+          <div class="memo">ここに記入</div>
+        </div>
+        <div class="panel">
+          <h3>本日の決定事項・次回アクション</h3>
+          <div class="memo">ここに記入</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>作成日: 2026年5月28日 / 元資料: 2026-05-28_渡邉社長MTG_アジェンダ.md</p>
+    </div>
+  </footer>
+</body>
+</html>
