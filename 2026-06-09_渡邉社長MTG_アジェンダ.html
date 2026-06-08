@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-06-09 渡邉社長MTG アジェンダ</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #626b7b;
+      --line: #d9dee8;
+      --paper: #f7f8fb;
+      --panel: #ffffff;
+      --navy: #1d3761;
+      --green: #1f7a5a;
+      --gold: #b78a2c;
+      --red: #a8463d;
+      --blue-soft: #e9f0f8;
+      --green-soft: #e9f6f0;
+      --gold-soft: #fbf4e5;
+      --red-soft: #f8ecea;
+      --shadow: 0 14px 35px rgba(23, 32, 51, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.75;
+    }
+    a { color: var(--green); font-weight: 800; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { background: #fff; border-bottom: 1px solid var(--line); }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 36px;
+      align-items: end;
+      padding: 52px 0 36px;
+    }
+    .eyebrow { margin: 0 0 12px; color: var(--green); font-size: 14px; font-weight: 800; }
+    h1 { margin: 0; font-size: clamp(34px, 5vw, 58px); line-height: 1.12; letter-spacing: 0; }
+    .lead { margin: 18px 0 0; color: var(--muted); font-size: 17px; }
+    .meta {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--blue-soft);
+    }
+    .meta dl { display: grid; grid-template-columns: 88px 1fr; gap: 8px 14px; margin: 0; font-size: 15px; }
+    .meta dt { color: var(--navy); font-weight: 800; }
+    .meta dd { margin: 0; }
+    .quick-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      color: var(--navy);
+      background: #fff;
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .pill.primary { color: #fff; background: var(--green); border-color: var(--green); }
+    main { padding: 34px 0 70px; }
+    section { margin-top: 34px; }
+    h2 { margin: 0 0 16px; font-size: 26px; line-height: 1.35; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: 18px; line-height: 1.45; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    ul, ol { margin: 8px 0 0; padding-left: 1.3em; }
+    li { margin: 5px 0; }
+    .grid { display: grid; gap: 18px; }
+    .cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .flat {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .highlight { padding: 18px 20px; border-left: 5px solid var(--green); border-radius: 8px; background: var(--green-soft); }
+    .note { padding: 18px 20px; border-left: 5px solid var(--gold); border-radius: 8px; background: var(--gold-soft); }
+    .warning { padding: 18px 20px; border-left: 5px solid var(--red); border-radius: 8px; background: var(--red-soft); }
+    .goal-list {
+      counter-reset: goal;
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .goal-list li {
+      counter-increment: goal;
+      position: relative;
+      min-height: 58px;
+      margin: 0;
+      padding: 15px 16px 15px 58px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .goal-list li::before {
+      content: counter(goal);
+      position: absolute;
+      top: 14px;
+      left: 16px;
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--green);
+      font-weight: 800;
+      line-height: 1;
+    }
+    .timeline { display: grid; gap: 16px; }
+    .agenda-item {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 18px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .time { color: var(--green); font-size: 15px; font-weight: 900; }
+    .time span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; font-weight: 700; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: var(--navy);
+      background: var(--blue-soft);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .tag.green { color: var(--green); background: var(--green-soft); }
+    .tag.gold { color: #7a5c1f; background: var(--gold-soft); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+      font-size: 14px;
+    }
+    th { color: var(--navy); background: var(--blue-soft); font-weight: 800; }
+    tr:last-child td { border-bottom: 0; }
+    .small { color: var(--muted); font-size: 13px; }
+    footer { padding: 28px 0 44px; border-top: 1px solid var(--line); color: var(--muted); background: #fff; font-size: 13px; }
+    @media (max-width: 900px) {
+      .hero, .cols-2, .cols-3, .agenda-item { grid-template-columns: 1fr; }
+      .hero { padding-top: 38px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <p class="eyebrow">渡邉社長ミーティング アジェンダ</p>
+        <h1>第1期講座の集客設計を、実行開始できる形に固める</h1>
+        <p class="lead">前回5月28日の宿題を確認し、第2巻の最終クローズ、事業計画士講座第1期の募集条件、LPから申込までの導線、6月中の実行タスクを決める。</p>
+        <div class="quick-links">
+          <a class="pill primary" href="#homework">前回宿題</a>
+          <a class="pill" href="#goals">本日のゴール</a>
+          <a class="pill" href="#agenda">60分アジェンダ</a>
+          <a class="pill" href="#decisions">本日決めたいこと</a>
+          <a class="pill" href="#materials">関連資料</a>
+        </div>
+      </div>
+      <div class="meta">
+        <dl>
+          <dt>日時</dt>
+          <dd>2026年6月9日（火）11:00〜12:00</dd>
+          <dt>参加者</dt>
+          <dd>高橋、渡邉ひとし</dd>
+          <dt>場所</dt>
+          <dd>オンライン（Zoom想定）</dd>
+          <dt>前回</dt>
+          <dd>2026年5月28日</dd>
+          <dt>主題</dt>
+          <dd>事業計画士講座 第1期の具体化と、第2巻の最終確認</dd>
+        </dl>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="homework">
+      <h2>前回からの宿題まとめ</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>担当</th>
+            <th>宿題</th>
+            <th>本日確認すること</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>高橋</td>
+            <td>次回ミーティングを6月9日11時でセットする</td>
+            <td>本日実施済み。次回日程の候補も最後に確認する。</td>
+          </tr>
+          <tr>
+            <td>高橋</td>
+            <td>事業計画士講座の第1期集客・マーケティングプランを整理する</td>
+            <td>第1期の対象者、募集人数、価格、KPI、導線を確認する。</td>
+          </tr>
+          <tr>
+            <td>高橋</td>
+            <td>第2巻の最終チェックと表紙デザインを確認する</td>
+            <td>固有名詞表現、漢字統一、「積む」から「粒」イメージへの調整、表紙の進め方を確認する。</td>
+          </tr>
+          <tr>
+            <td>高橋</td>
+            <td>講座プロモーションの具体案を次回までに作成する</td>
+            <td>LP訪問、無料診断、メルマガ登録、説明会、講座申込までの流れを見ながら詰める。</td>
+          </tr>
+          <tr>
+            <td>渡邉</td>
+            <td>ライトアップとの契約状況を確認する</td>
+            <td>電子書籍作業と講座マーケティング作業の棲み分けを確認する。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="goals">
+      <h2>本日のゴール</h2>
+      <ol class="goal-list">
+        <li>第2巻を最終クローズするための残課題を明確にする</li>
+        <li>事業計画士講座第1期の募集条件を仮決めする</li>
+        <li>LPから申込までの集客導線を具体化する</li>
+        <li>6月中に着手するプロモーション施策を決める</li>
+        <li>次回までの役割分担と成果物を確定する</li>
+      </ol>
+    </section>
+
+    <section id="agenda">
+      <h2>アジェンダ（60分）</h2>
+      <div class="timeline">
+        <article class="agenda-item">
+          <div class="time">0. 5分<span>11:00-11:05</span></div>
+          <div>
+            <h3>オープニング：本日の到達点を確認</h3>
+            <ul>
+              <li>前回5月28日の決定事項を確認する</li>
+              <li>第3巻より講座第1期を先行させる方針を再確認する</li>
+              <li>本日は「実行開始できる条件決め」を優先する</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="agenda-item">
+          <div class="time">1. 10分<span>11:05-11:15</span></div>
+          <div>
+            <h3>前回宿題の確認</h3>
+            <div class="grid cols-2">
+              <div class="flat">
+                <h3>高橋側</h3>
+                <ul>
+                  <li>集客・マーケティング計画の整理状況</li>
+                  <li>講座プロモーション導線案</li>
+                  <li>第2巻の最終チェック項目</li>
+                </ul>
+              </div>
+              <div class="flat">
+                <h3>渡邉社長側</h3>
+                <ul>
+                  <li>ライトアップ契約の確認状況</li>
+                  <li>説明会実施後の反応や追加アイデア</li>
+                  <li>講座コンテンツ・個別相談のイメージ</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="agenda-item">
+          <div class="time">2. 10分<span>11:15-11:25</span></div>
+          <div>
+            <h3>第2巻の最終クローズ確認</h3>
+            <p>第2巻は講座・第3巻へつなげる入口でもあるため、表現の統一と表紙の方向性を確認する。</p>
+            <div class="tag-row">
+              <span class="tag green">想い出のタネ</span>
+              <span class="tag">思い出の花</span>
+              <span class="tag">花びら・粒の表現</span>
+              <span class="tag">もの／こと</span>
+              <span class="tag gold">表紙デザイン</span>
+            </div>
+            <div class="note">
+              <strong>確認したい問い</strong>
+              <p>第2巻は、本文の表記統一と表紙確認を終えたら最終FIXへ進めてよいか。</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="agenda-item">
+          <div class="time">3. 15分<span>11:25-11:40</span></div>
+          <div>
+            <h3>事業計画士講座 第1期の募集条件を仮決め</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>項目</th>
+                  <th>たたき台</th>
+                  <th>本日決めたいこと</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>対象者</td>
+                  <td>50代中心。経験を地域・中小企業支援へ活かしたいミドルシニア。</td>
+                  <td>50代中心でよいか。60代も含めるか。</td>
+                </tr>
+                <tr>
+                  <td>人数</td>
+                  <td>5〜8名を推奨。上限は10名。</td>
+                  <td>第1期の定員を何名にするか。</td>
+                </tr>
+                <tr>
+                  <td>価格</td>
+                  <td>モニター価格として10万円前後を仮置き。</td>
+                  <td>価格帯、モニター特典、支払方法をどうするか。</td>
+                </tr>
+                <tr>
+                  <td>提供内容</td>
+                  <td>講義、個別相談、AI活用、コミュニティ、成果発表。</td>
+                  <td>第1期で必ず提供する範囲を絞る。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="agenda-item">
+          <div class="time">4. 12分<span>11:40-11:52</span></div>
+          <div>
+            <h3>LPから申込までの導線確認</h3>
+            <div class="grid cols-3">
+              <div class="panel">
+                <h3>入口</h3>
+                <ul>
+                  <li>既存人脈・紹介</li>
+                  <li>note/ブログ</li>
+                  <li>SNS投稿</li>
+                  <li>無料ウェビナー</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <h3>関係構築</h3>
+                <ul>
+                  <li>LP訪問 1,000件</li>
+                  <li>無料診断 150人</li>
+                  <li>メルマガ登録 100人</li>
+                  <li>体験セミナー 2回</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <h3>申込</h3>
+                <ul>
+                  <li>個別相談</li>
+                  <li>第1期説明会</li>
+                  <li>モニター特典</li>
+                  <li>申込 5〜10名</li>
+                </ul>
+              </div>
+            </div>
+            <div class="highlight" style="margin-top: 18px;">
+              <strong>本日決めたいこと</strong>
+              <p>最初に作るべきページは「講座LP」か「無料診断ページ」か。6月中に公開する最小構成を決める。</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="agenda-item">
+          <div class="time">5. 8分<span>11:52-12:00</span></div>
+          <div>
+            <h3>次回までのアクション確定</h3>
+            <ul>
+              <li>第2巻の最終FIX担当と期限</li>
+              <li>LP・無料診断・メルマガの初稿作成担当</li>
+              <li>第1期説明会の候補日</li>
+              <li>既存人脈への声かけリスト作成</li>
+              <li>次回ミーティング日時</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="decisions">
+      <h2>本日決めたいこと</h2>
+      <div class="grid cols-2">
+        <div class="panel">
+          <h3>講座設計</h3>
+          <ul>
+            <li>第1期の定員、価格、期間</li>
+            <li>第1期のモニター特典</li>
+            <li>渡邉社長と高橋の担当範囲</li>
+            <li>個別相談の頻度と時間</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>集客実行</h3>
+          <ul>
+            <li>最初に公開するページ</li>
+            <li>無料診断のテーマ</li>
+            <li>6月中に開催する説明会・体験セミナー</li>
+            <li>既存人脈への紹介依頼文の方向性</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="materials">
+      <h2>関連資料</h2>
+      <div class="grid cols-3">
+        <a class="panel" href="事業計画士_マーケティング計画.html">
+          <h3>マーケティング計画</h3>
+          <p>講座申込までの導線、90日計画、KPI。</p>
+        </a>
+        <a class="panel" href="事業計画士_KPI達成アクションプラン.html">
+          <h3>KPI達成アクションプラン</h3>
+          <p>週次アクション、チャネル別施策、固定運用。</p>
+        </a>
+        <a class="panel" href="事業計画士_売上計画.html">
+          <h3>売上計画</h3>
+          <p>短期・中期・長期の売上目標と成長ステップ。</p>
+        </a>
+      </div>
+      <div class="warning" style="margin-top: 18px;">
+        <strong>注意</strong>
+        <p>本ページは本日MTG用のたたき台です。数値や価格は合意前の仮置きとして扱います。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">作成日: 2026年6月9日 / 渡邉社長MTG アジェンダ</div>
+  </footer>
+</body>
+</html>
