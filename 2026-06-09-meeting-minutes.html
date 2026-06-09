@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-06-09 渡邉社長MTG 議事メモ</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --sub: #526070;
+      --paper: #f5f7f6;
+      --white: #ffffff;
+      --line: #d8dfdc;
+      --green: #17634d;
+      --teal: #0f6e73;
+      --gold: #ad7d22;
+      --blue: #1c4f7a;
+      --soft-green: #e8f1ea;
+      --soft-blue: #e8f0f7;
+      --soft-gold: #f6efdf;
+      --shadow: 0 16px 45px rgba(23, 32, 51, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.78;
+    }
+    a { color: var(--green); font-weight: 800; text-underline-offset: 4px; }
+    header {
+      padding: 54px 0 30px;
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbf8 100%);
+      border-bottom: 1px solid var(--line);
+    }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4.8vw, 52px);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+    .lead {
+      max-width: 900px;
+      margin: 16px 0 0;
+      color: var(--sub);
+      font-size: 17px;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 5px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--sub);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    nav .wrap {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    nav a {
+      flex: 0 0 auto;
+      color: var(--ink);
+      font-size: 14px;
+      text-decoration: none;
+    }
+    main { padding: 34px 0 70px; }
+    section {
+      margin-top: 34px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    section:first-child { margin-top: 0; }
+    h2 {
+      margin: 0 0 16px;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 28px 0 8px;
+      color: var(--green);
+      font-size: 19px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+    p { margin: 12px 0 0; }
+    ul { margin: 10px 0 0; padding-left: 1.25em; }
+    li + li { margin-top: 6px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .point {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfb;
+    }
+    .point strong {
+      display: block;
+      color: var(--green);
+      font-size: 16px;
+    }
+    .point span {
+      display: block;
+      margin-top: 8px;
+      color: var(--sub);
+      font-size: 14px;
+    }
+    .table-wrap {
+      margin-top: 14px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: collapse;
+      background: var(--white);
+    }
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: var(--soft-green);
+      color: var(--green);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    tr:last-child td { border-bottom: 0; }
+    .callout {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-left: 5px solid var(--gold);
+      border-radius: 8px;
+      background: var(--soft-gold);
+    }
+    .asset-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .asset {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfb;
+    }
+    .asset strong { display: block; margin-bottom: 6px; color: var(--blue); }
+    .asset p { color: var(--sub); font-size: 14px; }
+    .roadmap {
+      width: 100%;
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 10px 26px rgba(23, 32, 51, 0.06);
+    }
+    .pdf-frame {
+      width: 100%;
+      height: min(78vh, 760px);
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .button.secondary { background: var(--blue); }
+    @media (max-width: 860px) {
+      .summary, .asset-grid { grid-template-columns: 1fr; }
+      section { padding: 22px; }
+      .wrap { width: min(100% - 28px, 1120px); }
+      .pdf-frame { height: 520px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <p class="eyebrow">2026-06-09 / 渡邉社長MTG</p>
+      <h1>事業計画士講座 議事メモ</h1>
+      <p class="lead">前半・後半に分かれたZoom文字起こしを統合し、事業計画士講座の集客戦略、訴求設計、AI/eラーニング講座導線を1ページで確認できるように整理しました。ダウンロード済みのインフォグラフィックと戦略スライドも併載しています。</p>
+      <div class="meta">
+        <span class="pill">11:00頃〜12:08頃</span>
+        <span class="pill">参加者: 渡邉ひとし / 高橋</span>
+        <span class="pill">次回: 2026年6月22日 11:00</span>
+        <span class="pill">Zoom前後半統合</span>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="wrap">
+      <a href="#summary">概要</a>
+      <a href="#actions">アクション</a>
+      <a href="#strategy">講座戦略</a>
+      <a href="#message">訴求設計</a>
+      <a href="#ai">AI講座導線</a>
+      <a href="#assets">資料</a>
+      <a href="#files">関連ファイル</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="summary">
+      <h2>本日の要点</h2>
+      <p>本日のミーティングは、前半で事業計画士講座の集客戦略、価格設計、ライトアップ契約状況を確認し、後半で講座の訴求設計、渡邉社長が事業計画士に込める原点、AI/eラーニング講座の販売導線について議論しました。</p>
+      <div class="summary">
+        <div class="point">
+          <strong>第1期は12月開始を現実線に</strong>
+          <span>夏〜秋開始ではなく、関係性づくりと導線整備に時間をかける。</span>
+        </div>
+        <div class="point">
+          <strong>価格は15万円前後から</strong>
+          <span>第1期は収益最大化より、成果・事例・口コミ品質を重視する。</span>
+        </div>
+        <div class="point">
+          <strong>月収訴求に寄せすぎない</strong>
+          <span>情報商材化を避け、思想・経歴・地方経済活性化の文脈で見せる。</span>
+        </div>
+        <div class="point">
+          <strong>コミュニティが講座価値になる</strong>
+          <span>受講後に壁へぶつかった時、支え合える場を設計する。</span>
+        </div>
+        <div class="point">
+          <strong>AI/eラーニング講座を別導線に</strong>
+          <span>無料セミナーや無料体験を入口にし、eラーニング講座へつなげる。</span>
+        </div>
+        <div class="point">
+          <strong>次回は6月22日</strong>
+          <span>第1期募集設計とAI講座導線を再整理して確認する。</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="actions">
+      <h2>ACTION ITEMS</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>担当</th>
+              <th>内容</th>
+              <th>補足</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>高橋</td>
+              <td>第2巻の最終チェック版を渡邉社長へ共有する</td>
+              <td>準備でき次第</td>
+            </tr>
+            <tr>
+              <td>高橋</td>
+              <td>事業計画士講座の集客設計を再整理する</td>
+              <td>LP、無料診断、メルマガ、Facebook、LINE、コミュニティ導線を含める</td>
+            </tr>
+            <tr>
+              <td>高橋</td>
+              <td>講座の「刺さるワンフレーズ」を検討する</td>
+              <td>月収訴求に寄せすぎず、思想・社会的意義を軸にする</td>
+            </tr>
+            <tr>
+              <td>高橋・渡邉</td>
+              <td>第1期の開始時期・価格・募集人数を再設計する</td>
+              <td>早くても12月開始、15万円前後、5〜6名程度</td>
+            </tr>
+            <tr>
+              <td>渡邉</td>
+              <td>eラーニング講座の無料体験申込URLを高橋へ送付する</td>
+              <td>リログループ向けに提供している講座の導線を確認</td>
+            </tr>
+            <tr>
+              <td>高橋</td>
+              <td>AI/eラーニング講座の販売導線を検討する</td>
+              <td>事業計画士講座とは別の入口商品として整理</td>
+            </tr>
+            <tr>
+              <td>高橋</td>
+              <td>次回MTGを6月22日（月）11:00で設定する</td>
+              <td>口頭合意済み</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="strategy">
+      <h2>事業計画士講座の集客戦略</h2>
+      <p>志師塾・井原さんからは、講座コンテンツ自体は良い一方で、コロナ後の講座ビジネスは集客が非常に難しくなっていると助言がありました。普通に募集しても人は集まりにくく、関係性づくり、コピーづくり、コミュニティ設計を時間をかけて行う必要があります。</p>
+      <h3>今回確認した前提</h3>
+      <ul>
+        <li>1人集客するための集客コストを考える必要がある。</li>
+        <li>講座価格、開始時期、募集人数を現実線に寄せる。</li>
+        <li>講座を一言で説明できるコピーが必要。</li>
+        <li>メルマガ、本、Facebook、LINE、コミュニティなど、関係性を作る導線が必要。</li>
+      </ul>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th>今回の整理</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>開始時期</td><td>早くても2026年12月</td></tr>
+            <tr><td>第1期価格</td><td>15万円前後</td></tr>
+            <tr><td>第1期人数</td><td>5〜6名程度</td></tr>
+            <tr><td>2年目価格</td><td>30万円程度も視野</td></tr>
+            <tr><td>3年目以降</td><td>50〜60万円程度も視野</td></tr>
+            <tr><td>優先事項</td><td>収益より成果・ケア・口コミリスク管理</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        第1期は講座品質と受講生事例づくりを優先します。講座ビジネスは口コミが怖い商材であり、初期の満足度と成果がその後の展開を左右します。
+      </div>
+    </section>
+
+    <section id="message">
+      <h2>訴求設計と講座の見せ方</h2>
+      <p>後半では、高橋から「月収」や収益面を前面に出しすぎると、情報商材のように見えるリスクがあると共有しました。渡邉社長の講座は、単に稼ぐための講座ではなく、経営者を支えられる人材を育てる講座として見せるべきです。</p>
+      <h3>講座の原点</h3>
+      <ul>
+        <li>コンサルタント業界には胡散臭さがあり、経営者からも不満を聞くことが多い。</li>
+        <li>経営者の話を丁寧に聞き、本人に火をつけられる支援者が必要。</li>
+        <li>東京だけでなく、地方の経済を支える人材を育てたい。</li>
+        <li>講座後に壁へぶつかった時、仲間や講師が支え合えるコミュニティが価値になる。</li>
+      </ul>
+    </section>
+
+    <section id="ai">
+      <h2>AI/eラーニング講座の販売導線</h2>
+      <p>事業計画士講座とは別に、渡邉社長が展開しているAI/eラーニング講座を入口商品として扱う可能性を検討しました。</p>
+      <ul>
+        <li>電通グループが関わってサイト制作を進めており、6月15日頃に完成予定。</li>
+        <li>大学生向けだけでなく、企業向けにも展開したい構想がある。</li>
+        <li>日本企業のAI活用が遅れているという問題意識が背景にある。</li>
+        <li>AI関連セミナーや無料体験を入口にして、eラーニング講座へつなげる導線が考えられる。</li>
+        <li>リログループの福利厚生サービス向けに提供している講座があり、その無料体験申込URLを高橋に共有する。</li>
+      </ul>
+    </section>
+
+    <section id="assets">
+      <h2>インフォグラフィック・スライド</h2>
+      <div class="asset-grid">
+        <div class="asset">
+          <strong>事業計画士講座 戦略ロードマップ</strong>
+          <p>第1期立ち上げに向けた全体像を確認するためのインフォグラフィック。</p>
+          <a href="assets/business-planning-specialist-roadmap-2026-06-09.png">PNGを開く</a>
+        </div>
+        <div class="asset">
+          <strong>Strategic Blueprint</strong>
+          <p>講座戦略の骨子をまとめたPDFスライド。</p>
+          <a href="assets/Business_Planning_Specialist_Strategic_Blueprint_2026-06-09.pdf">PDFを開く</a>
+        </div>
+      </div>
+      <img class="roadmap" src="assets/business-planning-specialist-roadmap-2026-06-09.png" alt="事業計画士講座 戦略ロードマップ">
+      <iframe class="pdf-frame" src="assets/Business_Planning_Specialist_Strategic_Blueprint_2026-06-09.pdf" title="Business Planning Specialist Strategic Blueprint"></iframe>
+    </section>
+
+    <section id="files">
+      <h2>関連ファイル</h2>
+      <ul>
+        <li><a href="2026-06-09-meeting-agenda.html">2026-06-09 本日のアジェンダ</a></li>
+        <li><a href="2026-05-28-meeting-minutes.html">2026-05-28 前回議事メモ</a></li>
+        <li><a href="事業計画士_マーケティング計画.html">事業計画士 マーケティング計画</a></li>
+        <li><a href="事業計画士_KPI達成アクションプラン.html">事業計画士 KPI達成アクションプラン</a></li>
+        <li><a href="事業計画士_セミナー集客戦略.html">事業計画士 セミナー集客戦略</a></li>
+        <li><a href="事業計画士_売上計画.html">事業計画士 売上計画</a></li>
+      </ul>
+      <div class="footer-links">
+        <a class="button" href="index.html">資料トップへ</a>
+        <a class="button secondary" href="assets/Business_Planning_Specialist_Strategic_Blueprint_2026-06-09.pdf">スライドPDF</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
