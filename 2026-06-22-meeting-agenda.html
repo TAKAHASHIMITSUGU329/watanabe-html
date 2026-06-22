@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-06-22 渡邉社長MTG アジェンダ</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #626b7b;
+      --line: #d9dee8;
+      --paper: #f7f8fb;
+      --panel: #ffffff;
+      --navy: #1d3761;
+      --green: #1f7a5a;
+      --deep-green: #155f49;
+      --gold: #b78a2c;
+      --red: #a8463d;
+      --blue-soft: #e9f0f8;
+      --green-soft: #e9f6f0;
+      --gold-soft: #fbf4e5;
+      --red-soft: #f8ecea;
+      --shadow: 0 14px 35px rgba(23, 32, 51, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.75;
+    }
+    a { color: var(--green); font-weight: 800; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { background: #fff; border-bottom: 1px solid var(--line); }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 36px;
+      align-items: end;
+      padding: 52px 0 36px;
+    }
+    .eyebrow { margin: 0 0 12px; color: var(--green); font-size: 14px; font-weight: 800; }
+    h1 { margin: 0; font-size: clamp(34px, 5vw, 58px); line-height: 1.12; letter-spacing: 0; }
+    h2 { margin: 0 0 16px; font-size: 26px; line-height: 1.35; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: 18px; line-height: 1.45; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    ul, ol { margin: 8px 0 0; padding-left: 1.3em; }
+    li { margin: 5px 0; }
+    .lead { margin: 18px 0 0; color: var(--muted); font-size: 17px; }
+    .meta {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--green-soft);
+    }
+    .meta dl { display: grid; grid-template-columns: 88px 1fr; gap: 8px 14px; margin: 0; font-size: 15px; }
+    .meta dt { color: var(--deep-green); font-weight: 800; }
+    .meta dd { margin: 0; }
+    .quick-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      color: var(--navy);
+      background: #fff;
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .pill.primary { color: #fff; background: var(--green); border-color: var(--green); }
+    main { padding: 34px 0 70px; }
+    section { margin-top: 34px; }
+    .grid { display: grid; gap: 18px; }
+    .cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .flat {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .highlight { padding: 18px 20px; border-left: 5px solid var(--green); border-radius: 8px; background: var(--green-soft); }
+    .note { padding: 18px 20px; border-left: 5px solid var(--gold); border-radius: 8px; background: var(--gold-soft); }
+    .warning { padding: 18px 20px; border-left: 5px solid var(--red); border-radius: 8px; background: var(--red-soft); }
+    .score-card {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 22px;
+      align-items: center;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .score-number {
+      display: grid;
+      min-height: 120px;
+      place-items: center;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--green);
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .score-number span { display: block; margin-top: 7px; font-size: 13px; font-weight: 800; }
+    .recommendation {
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .recommendation strong { color: var(--green); }
+    .goal-list {
+      counter-reset: goal;
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .goal-list li {
+      counter-increment: goal;
+      position: relative;
+      min-height: 58px;
+      margin: 0;
+      padding: 15px 16px 15px 58px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .goal-list li::before {
+      content: counter(goal);
+      position: absolute;
+      top: 14px;
+      left: 16px;
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--green);
+      font-weight: 800;
+      line-height: 1;
+    }
+    .series-title {
+      color: var(--green);
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+    .book-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 70px;
+      min-height: 30px;
+      margin-bottom: 12px;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .book-title {
+      margin: 0;
+      color: var(--ink);
+      font-size: 21px;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+    .subtitle { margin-top: 8px; color: var(--muted); font-size: 15px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: var(--navy);
+      background: var(--blue-soft);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .tag.green { color: var(--green); background: var(--green-soft); }
+    .tag.gold { color: #7a5c1f; background: var(--gold-soft); }
+    .timeline { display: grid; gap: 16px; }
+    .agenda-item {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 18px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .time { color: var(--green); font-size: 15px; font-weight: 900; }
+    .time span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; font-weight: 700; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+      font-size: 14px;
+    }
+    th { color: var(--navy); background: var(--blue-soft); font-weight: 800; }
+    tr:last-child td { border-bottom: 0; }
+    .small { color: var(--muted); font-size: 13px; }
+    footer { padding: 28px 0 44px; border-top: 1px solid var(--line); color: var(--muted); background: #fff; font-size: 13px; }
+    @media (max-width: 900px) {
+      .hero, .cols-2, .cols-3, .agenda-item, .score-card { grid-template-columns: 1fr; }
+      .hero { padding-top: 38px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <p class="eyebrow">渡邉社長ミーティング アジェンダ</p>
+        <h1>第2巻を閉じ、3冊シリーズと講座導線を決める</h1>
+        <p class="lead">前回宿題への回答を確認し、第2巻の最終クローズ、電子書籍3冊のシリーズ再設計、事業計画士講座への導線を60分で決める。</p>
+        <div class="quick-links">
+          <a class="pill primary" href="#homework-answer">宿題への回答案</a>
+          <a class="pill primary" href="#recommendation">推奨結論</a>
+          <a class="pill primary" href="#series">3冊シリーズ案</a>
+          <a class="pill primary" href="#agenda">60分アジェンダ</a>
+          <a class="pill" href="#goals">本日のゴール</a>
+          <a class="pill" href="#business-planner">事業計画士講座</a>
+          <a class="pill" href="#ai-learning">AI/eラーニング</a>
+          <a class="pill" href="#decisions">本日決めたいこと</a>
+        </div>
+      </div>
+      <div class="meta">
+        <dl>
+          <dt>日時</dt>
+          <dd>2026年6月22日（月）11:00〜12:00</dd>
+          <dt>参加者</dt>
+          <dd>高橋、渡邉ひとし</dd>
+          <dt>場所</dt>
+          <dd>オンライン（Zoom想定）</dd>
+          <dt>前回</dt>
+          <dd>2026年6月9日</dd>
+          <dt>主題</dt>
+          <dd>第2巻FIX、3冊シリーズ再設計、講座募集導線</dd>
+        </dl>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="goals">
+      <h2>本日のゴール</h2>
+      <ol class="goal-list">
+        <li>第2巻「60歳からの新人生戦略」の最終チェック状況を確認し、FIXまでの残作業を明確にする</li>
+        <li>前回宿題への回答を共有し、事業計画士講座の打ち出し方を合意する</li>
+        <li>電子書籍3冊のシリーズ名・各巻タイトル案を確認し、読者導線の整合性を取る</li>
+        <li>事業計画士講座 第1期の募集設計を、開始時期・価格・人数・導線・コミュニティに分けて再整理する</li>
+        <li>6月末〜7月の作業範囲と次回までの成果物を決める</li>
+      </ol>
+    </section>
+
+    <section id="review-score">
+      <h2>校閲後の採点</h2>
+      <div class="score-card">
+        <div class="score-number">96<span>/ 100</span></div>
+        <div>
+          <h3>満点に近づけたポイント</h3>
+          <ul>
+            <li>前回宿題への回答を、口頭報告しやすい形に整理</li>
+            <li>本日決めるべき論点を「第2巻」「3冊シリーズ」「講座導線」に集約</li>
+            <li>シリーズ名案と本文表記のズレを、要確認事項として明示</li>
+            <li>第3巻を50代向けにする場合の方針変更を、曖昧にせず決裁事項化</li>
+            <li>講座訴求を「稼げる資格」ではなく「経験知の社会還元」に寄せて整理</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="recommendation">
+      <h2>本日の推奨結論</h2>
+      <div class="grid cols-3">
+        <div class="recommendation">
+          <h3>第2巻</h3>
+          <p><strong>本文は最終校正へ進める。</strong> 本日は大きな構成変更を増やさず、シリーズ名・第3巻方針に関わるつなぎ文だけ最終調整する。</p>
+        </div>
+        <div class="recommendation">
+          <h3>3冊シリーズ</h3>
+          <p><strong>推奨は「100年ライフのVSOP」。</strong> 第1巻との接続が強く、年代別・課題別の両方に展開しやすい。第2候補は「笑って死ぬための人生哲学」。</p>
+        </div>
+        <div class="recommendation">
+          <h3>講座導線</h3>
+          <p><strong>第1期は少人数・手作りで始める。</strong> 2026年12月以降、15万円前後、5〜6名を基本線にし、成果事例と口コミリスク管理を優先する。</p>
+        </div>
+      </div>
+      <div class="note">
+        <p><strong>表記注意:</strong> 原稿本文は「人生二期論」で統一済み。シリーズ名として「人生二回論」を採用する場合は、本文キーワードとの表記差を意図的に使うのか、本日確認が必要です。</p>
+      </div>
+    </section>
+
+    <section id="homework-answer">
+      <h2>前回宿題への本日回答案</h2>
+      <div class="highlight">
+        <p><strong>高橋からの回答方針:</strong> 前回の宿題は、第2巻の最終確認と、事業計画士講座を「良いコンテンツ」から「選ばれる講座」に変えるための設計整理です。本日は、講座の思想を安売りせず、電子書籍・無料接点・個別相談・講座・コミュニティを一本の導線として確認したいです。</p>
+      </div>
+
+      <div class="grid cols-2">
+        <article class="panel">
+          <h3>1. 第2巻の最終チェック版共有</h3>
+          <p><strong>回答案:</strong> 第2巻は、核キーワードである「リボーン」「人生二期論」「老益」「想い出のタネを植える」「Priority」を軸に、最終確認フェーズへ進められる状態です。</p>
+          <ul>
+            <li>本日は大きな構成変更ではなく、最終レビューコメントの有無を確認したい</li>
+            <li>表紙・Kindle整形・販売ページ文面は、本文FIX後に分けて進めたい</li>
+            <li>第3巻へのつなぎ文は、シリーズ再設計の確認後に最終調整したい</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag green">本日確認</span>
+            <span class="tag">最終レビュー期限</span>
+            <span class="tag">本文FIX可否</span>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h3>2. 事業計画士講座の集客設計</h3>
+          <p><strong>回答案:</strong> 第1期は広告で一気に集めるより、電子書籍・無料セミナー・無料診断・個別相談を通じて、信頼関係を作ってから5〜6名を丁寧に集める方針が現実的です。</p>
+          <ul>
+            <li>電子書籍: 思想と信用を伝える入口</li>
+            <li>無料セミナー: 問題意識を共有する入口</li>
+            <li>無料診断: 個別課題を見える化する入口</li>
+            <li>メルマガ・LINE: 継続接触の導線</li>
+            <li>Facebook: ミドルシニア層との相性を確認</li>
+            <li>コミュニティ: 講座後の実践と相談を支える場</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag green">結論</span>
+            <span class="tag">少人数・手作り</span>
+            <span class="tag">関係性重視</span>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h3>3. 講座の「刺さるワンフレーズ」</h3>
+          <p><strong>回答案:</strong> 月収訴求を前面に出すより、「経営者を本当に支える人材を育てる」「経験知を地域経済の力に変える」という方向が、渡邉社長の思想に合います。</p>
+          <div class="note">
+            <p><strong>第1候補:</strong> 経験知を、地域経済を支える力に変える。</p>
+          </div>
+          <p><strong>補助コピー案:</strong></p>
+          <ul>
+            <li>AI時代に、社長の本音を聴ける人材になる</li>
+            <li>胡散臭いコンサルではなく、社長の背中を押す伴走者へ</li>
+            <li>地方の経営者を支える、第二のキャリアのつくり方</li>
+          </ul>
+          <p class="small">※「月収○万円」よりも、社会的意義と渡邉社長の原点を先に見せる。</p>
+          <div class="tag-row">
+            <span class="tag green">推奨</span>
+            <span class="tag">思想訴求</span>
+            <span class="tag">地域経済</span>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h3>4. 第1期の開始時期・価格・人数</h3>
+          <p><strong>回答案:</strong> 前回合意した「早くても2026年12月開始、15万円前後、5〜6名程度」を現実ラインとして進めるのがよいです。</p>
+          <table>
+            <tr>
+              <th>項目</th>
+              <th>回答案</th>
+            </tr>
+            <tr>
+              <td>開始時期</td>
+              <td>2026年12月以降</td>
+            </tr>
+            <tr>
+              <td>価格</td>
+              <td>第1期は15万円前後</td>
+            </tr>
+            <tr>
+              <td>人数</td>
+              <td>5〜6名程度</td>
+            </tr>
+            <tr>
+              <td>位置づけ</td>
+              <td>収益最大化より、成果事例・満足度・口コミリスク管理を優先</td>
+            </tr>
+          </table>
+        </article>
+
+        <article class="panel">
+          <h3>5. AI/eラーニング講座の販売導線</h3>
+          <p><strong>回答案:</strong> AI/eラーニング講座は、事業計画士講座とは別の入口商品として扱いながら、最終的には「AI時代に経営者を支える人材づくり」という大きな文脈で接続できます。</p>
+          <ol>
+            <li>AI無料セミナー</li>
+            <li>AI/eラーニング無料体験</li>
+            <li>AI活用の個別相談</li>
+            <li>中小企業の課題整理</li>
+            <li>事業計画士講座・伴走支援への接続</li>
+          </ol>
+          <div class="tag-row">
+            <span class="tag green">入口商品</span>
+            <span class="tag">別導線</span>
+            <span class="tag">ゆるく接続</span>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h3>6. リログループ向け無料体験URLの確認</h3>
+          <p><strong>回答案:</strong> URLを受領後、実際の申込導線、画面構成、訴求文、無料体験後の次アクションを確認し、販売導線として使えるかを整理します。</p>
+          <ul>
+            <li>無料体験までの導線は分かりやすいか</li>
+            <li>誰向けの商品に見えるか</li>
+            <li>企業向け・大学生向け・中小企業向けのどれに転用しやすいか</li>
+            <li>体験後に個別相談へつなげられるか</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag green">要URL確認</span>
+            <span class="tag">画面確認</span>
+            <span class="tag">導線評価</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="warning">
+        <p><strong>本日いちばん決めたいこと:</strong> 事業計画士講座は「稼げる資格講座」として売るのではなく、「経験知を地域経済に還元し、経営者の背中を押す人材を育てる講座」として打ち出す。この方向で進めてよいか。</p>
+      </div>
+    </section>
+
+    <section id="series">
+      <h2>電子書籍3冊のシリーズ再設計</h2>
+      <div class="highlight">
+        <p><strong>渡邉社長メモ:</strong> あらためて電子書籍3冊について再検討。シリーズ名と各巻タイトルを、AI時代・自分軸・ミドルシニア・老益・人生二期論の文脈で整理する。</p>
+      </div>
+
+      <section>
+        <h3>シリーズ名 3案</h3>
+        <div class="grid cols-3">
+          <div class="panel">
+            <p class="series-title">『人生二回論』シリーズ</p>
+            <p>AI時代を生き抜く「自分軸」のつくり方</p>
+            <div class="tag-row">
+              <span class="tag green">思想の軸が明快</span>
+              <span class="tag">第2巻と相性大</span>
+              <span class="tag gold">表記要確認</span>
+            </div>
+          </div>
+          <div class="panel">
+            <p class="series-title">『100年ライフのVSOP』シリーズ</p>
+            <p>会社軸を卒業し、自分らしく生き抜くロードマップ</p>
+            <div class="tag-row">
+              <span class="tag green">高橋推奨</span>
+              <span class="tag green">第1巻との接続が強い</span>
+              <span class="tag">年代別に展開しやすい</span>
+            </div>
+          </div>
+          <div class="panel">
+            <p class="series-title">『笑って死ぬための人生哲学』シリーズ</p>
+            <p>迷えるミドルシニアへ贈る実践バイブル</p>
+            <div class="tag-row">
+              <span class="tag green">渡邉社長らしさが強い</span>
+              <span class="tag">情緒に届く</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>各巻タイトル案</h3>
+        <div class="grid cols-3">
+          <article class="panel">
+            <span class="book-number">第1巻</span>
+            <p class="book-title">AI時代に武器になる「人間力」の磨き方</p>
+            <p class="subtitle">20代から50代の指標「人生のVSOP」</p>
+            <div class="tag-row">
+              <span class="tag green">20〜50代</span>
+              <span class="tag">VSOP</span>
+              <span class="tag">人間力</span>
+            </div>
+          </article>
+          <article class="panel">
+            <span class="book-number">第2巻</span>
+            <p class="book-title">60歳からは「老害」ではなく「老益」になれ</p>
+            <p class="subtitle">若者の背中を押し「想い出のタネを植える」生き方</p>
+            <div class="tag-row">
+              <span class="tag green">60代</span>
+              <span class="tag">老益</span>
+              <span class="tag">リボーン</span>
+            </div>
+          </article>
+          <article class="panel">
+            <span class="book-number">第3巻</span>
+            <p class="book-title">「会社軸」から卒業する50代の過ごし方</p>
+            <p class="subtitle">定年後の不安を期待に変える「自分軸」への転換期</p>
+            <div class="tag-row">
+              <span class="tag green">50代</span>
+              <span class="tag">会社軸から自分軸へ</span>
+              <span class="tag">講座導線</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h3>確認したい論点</h3>
+        <div class="grid cols-2">
+          <div class="flat">
+            <h3>順番の見せ方</h3>
+            <ul>
+              <li>既刊の第1巻をシリーズ内でどう再命名・再配置するか</li>
+              <li>第2巻を「60代老益編」として前面に出すか</li>
+              <li>第3巻を「50代会社軸卒業編」とする場合、年代順ではなく課題順のシリーズにするか</li>
+              <li>原稿本文の「人生二期論」と、シリーズ名案「人生二回論」の表記差をどう扱うか</li>
+            </ul>
+          </div>
+          <div class="flat">
+            <h3>講座への接続</h3>
+            <ul>
+              <li>第3巻を事業計画士講座への入口として設計するか</li>
+              <li>「自分軸」から「経営者を支える側」への転換をどう描くか</li>
+              <li>電子書籍末尾に無料診断・無料セミナー導線を置くか</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="note">
+        <p><strong>高橋メモ:</strong> 第3巻が50代向けになる場合、従来の「70代以降を匂わせて閉じる」構想とは位置づけが変わるため、本日ここを確認したい。シリーズを年代順ではなく「第1巻=VSOP、第2巻=60代リボーン、第3巻=講座入口の50代自分軸」とするなら、シリーズ全体の導線を再設計する。</p>
+      </div>
+    </section>
+
+    <section id="agenda">
+      <h2>アジェンダ（60分）</h2>
+      <div class="timeline">
+        <div class="agenda-item">
+          <div class="time">0〜5分<span>導入</span></div>
+          <div>
+            <h3>今日決めることの確認</h3>
+            <ul>
+              <li>第2巻を最終校正へ進めるか</li>
+              <li>3冊シリーズの方向性をどう置くか</li>
+              <li>事業計画士講座をどう打ち出すか</li>
+            </ul>
+          </div>
+        </div>
+        <div class="agenda-item">
+          <div class="time">5〜17分<span>宿題回答</span></div>
+          <div>
+            <h3>前回宿題への回答確認</h3>
+            <ul>
+              <li>第2巻最終チェック版の扱い</li>
+              <li>講座集客設計の基本方針</li>
+              <li>ワンフレーズ第1候補と第1期条件</li>
+              <li>AI/eラーニング講座の入口商品化</li>
+            </ul>
+          </div>
+        </div>
+        <div class="agenda-item">
+          <div class="time">17〜30分<span>第2巻</span></div>
+          <div>
+            <h3>第2巻「60歳からの新人生戦略」最終クローズ確認</h3>
+            <ul>
+              <li>第1〜6部・あとがきで、まだ修正したい箇所はあるか</li>
+              <li>「人生二期論」「リボーン」「老益」「想い出のタネを植える」「Priority」の表現は意図通りか</li>
+              <li>最終校正・Kindle整形フェーズに進めてよいか</li>
+            </ul>
+          </div>
+        </div>
+        <div class="agenda-item">
+          <div class="time">30〜42分<span>3冊構想</span></div>
+          <div>
+            <h3>電子書籍3冊のシリーズ名・タイトル案を確認</h3>
+            <ul>
+              <li>シリーズ名3案のうち、読者に最も伝わるものはどれか</li>
+              <li>各巻タイトル案の強さ・順番・対象読者を確認</li>
+              <li>第3巻を50代向けにする場合のシリーズ全体設計を確認</li>
+              <li>「人生二回論」と「人生二期論」の表記差を確認</li>
+            </ul>
+          </div>
+        </div>
+        <div class="agenda-item" id="business-planner">
+          <div class="time">42〜53分<span>講座</span></div>
+          <div>
+            <h3>事業計画士講座 第1期の募集設計とコピー</h3>
+            <ul>
+              <li>開始時期: 早くても2026年12月</li>
+              <li>価格: 第1期は15万円前後</li>
+              <li>人数: 5〜6名程度</li>
+              <li>導線: 電子書籍、無料セミナー、無料診断、メルマガ、Facebook、LINE、コミュニティ</li>
+              <li>中核コピー: 経験知を、地域経済を支える力に変える</li>
+            </ul>
+          </div>
+        </div>
+        <div class="agenda-item" id="ai-learning">
+          <div class="time">53〜60分<span>次回</span></div>
+          <div>
+            <h3>AI/eラーニング講座と次回アクション</h3>
+            <ul>
+              <li>AI/eラーニング講座を入口商品として扱うか</li>
+              <li>高橋が確認すべき資料・URL・画面</li>
+              <li>6月末〜7月の作業範囲と次回MTG日程</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>講座ワンフレーズ方向性案</h2>
+      <div class="grid cols-2">
+        <div class="panel">
+          <h3>候補</h3>
+          <ol>
+            <li>経営者の孤独に火を灯す、事業計画の伴走者を育てる講座</li>
+            <li>地方の経営者を支える、第二のキャリアのつくり方</li>
+            <li>AI時代に、社長の本音を聴ける人材になる</li>
+            <li>経験知を、地域経済を支える力に変える</li>
+            <li>胡散臭いコンサルではなく、社長の背中を押す伴走者へ</li>
+          </ol>
+        </div>
+        <div class="panel">
+          <h3>避けたい見え方</h3>
+          <ul>
+            <li>月収訴求が強すぎて、情報商材的に見える</li>
+            <li>コンサル独立ノウハウだけに見える</li>
+            <li>渡邉社長の思想・経歴・地方経済への問題意識が薄まる</li>
+            <li>電子書籍と講座の関係が唐突に見える</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="decisions">
+      <h2>本日決めたいこと</h2>
+      <div class="grid cols-2">
+        <div class="flat">
+          <h3>電子書籍</h3>
+          <ul>
+            <li>第2巻を最終校正・Kindle整形フェーズに進めてよいか</li>
+            <li>シリーズ名の第1候補を「100年ライフのVSOP」としてよいか</li>
+            <li>各巻タイトル案の方向性</li>
+            <li>第3巻の位置づけを50代向けに変更するか</li>
+            <li>「人生二回論」と「人生二期論」の表記をどう整理するか</li>
+          </ul>
+        </div>
+        <div class="flat">
+          <h3>講座・導線</h3>
+          <ul>
+            <li>事業計画士講座 第1期の開始時期・価格・人数の現実ライン</li>
+            <li>講座の中核ワンフレーズを「経験知を、地域経済を支える力に変える」とするか</li>
+            <li>集客導線の優先順位</li>
+            <li>AI/eラーニング講座を入口商品として扱うか</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>MTG中メモ</h2>
+      <table>
+        <tr>
+          <th>項目</th>
+          <th>メモ</th>
+        </tr>
+        <tr>
+          <td>本日の決定事項</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>第2巻最終レビュー</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>シリーズ名</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>各巻タイトル</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>講座第1期の条件</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>ワンフレーズ候補</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>第1期募集条件</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>次回アクション</td>
+          <td></td>
+        </tr>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      参照資料: 2026-06-09議事録、第2巻原稿一式、事業計画士マーケティング計画、セミナー集客戦略、KPI達成アクションプラン
+    </div>
+  </footer>
+</body>
+</html>
