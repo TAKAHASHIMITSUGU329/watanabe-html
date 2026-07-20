@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-07-20 渡邉社長・川崎社長 3者MTG 議事メモ</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #626b7b;
+      --line: #d9dee8;
+      --paper: #f7f8fb;
+      --panel: #ffffff;
+      --navy: #1d3761;
+      --green: #1f7a5a;
+      --deep-green: #155f49;
+      --gold: #b78a2c;
+      --blue-soft: #e9f0f8;
+      --green-soft: #e9f6f0;
+      --gold-soft: #fbf4e5;
+      --shadow: 0 14px 35px rgba(23, 32, 51, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.75;
+    }
+    a { color: var(--green); font-weight: 800; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { background: #fff; border-bottom: 1px solid var(--line); }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 34px;
+      align-items: end;
+      padding: 52px 0 36px;
+    }
+    .eyebrow { margin: 0 0 12px; color: var(--green); font-size: 14px; font-weight: 800; }
+    h1 { margin: 0; font-size: clamp(34px, 5vw, 58px); line-height: 1.12; letter-spacing: 0; }
+    h2 { margin: 0 0 16px; font-size: 26px; line-height: 1.35; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: 18px; line-height: 1.45; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    ul, ol { margin: 8px 0 0; padding-left: 1.3em; }
+    li { margin: 5px 0; }
+    main { padding: 34px 0 70px; }
+    section { margin-top: 34px; }
+    table { width: 100%; border-collapse: collapse; background: #fff; }
+    th, td { padding: 12px 14px; border: 1px solid var(--line); vertical-align: top; text-align: left; }
+    th { color: var(--deep-green); background: var(--green-soft); font-weight: 900; }
+    .lead { margin: 18px 0 0; color: var(--muted); font-size: 17px; }
+    .meta {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--green-soft);
+    }
+    .meta dl { display: grid; grid-template-columns: 96px 1fr; gap: 8px 14px; margin: 0; font-size: 15px; }
+    .meta dt { color: var(--deep-green); font-weight: 800; }
+    .meta dd { margin: 0; }
+    .quick-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      color: var(--navy);
+      background: #fff;
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .pill.primary { color: #fff; background: var(--green); border-color: var(--green); }
+    .grid { display: grid; gap: 18px; }
+    .cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .flat {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .highlight { padding: 18px 20px; border-left: 5px solid var(--green); border-radius: 8px; background: var(--green-soft); }
+    .note { padding: 18px 20px; border-left: 5px solid var(--gold); border-radius: 8px; background: var(--gold-soft); }
+    .concept-banner {
+      margin-top: 16px;
+      padding: 26px 24px;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--green);
+      text-align: center;
+    }
+    .concept-banner .label { font-size: 14px; font-weight: 800; opacity: 0.85; }
+    .concept-banner .copy {
+      margin: 8px 0 0;
+      font-size: clamp(24px, 4vw, 40px);
+      font-weight: 900;
+      line-height: 1.25;
+    }
+    .decision-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .decision-list li {
+      margin: 0;
+      padding: 15px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      color: var(--deep-green);
+      background: var(--green-soft);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .tag.gold { color: var(--gold); background: var(--gold-soft); }
+    .tag.navy { color: var(--navy); background: var(--blue-soft); }
+    .small { color: var(--muted); font-size: 13px; }
+    footer { padding: 28px 0 44px; border-top: 1px solid var(--line); color: var(--muted); background: #fff; font-size: 13px; }
+    @media (max-width: 900px) {
+      .hero, .cols-2, .cols-3 { grid-template-columns: 1fr; }
+      .meta dl { grid-template-columns: 86px 1fr; }
+      table { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <p class="eyebrow">2026-07-20 / Meeting Minutes</p>
+        <h1>渡邉社長・川崎社長<br>3者MTG 議事メモ</h1>
+        <p class="lead">初顔合わせで3者が立ち上げ仲間として共同で進めることを確認。講座のコアコンセプト「会社軸から自分軸へのリセット」が生まれたミーティング。</p>
+        <div class="quick-links">
+          <a class="pill primary" href="#actions">Action Items</a>
+          <a class="pill" href="#decisions">決定事項</a>
+          <a class="pill" href="#intro">自己紹介</a>
+          <a class="pill" href="#vision">渡邉社長のビジョン</a>
+          <a class="pill" href="#concept">講座コンセプト</a>
+          <a class="pill" href="#community">コミュニティ設計</a>
+          <a class="pill" href="#next">次回MTG</a>
+          <a class="pill" href="2026-07-20-sansha-agenda.html">当日アジェンダ</a>
+        </div>
+      </div>
+      <div class="meta">
+        <dl>
+          <dt>日時</dt><dd>2026年7月20日（月・海の日）11:00〜12:10頃</dd>
+          <dt>参加者</dt><dd>渡邉ひとし社長、川崎庄司社長、高橋</dd>
+          <dt>形式</dt><dd>オンライン（Zoom）／約71分</dd>
+          <dt>次回</dt><dd>2026年8月3日（月）11:00〜 3者MTG</dd>
+        </dl>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="actions">
+      <h2>Action Items</h2>
+      <table>
+        <thead>
+          <tr><th>担当</th><th>内容</th><th>期限・補足</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="tag">高橋</span></td><td>講座ビジネス立ち上げ実行プランを川崎社長に共有</td><td>渡邉社長とのこれまでの検討内容（実行プラン・設計計画）を送付する</td></tr>
+          <tr><td><span class="tag">高橋</span></td><td>8月3日（月）11:00の3者MTGの招待を送付</td><td>日時は合意済み。Zoomで実施</td></tr>
+          <tr><td><span class="tag">高橋</span></td><td>3人のLINEグループを作成</td><td>MTG終了時に接続を約束</td></tr>
+          <tr><td><span class="tag navy">全員</span></td><td>本日の内容を踏まえたアイデア・案を持ち帰り、次回に共有</td><td>各自が「こういうことをやっていきたい」を持ち寄る形で次回実施</td></tr>
+          <tr><td><span class="tag gold">川崎社長</span></td><td>自身のコンテンツ（節税・営業手法・独立への考え方）の教材化を検討</td><td>高橋からの提案。リアルな独立体験を講座教材に活かす</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="decisions">
+      <h2>決定事項・合意事項</h2>
+      <ul class="decision-list">
+        <li>渡邉社長・川崎社長・高橋の3者が初顔合わせし、<strong>講座ビジネスを立ち上げ仲間として共同で進めること</strong>を確認した。</li>
+        <li>講座のコアコンセプトを「<strong>会社軸から自分軸へのリセット</strong>」とする。川崎社長が提案し、渡邉社長が「今日一番の収穫」として強く評価した。</li>
+        <li>役割分担は、渡邉社長＝思想・講座設計、高橋＝AI/DX・コンテンツ化・発信、川崎社長＝営業・案件開拓・コミュニティ運営の方向で認識が一致した。</li>
+        <li>コミュニティ運営のルールとして、評論家的な否定意見ではなく「相手の意見を認めた上で自分の意見を言う」「相手をリスペクトする」姿勢を基本にする。</li>
+        <li>2026年12月までを準備期間とし、<strong>2027年1月の本格稼働</strong>を目指す方針を再確認した。</li>
+        <li>次回MTGは <strong>2026年8月3日（月）11:00</strong> に3者オンラインで実施する。</li>
+      </ul>
+      <div class="concept-banner">
+        <p class="label">本日生まれた講座のコアコンセプト</p>
+        <p class="copy">会社軸から、自分軸へのリセット。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>概要</h2>
+      <div class="panel">
+        <p>本日は渡邉社長と川崎社長の初顔合わせとして、高橋の進行で相互紹介から始め、講座ビジネス構想の世界観と方向性を3人で共有した。</p>
+        <p>渡邉社長からは、ミドルシニアの経験知を「知恵」として再評価し、地方の中小企業支援と地域活性化を通じて日本再生につなげる構想（ジャパン・リバイバル・プロジェクト）が語られた。川崎社長は「価値観が同じ」と全面的に共感し、自身が58歳でゼロから再スタートした経験を重ねて参画の意思を示した。</p>
+        <p>議論の中で川崎社長から出た「会社軸から自分軸へのリセット」という言葉を渡邉社長が講座の本質として採用し、講座はゴールではなくスタートであり、受講後のコミュニティこそが核心であることを3人で確認した。</p>
+      </div>
+    </section>
+
+    <section id="intro">
+      <h2>渡邉社長・川崎社長の自己紹介</h2>
+      <div class="grid cols-2">
+        <div class="panel">
+          <h3>渡邉社長</h3>
+          <ul>
+            <li>電通系プロダクションでプロデューサーとして活躍し、トップとして売上・社員数を150%に伸ばした後、2期4年で退任</li>
+            <li>中小企業専門のデザイン・広告会社を始め、定款も知らない「世間知らず」だった衝撃が原点</li>
+            <li>経営者たちから「やっていることは経営コンサルティング」と指摘されつつ、「うさんくさい」という抵抗感から肩書きを変え続けた末、覚悟を決めてコンサルタントを名乗った</li>
+            <li>現在は中小企業専門の経営コンサルタントとして活動</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>川崎社長</h3>
+          <ul>
+            <li>アステラス製薬に35年勤務。営業から営業部長まで、ドクター対象の営業と組織マネジメントを経験</li>
+            <li>「人生一度きり」「肩書きを外した個人として一生付き合える関係を作りたい」と58歳で独立</li>
+            <li>31歳から26年間の不動産資産形成の知見を入口に、7名のドクターに物件購入いただく実績</li>
+            <li>9割が赤字という病院に対し、補助金・助成金・新電力の専門家への「おつなぎ」で貢献。AI活用の漫画本・書籍出版によるブランディング支援も提案中</li>
+            <li>ベースは「人とのつながりが大切」</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="vision">
+      <h2>渡邉社長のビジョン：ミドルシニア活用と日本再生</h2>
+      <div class="grid cols-2">
+        <div class="flat">
+          <h3>知恵の再評価</h3>
+          <p>ミドルシニアが企業から「速やかに消えてほしい」と扱われる現状に問題意識。<strong>知識×経験＝知恵</strong>、その積み重ねから生まれる<strong>勘</strong>を再評価すべきと主張した。</p>
+        </div>
+        <div class="flat">
+          <h3>ジャパン・リバイバル・プロジェクト</h3>
+          <p>大企業出身者が故郷に戻り、志を持った事業プランナーとして地方の中小企業を支援すれば、企業継続→税収増→地域活性化→日本再生へと連鎖するという構想。</p>
+        </div>
+        <div class="flat">
+          <h3>Z世代のメンター需要</h3>
+          <p>コミュニティで出会った23歳女性から「Z世代はメンターが欲しい」と問われた実体験を紹介。世代間の絆と、若者を孤立させない支援の重要性を強調した。</p>
+        </div>
+        <div class="flat">
+          <h3>AI時代のキーワード</h3>
+          <p>AI時代は「人間の進化が問われる時代」であり、志とAIは親和性が高い。重要キーワードは<strong>コミュニティ・ファシリテーション</strong>。ファシリテーションできる人を育てたい。</p>
+        </div>
+      </div>
+      <div class="highlight" style="margin-top: 18px;">
+        <p>「<strong>老害ではなく老益</strong>」「<strong>年金をもらう側ではなく納税する側へ</strong>」。若い人をサポートし、地域を活性化し、自らも働き続ける人を増やす。</p>
+      </div>
+    </section>
+
+    <section id="kawasaki-view">
+      <h2>川崎社長の共感と視点</h2>
+      <ul class="decision-list">
+        <li>渡邉社長のビジョンに「<strong>価値観が同じ</strong>」と全面共感。早期退職が拡大する中、サラリーマンの選択肢が「しがみつく」か「FIRE」の二択になっている現状に問題意識を共有した。</li>
+        <li>「アステラス製薬の川崎」ではなく「川崎庄司個人」として医師に接すると、病院の赤字など本音の悩みを話してもらえるようになった実体験を紹介。</li>
+        <li>「これから何をしたいかわからない」と語ったTBSラジオの部長へのコーチングで「和歌山に戻って町おこしをしたい」という本音が出てきた。同じように悩む人は多く隠れているはず。</li>
+        <li>日本人（特にサラリーマン）の<strong>自己肯定感の低さ</strong>が根本課題。「長所50個」は誰かに評価されるためではなく、自分が思えばよいこと。</li>
+        <li>報酬は「お金」ではなく「<strong>価値の提供の見返り</strong>」と伝えるべき。ギブが先という理解でコミュニティの雰囲気は変わる。</li>
+      </ul>
+    </section>
+
+    <section id="concept">
+      <h2>講座コンセプト：会社軸から自分軸へのリセット</h2>
+      <div class="grid cols-2">
+        <div class="panel">
+          <h3>会社軸の限界</h3>
+          <p>会社軸では企業ごとの評価基準に合わせて自分を変えてしまう。「あなたの人生の主人公は誰ですか」。40代くらいから自分軸への切り替え準備が必要。会社価値ではなく<strong>市場価値</strong>で自分を見つめ直す。</p>
+        </div>
+        <div class="panel">
+          <h3>自分軸＝MUST・WILL・CAN</h3>
+          <p>自分軸とはMUST・WILL・CANのベクトルを自分で作ること。会社軸はMUSTに合う人が評価される構造で、MUSTとWILLが乖離すると心理的に苦しくなる。</p>
+        </div>
+        <div class="panel">
+          <h3>講座のゴール</h3>
+          <p>自分のミッション（MUST・WILL・CAN）を見つけ、コミュニティの中で実践すること。経験を棚卸しして自分軸を作れば、その後どんな事業でも失敗確率は非常に低い。</p>
+        </div>
+        <div class="panel">
+          <h3>講座はスタート</h3>
+          <p><strong>講座はゴールではなくスタート</strong>。受講後のコミュニティ（全国の仲間が助け合い、地域を超えてつながる場）こそが核心。「講座を受けてサヨナラ」ではない。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="community">
+      <h2>コミュニティ設計の論点</h2>
+      <table>
+        <thead>
+          <tr><th>論点</th><th>内容</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>参加基準</td><td>志を一つにできる人を集める。「金儲けが第一義」の人には遠慮してもらうなど、「来てほしくない人」を言語化して排除基準を作る。少人数で固めてから少しずつ増やす。</td></tr>
+          <tr><td>運営ルール</td><td>評論家的な否定意見が一人いると場が一気にしらける。「相手の意見を認めた上で自分の意見を言う」「相手をリスペクトする」を基本ルールにする。</td></tr>
+          <tr><td>ワークショップ案（川崎社長）</td><td>参加者全員の背中にA3の紙を貼り、周りがその人の強みを書いていく。客観的に「見られている」ことが自信につながり、自己肯定感を高める。</td></tr>
+          <tr><td>対象年齢（川崎社長）</td><td>むしろ40代半ばから聞く方が参考になる。50・60・70代でも遅くないと伝えたい。理想は20代から70代までいる講座。</td></tr>
+          <tr><td>コミュニケーション教育</td><td>日本人は作文の書き方を教わっておらず、意思を伝えられない。渡邉社長のコミュニケーション学の学びを講座内容に活かす。</td></tr>
+          <tr><td>合言葉案（川崎社長）</td><td>生理学的には人間は125歳まで生きられる。「僕たちは120ができる」のような前向きな合言葉を作るのも面白い。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="roles">
+      <h2>役割分担（認識一致）</h2>
+      <table>
+        <thead>
+          <tr><th>人物</th><th>役割</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="tag">渡邉社長</span></td><td>思想・講座設計（北極星・事業計画士®︎・人生後半の考え方）</td></tr>
+          <tr><td><span class="tag">高橋</span></td><td>AI/DX・コンテンツ化・発信（note・無料コンテンツ・説明会）</td></tr>
+          <tr><td><span class="tag gold">川崎社長</span></td><td>営業・案件開拓・コミュニティ運営（節税・営業手法・独立経験の教材化も検討）</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="next">
+      <h2>次回MTG</h2>
+      <div class="highlight">
+        <p><strong>2026年8月3日（月）11:00〜</strong> Zoomにて3者で実施。各自が本日の内容を踏まえたアイデア・案を持ち帰り、次回に共有する。</p>
+      </div>
+      <div class="grid cols-2" style="margin-top: 18px;">
+        <div class="flat">
+          <h3>主な議題（想定）</h3>
+          <ul>
+            <li>各自持ち寄りアイデアの共有</li>
+            <li>第0期（ゼロ期生）立ち上げの検討</li>
+            <li>川崎社長コンテンツの教材化の方向性</li>
+            <li>認知獲得施策（note・無料コンテンツ・説明会）の具体化</li>
+          </ul>
+        </div>
+        <div class="flat">
+          <h3>今後の進め方</h3>
+          <ul>
+            <li>2026年12月まで: 準備期間・戦略検討期間</li>
+            <li>2027年1月: 本格稼働を目指す</li>
+            <li>3人のLINEグループで日常連携</li>
+          </ul>
+        </div>
+      </div>
+      <p class="small" style="margin-top: 14px;">余談: 3人とも双子座という共通点が判明。「今年は双子座の運勢が良い年」（川崎社長）。</p>
+    </section>
+
+    <section>
+      <h2>注意事項</h2>
+      <div class="note">
+        <ul>
+          <li>本議事メモは、Circlebackの自動ノートおよび文字起こしをもとに作成した。</li>
+          <li>文字起こし上の話者名には自動認識の揺れがあるため、発言内容に基づき整理した。</li>
+          <li>Circlebackノート内の「2026年1月の本格稼働」という記載は文脈上「2027年1月」の誤認識のため、本メモでは2027年1月と記載した。</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>作成: 2026年7月20日 / 記録: Circleback / 関連: <a href="2026-07-20-sansha-agenda.html">当日アジェンダ</a> ・ <a href="2026-07-20-jikko-plan.html">立ち上げ実行プラン</a></p>
+    </div>
+  </footer>
+</body>
+</html>

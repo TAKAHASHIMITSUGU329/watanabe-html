@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-07-20 渡邉社長・川崎社長 3者MTG アジェンダ</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #626b7b;
+      --line: #d9dee8;
+      --paper: #f7f8fb;
+      --panel: #ffffff;
+      --navy: #1d3761;
+      --green: #1f7a5a;
+      --deep-green: #155f49;
+      --gold: #b78a2c;
+      --blue-soft: #e9f0f8;
+      --green-soft: #e9f6f0;
+      --gold-soft: #fbf4e5;
+      --shadow: 0 14px 35px rgba(23, 32, 51, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.75;
+    }
+    a { color: var(--green); font-weight: 800; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { background: #fff; border-bottom: 1px solid var(--line); }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 34px;
+      align-items: end;
+      padding: 52px 0 36px;
+    }
+    .eyebrow { margin: 0 0 12px; color: var(--green); font-size: 14px; font-weight: 800; }
+    h1 { margin: 0; font-size: clamp(34px, 5vw, 58px); line-height: 1.12; letter-spacing: 0; }
+    h2 { margin: 0 0 16px; font-size: 26px; line-height: 1.35; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: 18px; line-height: 1.45; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    ul, ol { margin: 8px 0 0; padding-left: 1.3em; }
+    li { margin: 5px 0; }
+    main { padding: 34px 0 70px; }
+    section { margin-top: 34px; }
+    table { width: 100%; border-collapse: collapse; background: #fff; }
+    th, td { padding: 12px 14px; border: 1px solid var(--line); vertical-align: top; text-align: left; }
+    th { color: var(--deep-green); background: var(--green-soft); font-weight: 900; }
+    .lead { margin: 18px 0 0; color: var(--muted); font-size: 17px; }
+    .meta {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--green-soft);
+    }
+    .meta dl { display: grid; grid-template-columns: 96px 1fr; gap: 8px 14px; margin: 0; font-size: 15px; }
+    .meta dt { color: var(--deep-green); font-weight: 800; }
+    .meta dd { margin: 0; }
+    .quick-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      color: var(--navy);
+      background: #fff;
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .pill.primary { color: #fff; background: var(--green); border-color: var(--green); }
+    .grid { display: grid; gap: 18px; }
+    .cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .flat {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .highlight { padding: 18px 20px; border-left: 5px solid var(--green); border-radius: 8px; background: var(--green-soft); }
+    .note { padding: 18px 20px; border-left: 5px solid var(--gold); border-radius: 8px; background: var(--gold-soft); }
+    .worldview {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .world-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .world-card.before { border-left: 6px solid #8b98aa; }
+    .world-card.after { border-left: 6px solid var(--green); background: var(--green-soft); }
+    .world-label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      background: #eef1f5;
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .world-card.after .world-label {
+      color: var(--deep-green);
+      background: #fff;
+    }
+    .world-copy {
+      margin: 12px 0 0;
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+    .world-card.before .world-copy { color: #596475; }
+    .world-card.after .world-copy { color: var(--deep-green); }
+    .arrow-note {
+      margin-top: 16px;
+      padding: 18px 20px;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--green);
+      font-size: 18px;
+      font-weight: 900;
+      text-align: center;
+    }
+    .profile-card { border-top: 6px solid var(--green); }
+    .profile-card.kawasaki { border-top-color: var(--gold); }
+    .profile-card h3 { font-size: 20px; }
+    .profile-role {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 3px 12px;
+      border-radius: 999px;
+      color: var(--deep-green);
+      background: var(--green-soft);
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+    .profile-card.kawasaki .profile-role { color: var(--gold); background: var(--gold-soft); }
+    .agenda {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+    .agenda li {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 18px;
+      margin: 0;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .time {
+      color: var(--green);
+      font-size: 19px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+    .time span { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      color: var(--deep-green);
+      background: var(--green-soft);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .small { color: var(--muted); font-size: 13px; }
+    footer { padding: 28px 0 44px; border-top: 1px solid var(--line); color: var(--muted); background: #fff; font-size: 13px; }
+    @media (max-width: 900px) {
+      .hero, .cols-2, .cols-3, .agenda li, .worldview { grid-template-columns: 1fr; }
+      .meta dl { grid-template-columns: 86px 1fr; }
+      table { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <p class="eyebrow">2026-07-20 / Meeting Agenda</p>
+        <h1>渡邉社長・川崎社長<br>3者MTG アジェンダ</h1>
+        <p class="lead">渡邉社長と川崎社長の初顔合わせ。お二人のご紹介から始め、講座ビジネス立ち上げ実行プランを共有し、役割分担と直近アクションを確認する。</p>
+        <div class="quick-links">
+          <a class="pill primary" href="#intro">お二人のご紹介</a>
+          <a class="pill" href="#agenda">本日の流れ</a>
+          <a class="pill" href="#plan">実行プラン</a>
+          <a class="pill" href="#role">役割分担</a>
+          <a class="pill" href="#member">第0期メンバー</a>
+          <a class="pill" href="#decisions">決めたいこと</a>
+          <a class="pill" href="2026-07-20-jikko-plan.html">宿題：実行プラン</a>
+        </div>
+      </div>
+      <div class="meta">
+        <dl>
+          <dt>日時</dt><dd>2026年7月20日（月・海の日）11:00〜12:00</dd>
+          <dt>参加者</dt><dd>渡邉ひとし社長、川崎社長、高橋</dd>
+          <dt>形式</dt><dd>オンライン（Zoom）</dd>
+          <dt>目的</dt><dd>お二人のご紹介と、講座ビジネス立ち上げ実行プランの共有</dd>
+        </dl>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="position">
+      <h2>本日の位置づけ</h2>
+      <div class="highlight">
+        <p><strong>本日は、渡邉社長と川崎社長の初顔合わせの場です。</strong>高橋が両社長それぞれと個別に進めてきた話を、初めて一つのテーブルに載せます。</p>
+      </div>
+      <div class="grid cols-2" style="margin-top: 18px;">
+        <div class="flat">
+          <h3>渡邉社長とは（7/6 MTG）</h3>
+          <p>「第3巻保留・講座ビジネス収益化最優先」の方針を確認。高橋が宿題として立ち上げ実行プラン5点を作成してきました。</p>
+        </div>
+        <div class="flat">
+          <h3>川崎社長とは（7/14 MTG）</h3>
+          <p>講座ビジネス構想を共有し、立ち上げ仲間としての参画に前向きな反応をいただきました。本日、渡邉社長を交えて具体化します。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="intro">
+      <h2>0. お二人のご紹介（11:00〜 / 12分）</h2>
+      <p>高橋が進行役として本日の趣旨（講座ビジネスを一緒に立ち上げる仲間としての顔合わせ）を説明し、お二人を相互にご紹介します。その後、それぞれから一言ずつ自己紹介をお願いします。</p>
+      <div class="grid cols-2" style="margin-top: 18px;">
+        <div class="panel profile-card">
+          <span class="profile-role">思想・北極星を担う</span>
+          <h3>渡邉ひとし社長</h3>
+          <ul>
+            <li>元電通系会社の社長。経営コンサルタントとして活動</li>
+            <li><strong>事業計画士®︎・経営診断士の商標</strong>を保有。大学講師も務める</li>
+            <li>岐阜県大垣市在住</li>
+            <li>電子書籍シリーズを刊行中（第1巻: 50代のVSOP／第2巻: 60歳からのリボーン）</li>
+            <li>富士産経グループ系列のラジオ番組（月2回・30分）への出演を準備中</li>
+          </ul>
+        </div>
+        <div class="panel profile-card kawasaki">
+          <span class="profile-role">営業・実践力を担う</span>
+          <h3>川崎社長（川崎商事）</h3>
+          <ul>
+            <li><strong>5つの事業の柱</strong>を展開中
+              <ol>
+                <li>AIシステム（AIエージェント・アプリ制作）</li>
+                <li>光熱費削減（新電力中心の法人向けコスト削減）</li>
+                <li>補助金・助成金（200人規模の指導実績を持つ専門家がチームに参加）</li>
+                <li>電子書籍ブランディング</li>
+                <li>不動産節税（医師ネットワーク経由、7名のドクターに30部屋の実績）</li>
+              </ol>
+            </li>
+            <li>月1回のYouTubeライブなど発信活動にも積極的</li>
+          </ul>
+        </div>
+      </div>
+
+      <section style="margin-top: 26px;">
+        <h3>3人で共有したい世界観</h3>
+        <div class="worldview">
+          <div class="world-card before">
+            <span class="world-label">これまでの見られ方</span>
+            <p class="world-copy">老害<br>年金受給者</p>
+          </div>
+          <div class="world-card after">
+            <span class="world-label">私たちがつくりたい姿</span>
+            <p class="world-copy">老益<br>納税する人</p>
+          </div>
+        </div>
+        <div class="arrow-note">50〜60代の経験知を、AI/DX時代の経営支援力に変える。一人のカリスマが引っ張るのではなく、得意技を持ち寄るフラットなコミュニティへ。</div>
+      </section>
+    </section>
+
+    <section id="agenda">
+      <h2>本日の流れ（60分）</h2>
+      <ol class="agenda">
+        <li>
+          <div class="time">11:00<span>12分</span></div>
+          <div>
+            <h3>オープニング：お二人のご紹介</h3>
+            <p>高橋から趣旨説明と両社長の相互紹介。世界観（老害ではなく老益）を3人で共有し、それぞれから一言ずつ自己紹介。</p>
+          </div>
+        </li>
+        <li>
+          <div class="time">11:12<span>15分</span></div>
+          <div>
+            <h3>講座ビジネス立ち上げ実行プランの共有</h3>
+            <p>高橋の宿題5点（全体導線図・初期10本の記事構成案・第0期募集コンセプト・ラジオ番組テンプレート・無料コンテンツ案）を共有し、方向性を確認する。</p>
+          </div>
+        </li>
+        <li>
+          <div class="time">11:27<span>10分</span></div>
+          <div>
+            <h3>役割分担と川崎社長の関わり方</h3>
+            <p>渡邉社長＝思想・事業計画、高橋＝AI/DX・講座設計・発信、川崎社長＝営業・案件開拓という仮説を確認し、川崎社長の参画度合いを相談する。</p>
+          </div>
+        </li>
+        <li>
+          <div class="time">11:37<span>8分</span></div>
+          <div>
+            <h3>第0期メンバー集めと今後の進め方</h3>
+            <p>7月〜12月で立ち上げメンバー5〜10人を集める計画。各自の人脈からの候補の見立てと、声かけ・コミュニティの場を相談する。</p>
+          </div>
+        </li>
+        <li>
+          <div class="time">11:45<span>7分</span></div>
+          <div>
+            <h3>渡邉社長側の進捗確認</h3>
+            <p>北極星記事、ラジオ契約・開始日、リザーブストック導線、電子書籍の無料公開章、仲間候補リストの状況を確認する。</p>
+          </div>
+        </li>
+        <li>
+          <div class="time">11:52<span>8分</span></div>
+          <div>
+            <h3>次回アクションと日程</h3>
+            <p>3人それぞれの次回までのアクション、次回MTGの日程・形式、直近スケジュールを決める。</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="plan">
+      <h2>1. 講座ビジネス立ち上げ実行プラン（宿題5点）</h2>
+      <p>詳細は <a href="2026-07-20-jikko-plan.html">高橋宿題：講座ビジネス立ち上げ実行プラン</a> を参照。</p>
+      <table>
+        <thead>
+          <tr><th>No.</th><th>成果物</th><th>ポイント</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="tag">1</span></td><td>全体導線図</td><td>認知→共感→体験→関係→参画→収益の6段階。ラジオ・note・電子書籍・eラーニング・コミュニティ・講座を一本の導線に。</td></tr>
+          <tr><td><span class="tag">2</span></td><td>初期10本の記事構成案</td><td>火曜ノウハウ×金曜人物像の週2本。7月最終週から公開開始を提案。</td></tr>
+          <tr><td><span class="tag">3</span></td><td>第0期募集コンセプト</td><td>「受講生募集」ではなく「立ち上げ仲間募集」。呼びかけ文ドラフトを提示。</td></tr>
+          <tr><td><span class="tag">4</span></td><td>ラジオ番組テンプレート</td><td>30分5コーナー構成＋ポッドキャスト・YouTube・note書き起こしへの二次利用。</td></tr>
+          <tr><td><span class="tag">5</span></td><td>無料コンテンツ案</td><td>学習ルート診断→講座サイトの歩き方動画→AI入門動画の優先順位を提案。</td></tr>
+        </tbody>
+      </table>
+      <div class="note" style="margin-top: 18px;">
+        <p><strong>本日確認したいこと:</strong> 導線図・記事公開開始日・募集コンセプトの方向性はこれでよいか。電子書籍の無料公開章の選定とラジオの契約状況・開始日（渡邉社長）。</p>
+      </div>
+    </section>
+
+    <section id="role">
+      <h2>2. 役割分担の仮説</h2>
+      <table>
+        <thead>
+          <tr><th>人物</th><th>想定役割</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="tag">渡邉社長</span></td><td>経営・事業計画・人生後半の考え方・講座全体の思想（北極星）</td></tr>
+          <tr><td><span class="tag">高橋</span></td><td>AIコンテンツ・AI/DX活用・講座設計・発信設計</td></tr>
+          <tr><td><span class="tag">川崎社長</span></td><td>営業・資産形成・不動産・補助金/助成金・実践的な案件開拓</td></tr>
+        </tbody>
+      </table>
+      <div class="grid cols-2" style="margin-top: 18px;">
+        <div class="flat">
+          <h3>本日確認したいこと</h3>
+          <ul>
+            <li>この役割分担の仮説に対する両社長の認識</li>
+            <li>川崎社長の関わり方（参画度合い・使える時間）</li>
+            <li>川崎商事の5本柱と講座ビジネスの連携可能性</li>
+          </ul>
+        </div>
+        <div class="flat">
+          <h3>川崎社長参画の補強ポイント</h3>
+          <ul>
+            <li>川崎商事の5本柱は講座の「実践フィールド」になり得る</li>
+            <li>補助金専門家チーム・医師ネットワークは第0期候補・ゲスト候補の母集団に</li>
+            <li>「コミュニティに入ったことで独立できた」実績づくりを成功指標に</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="member">
+      <h2>3. 第0期メンバー集めと今後の進め方</h2>
+      <div class="highlight">
+        <p>2026年7月〜12月で第0期の立ち上げメンバー5〜10人を集め、2027年1月から本格的な発信・講座をスタートする。公募より先に、3人の人脈からの個別声かけを優先する（ベクトルの一致を重視）。</p>
+      </div>
+      <div class="grid cols-3" style="margin-top: 18px;">
+        <div class="panel">
+          <h3>候補の見立て</h3>
+          <p>各自の人脈からの第0期候補を出し合う。渡邉社長には候補10〜20名の書き出しを依頼中。</p>
+        </div>
+        <div class="panel">
+          <h3>声かけの進め方</h3>
+          <p>声かけ → 資料送付 → 説明会 or 個別面談 → 参画確定、の4ステップで進める。</p>
+        </div>
+        <div class="panel">
+          <h3>コミュニティの場</h3>
+          <p>LINEオープンチャット／Facebookグループ／Slackのいずれかから本日相談して選定する。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="progress">
+      <h2>4. 渡邉社長側の進捗確認</h2>
+      <table>
+        <thead>
+          <tr><th>項目</th><th>内容</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>北極星記事</td><td>ミッションを意識したブログ記事の執筆状況</td></tr>
+          <tr><td>ラジオ</td><td>契約書の締結状況・放送開始日</td></tr>
+          <tr><td>リザーブストック</td><td>販売導線の確認状況（銀行振込の追加含む）</td></tr>
+          <tr><td>電子書籍</td><td>無料公開したい章の選定</td></tr>
+          <tr><td>仲間候補</td><td>立ち上げ仲間候補10〜20名の書き出し状況</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="decisions">
+      <h2>本日決めたいこと（Decisions）</h2>
+      <ul class="summary-list" style="display: grid; gap: 12px; margin: 0; padding: 0; list-style: none;">
+        <li style="margin: 0; padding: 15px 16px; border: 1px solid var(--line); border-radius: 8px; background: #fff;">1. 講座ビジネス実行プラン（宿題5点）の方向性の承認</li>
+        <li style="margin: 0; padding: 15px 16px; border: 1px solid var(--line); border-radius: 8px; background: #fff;">2. 川崎社長の役割と関わり方</li>
+        <li style="margin: 0; padding: 15px 16px; border: 1px solid var(--line); border-radius: 8px; background: #fff;">3. 初期記事の公開開始日</li>
+        <li style="margin: 0; padding: 15px 16px; border: 1px solid var(--line); border-radius: 8px; background: #fff;">4. 第0期声かけの進め方とコミュニティの場</li>
+        <li style="margin: 0; padding: 15px 16px; border: 1px solid var(--line); border-radius: 8px; background: #fff;">5. 3人それぞれの次回までのアクション</li>
+        <li style="margin: 0; padding: 15px 16px; border: 1px solid var(--line); border-radius: 8px; background: #fff;">6. 次回MTGの日程</li>
+      </ul>
+    </section>
+
+    <section id="refs">
+      <h2>事前共有・参照資料</h2>
+      <ul>
+        <li><a href="2026-07-20-jikko-plan.html">高橋宿題：講座ビジネス立ち上げ実行プラン（本日の提出物）</a></li>
+        <li>7/6 渡邉社長MTG 議事メモ</li>
+        <li>7/14 川崎社長MTG 議事メモ</li>
+        <li>7/6 講座ビジネス立ち上げ設計・計画</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>作成: 2026年7月20日 / 渡邉社長・川崎社長・高橋 3者MTG（初顔合わせ）</p>
+    </div>
+  </footer>
+</body>
+</html>

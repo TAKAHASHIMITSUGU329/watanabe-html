@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>講座ビジネス構想 全体まとめ（川崎社長 共有用）</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #626b7b;
+      --line: #d9dee8;
+      --paper: #f7f8fb;
+      --panel: #ffffff;
+      --navy: #1d3761;
+      --green: #1f7a5a;
+      --deep-green: #155f49;
+      --gold: #b78a2c;
+      --blue-soft: #e9f0f8;
+      --green-soft: #e9f6f0;
+      --gold-soft: #fbf4e5;
+      --shadow: 0 14px 35px rgba(23, 32, 51, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+      line-height: 1.75;
+    }
+    a { color: var(--green); font-weight: 800; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { background: #fff; border-bottom: 1px solid var(--line); }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 34px;
+      align-items: end;
+      padding: 52px 0 36px;
+    }
+    .eyebrow { margin: 0 0 12px; color: var(--green); font-size: 14px; font-weight: 800; }
+    h1 { margin: 0; font-size: clamp(32px, 5vw, 52px); line-height: 1.16; letter-spacing: 0; }
+    h2 { margin: 0 0 16px; font-size: 26px; line-height: 1.35; letter-spacing: 0; }
+    h3 { margin: 0 0 10px; font-size: 18px; line-height: 1.45; letter-spacing: 0; }
+    p { margin: 0 0 12px; }
+    ul, ol { margin: 8px 0 0; padding-left: 1.3em; }
+    li { margin: 5px 0; }
+    main { padding: 34px 0 70px; }
+    section { margin-top: 40px; }
+    table { width: 100%; border-collapse: collapse; background: #fff; }
+    th, td { padding: 12px 14px; border: 1px solid var(--line); vertical-align: top; text-align: left; }
+    th { color: var(--deep-green); background: var(--green-soft); font-weight: 900; }
+    .lead { margin: 18px 0 0; color: var(--muted); font-size: 17px; }
+    .meta {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--green-soft);
+    }
+    .meta dl { display: grid; grid-template-columns: 96px 1fr; gap: 8px 14px; margin: 0; font-size: 15px; }
+    .meta dt { color: var(--deep-green); font-weight: 800; }
+    .meta dd { margin: 0; }
+    .grid { display: grid; gap: 18px; }
+    .cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .flat {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .highlight { padding: 18px 20px; border-left: 5px solid var(--green); border-radius: 8px; background: var(--green-soft); }
+    .note { padding: 18px 20px; border-left: 5px solid var(--gold); border-radius: 8px; background: var(--gold-soft); }
+    .vision {
+      padding: 30px 26px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--deep-green), var(--green));
+      color: #fff;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .vision p { margin: 0; font-size: clamp(20px, 3vw, 30px); font-weight: 900; line-height: 1.6; }
+    .vision .sub { margin-top: 14px; font-size: 15px; font-weight: 600; opacity: 0.92; }
+    .funnel { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+    .funnel-step {
+      padding: 16px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .funnel-step .step-no {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+    .funnel-step h3 { font-size: 16px; margin-bottom: 6px; color: var(--deep-green); }
+    .funnel-step p { font-size: 13px; color: var(--muted); margin: 0; }
+    .timeline { display: grid; gap: 12px; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 16px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .timeline-item .when { color: var(--deep-green); font-weight: 900; }
+    .timeline-item p { margin: 0; }
+    .quote {
+      margin: 0;
+      padding: 20px 24px;
+      border-left: 5px solid var(--green);
+      border-radius: 8px;
+      background: var(--green-soft);
+      font-size: 15px;
+    }
+    .quote p { margin: 0 0 10px; }
+    .quote p:last-child { margin-bottom: 0; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 800;
+      margin-right: 6px;
+    }
+    footer { padding: 26px 0 48px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; align-items: start; }
+      .cols-2, .cols-3 { grid-template-columns: 1fr; }
+      .funnel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+    }
+    @media print {
+      body { background: #fff; }
+      .panel, .funnel-step { box-shadow: none; }
+      section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <p class="eyebrow">川崎社長 共有用 ／ 2026年7月20日（3者MTG決定事項 反映版）</p>
+        <h1>講座ビジネス構想<br>全体まとめ</h1>
+        <p class="lead">これまで検討してきた講座ビジネスの全体像に、7月20日の3者MTG（初顔合わせ）で決まったコアコンセプト・役割分担・次回アクションを反映した一枚です。</p>
+      </div>
+      <div class="meta">
+        <dl>
+          <dt>コンセプト</dt><dd><strong>会社軸から自分軸へのリセット</strong>（7/20決定）</dd>
+          <dt>発起人</dt><dd>渡邉ひとし社長（事業計画士®︎・経営診断士）</dd>
+          <dt>推進</dt><dd>高橋（講座設計・AI/DX・発信設計）</dd>
+          <dt>営業・運営</dt><dd>川崎庄司社長（営業・案件開拓・コミュニティ運営）</dd>
+          <dt>目標</dt><dd>2026年12月まで準備 → 2027年1月 本格稼働</dd>
+          <dt>次回MTG</dt><dd>2026年8月3日（月）11:00〜 3者Zoom</dd>
+        </dl>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- 1. 世界観 -->
+    <section>
+      <h2>1. 世界観・北極星</h2>
+      <div class="vision">
+        <p>会社軸から自分軸への<br>「リセット」</p>
+        <p class="sub">老害ではなく、老益。年金受給者ではなく、納税する人。<br>50〜60代の経験知を、AI/DX時代の経営支援力に変える。</p>
+      </div>
+      <div class="highlight" style="margin-top: 18px;">
+        <h3>コアコンセプト誕生の経緯（7/20 3者MTG）</h3>
+        <p style="margin: 0;">議論の中で川崎社長が提案した「リセット」という言葉を、渡邉社長が「今日一番の収穫」「この講座は会社軸から自分軸にリセットする講座」として採用。会社軸ではMUSTに合う人だけが評価され、MUSTとWILLが乖離すると心が壊れる。<strong>自分軸とはMUST・WILL・CANのベクトルを自分で作ること</strong>。会社価値ではなく<strong>市場価値</strong>で自分を見つめ直す。</p>
+      </div>
+      <div class="grid cols-2" style="margin-top: 18px;">
+        <div class="flat">
+          <h3>誰の、どんな課題か</h3>
+          <p>ターゲットは<strong>50代後半〜60代前半</strong>（理想は20代から70代までいる講座）。大手企業の部長職などを経験した人が、退職した途端に経験・スキル・人脈の行き場を失う。早期退職が拡大する中、サラリーマンの選択肢が「しがみつく」か「FIRE」の二択になり、<strong>知識×経験＝知恵</strong>が社会に眠ったままになっている。根本には日本人の自己肯定感の低さがある。</p>
+        </div>
+        <div class="flat">
+          <h3>どう解決するか</h3>
+          <p>経験知の棚卸しに、<strong>AI・DX・事業計画の学び</strong>を掛け合わせ、地域の中小企業や個人事業主を「支える側」に回る。中核商品は<strong>事業計画士®︎養成講座</strong>。ただし<strong>講座はゴールではなくスタート</strong>であり、受講後のコミュニティ（全国の仲間が助け合う場）こそが核心。企業継続→税収増→地域活性化→日本再生へつなげる<strong>ジャパン・リバイバル・プロジェクト</strong>。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 経緯 -->
+    <section>
+      <h2>2. これまでの経緯</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="when">〜2026年前半</span>
+          <p>渡邉社長の電子書籍シリーズを制作（第1巻: 50代のVSOP／第2巻: 60歳からのリボーン）。並行してAI/DX eラーニング教材と事業計画士®︎講座の構想を準備。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="when">7月6日 渡邉社長MTG</span>
+          <p><strong>第3巻の制作をいったん保留し、講座ビジネスの収益化を最優先</strong>に方針転換。eラーニングは単体商品ではなく講座ビジネスを支える「武器の一つ」と位置づけ、12月末〜1月スタートから逆算して設計することで合意。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="when">7月14日 川崎社長MTG</span>
+          <p>高橋から川崎社長へ構想を共有。<strong>立ち上げ仲間としての参画に前向きな反応</strong>をいただき、3者MTGを設定。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="when">7月20日 3者MTG</span>
+          <p>渡邉社長・川崎社長が初顔合わせし、<strong>立ち上げ仲間として共同で進めることを確認</strong>。コアコンセプト「会社軸から自分軸へのリセット」が誕生し、役割分担（思想／AI・発信／営業・コミュニティ運営）で認識が一致。2027年1月の本格稼働を再確認。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="when">次回: 8月3日 3者MTG</span>
+          <p>各自が本日の内容を踏まえたアイデア・案を持ち寄って共有。第0期立ち上げの検討、川崎社長コンテンツの教材化、認知獲得施策の具体化を議論予定。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 全体導線 -->
+    <section>
+      <h2>3. 全体導線図 — 6段階の流れ</h2>
+      <p>すでにある資産（ラジオ枠・電子書籍・note・eラーニング・決済インフラ）を、一本の導線につなげます。</p>
+      <div class="funnel" style="margin-top: 16px;">
+        <div class="funnel-step">
+          <span class="step-no">1</span>
+          <h3>認知</h3>
+          <p>ラジオ（富士産経G・月2回30分）／YouTube・ポッドキャスト二次利用／既存人脈</p>
+        </div>
+        <div class="funnel-step">
+          <span class="step-no">2</span>
+          <h3>共感</h3>
+          <p>note・ブログ週2本／電子書籍の章別無料公開／北極星記事</p>
+        </div>
+        <div class="funnel-step">
+          <span class="step-no">3</span>
+          <h3>体験</h3>
+          <p>無料セミナー・説明会（月2回）／eラーニング無料体験／学習ルート診断</p>
+        </div>
+        <div class="funnel-step">
+          <span class="step-no">4</span>
+          <h3>関係</h3>
+          <p>メール・LINEステップ配信／無料個別相談</p>
+        </div>
+        <div class="funnel-step">
+          <span class="step-no">5</span>
+          <h3>参画</h3>
+          <p>第0期「立ち上げ仲間」コミュニティ（5〜10人）</p>
+        </div>
+        <div class="funnel-step">
+          <span class="step-no">6</span>
+          <h3>収益</h3>
+          <p>事業計画士®︎養成講座＋eラーニング販売（リザーブストック決済）</p>
+        </div>
+      </div>
+      <div class="note" style="margin-top: 16px;">
+        <strong>決済インフラは整備済み。</strong>リザーブストック上でStripe（コンビニ・カード・デビット・分割）とPayPalの設定が完了（7/5）。残タスクは銀行振込の追加と、無料相談・無料セミナー受付ページの整備のみ。
+      </div>
+    </section>
+
+    <!-- 4. 資産と商品 -->
+    <section>
+      <h2>4. 持っている資産と商品の位置づけ</h2>
+      <table>
+        <thead>
+          <tr><th style="width: 200px;">要素</th><th>役割</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>北極星・ミッション</strong></td><td>共感の中心。「なぜやるのか」を伝える</td></tr>
+          <tr><td><strong>電子書籍（第1巻・第2巻）</strong></td><td>信頼の土台。渡邉社長の思想と人生観を伝える。章別無料公開で入口にも活用</td></tr>
+          <tr><td><strong>note・ブログ</strong></td><td>継続接点。ノウハウと人物像を交互に蓄積（福利厚生会社からのオファー実績あり）</td></tr>
+          <tr><td><strong>ラジオ（富士産経G）</strong></td><td>権威性・認知拡大。「ウェルビーングラボ」月2回30分枠。二次利用で発信を増幅</td></tr>
+          <tr><td><strong>AI/DX eラーニング</strong></td><td>学習インフラ。単体販売せず、講座ビジネスの「武器」として組み込む</td></tr>
+          <tr><td><strong>無料セミナー・動画</strong></td><td>体験入口。AIへの不安を下げ、顔の見える関係をつくる</td></tr>
+          <tr><td><strong>コミュニティ</strong></td><td>立ち上げ仲間の場。継続率と熱量を高める</td></tr>
+          <tr><td><strong>事業計画士®︎養成講座</strong></td><td><strong>最終的な中核商品。</strong>収益化と育成の柱（商標は渡邉社長が保有）</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 5. 発信計画 -->
+    <section>
+      <h2>5. 発信計画 — 初期10本の記事</h2>
+      <div class="grid cols-2">
+        <div class="flat">
+          <h3>発信リズム</h3>
+          <ul>
+            <li><strong>火曜: ノウハウ記事</strong> — 役立つ・保存される・検索される</li>
+            <li><strong>金曜: 人物像・考え方記事</strong> — 共感される・信頼される・応援される</li>
+            <li>週2本 × 5週間 = 7月下旬〜8月末で10本公開</li>
+          </ul>
+        </div>
+        <div class="flat">
+          <h3>電子書籍との連動</h3>
+          <p>記事公開に合わせて、第1巻・第2巻から選んだ章をnoteで無料公開。「本文抜粋＋講座ビジネスへの接続コメント＋読者への問い＋無料体験案内」の型で展開します。</p>
+        </div>
+      </div>
+      <table style="margin-top: 18px;">
+        <thead>
+          <tr><th style="width: 44px;">順</th><th>タイトル案</th><th style="width: 90px;">タイプ</th><th style="width: 160px;">CTA</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>なぜ私は第3巻を止めて、講座ビジネスに舵を切ったのか</td><td>人物像</td><td>noteフォロー</td></tr>
+          <tr><td>2</td><td>AIが苦手な人ほど、最初に学ぶべきことは技術ではなく問いである</td><td>ノウハウ</td><td>無料体験案内</td></tr>
+          <tr><td>3</td><td>60歳からの経験知は、AI時代の経営支援力になる</td><td>人物像</td><td>電子書籍案内</td></tr>
+          <tr><td>4</td><td>講座が多すぎて選べない人へ。学習ルートは一緒に設計できる</td><td>ノウハウ</td><td>学習ルート診断</td></tr>
+          <tr><td>5</td><td>北極星を持つ人だけが、講座を事業に変えられる</td><td>人物像</td><td>ラジオ告知</td></tr>
+          <tr><td>6</td><td>事業計画士とは、資格ではなく人生後半の役割である</td><td>ノウハウ</td><td>無料相談</td></tr>
+          <tr><td>7</td><td>ラジオを始める理由。声で届けたい人生後半の働き方</td><td>人物像</td><td>ラジオ・二次利用</td></tr>
+          <tr><td>8</td><td>eラーニングは売る商品ではなく、仲間を育てる武器である</td><td>ノウハウ</td><td>無料体験案内</td></tr>
+          <tr><td>9</td><td>50代後半からの不安を、次の役割に変える方法</td><td>ノウハウ</td><td>LINE・メール登録</td></tr>
+          <tr><td>10</td><td>第0期生ではなく、立ち上げ仲間を探しています</td><td>導線</td><td>説明会申込</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 6. 第0期募集 -->
+    <section>
+      <h2>6. 第0期募集コンセプト — 「立ち上げ仲間募集」</h2>
+      <p>「受講生募集」ではなく<strong>「立ち上げ仲間募集」</strong>。教える側と教わる側ではなく、得意技を持ち寄るフラットなコミュニティとして発足します。</p>
+      <blockquote class="quote">
+        <p><strong>立ち上げ仲間を探しています。</strong></p>
+        <p>私は、「老害ではなく、老益」「年金受給者ではなく、納税する人」という言葉を掲げて、人生後半の新しい働き方をつくる講座ビジネスを立ち上げようとしています。</p>
+        <p>ただ、私は「先生と生徒」の関係で始めたいのではありません。探しているのは、第0期の受講生ではなく、一緒にこの仕組みを立ち上げる仲間です。</p>
+        <p>AIが得意な人。営業が得意な人。経理が得意な人。補助金に詳しい人。何かひとつ、得意技を持ち寄ってください。足りないところは、互いに補い合えばいい。</p>
+        <p>2027年1月、5〜10人で小さく始めます。「コミュニティに入ったことで、自分の次の役割が見つかった」——そう言える場所を、一緒につくりませんか。</p>
+      </blockquote>
+      <div class="grid cols-2" style="margin-top: 18px;">
+        <div class="flat">
+          <h3>募集の運用方針</h3>
+          <ul>
+            <li>公募より先に、<strong>3人の人脈からの個別声かけを優先</strong>（ベクトルの一致を重視）</li>
+            <li>声かけ → 資料送付 → 説明会 or 個別面談 → 参画確定 の4ステップ</li>
+            <li>場はLINEオープンチャット／Facebookグループ／Slackから選定</li>
+          </ul>
+        </div>
+        <div class="flat">
+          <h3>成功指標のひとつ（川崎社長の視点）</h3>
+          <p>「コミュニティに入ったことで独立できた」という実績が出れば非常に価値が高い。第0期の成功指標のひとつに置く。</p>
+        </div>
+      </div>
+      <div class="grid cols-2" style="margin-top: 18px;">
+        <div class="flat">
+          <h3>コミュニティ設計の論点（7/20 3者MTGより）</h3>
+          <ul>
+            <li><strong>参加基準</strong>: 志を一つにできる人を集める。「来てほしくない人」（金儲け第一義など）を3人で言語化し、少人数で固めてから少しずつ増やす</li>
+            <li><strong>運営ルール</strong>: 評論家的な否定はしない。<strong>「相手の意見を認めた上で自分の意見を言う」「相手をリスペクトする」</strong>を基本に</li>
+            <li><strong>キーワード</strong>: AI時代に重要なのは「コミュニティ・ファシリテーション」。コミュニティの中でファシリテーションできる人を育てる</li>
+          </ul>
+        </div>
+        <div class="flat">
+          <h3>運営アイデア（7/20 3者MTGより）</h3>
+          <ul>
+            <li><strong>強み書き出しワークショップ</strong>（川崎社長案）: 全員の背中にA3の紙を貼り、周りがその人の強み・良いところを書く。自己肯定感を高める手法として採用の方向</li>
+            <li><strong>コミュニケーション教育</strong>: 渡邉社長のコミュニケーション学の学びを講座内容に活かす</li>
+            <li><strong>前向きな合言葉</strong>（川崎社長案）: 「僕たちは120ができる」など、人間は125歳まで生きられるという前提の合言葉づくり</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. ラジオ -->
+    <section>
+      <h2>7. ラジオ番組 — 認知の起点</h2>
+      <div class="grid cols-2">
+        <div class="flat">
+          <h3>番組概要</h3>
+          <ul>
+            <li>枠: 富士産経グループ総合研究所「ウェルビーングラボ」<strong>月2回・30分</strong></li>
+            <li>テーマ: 60歳以降の活躍（老害ではなく老益）</li>
+            <li>パーソナリティ: 渡邉社長</li>
+            <li>富士産経グループのネームバリューによるブランディング効果</li>
+            <li>コミュニティメンバーのゲスト出演も構想（<strong>川崎社長のゲスト回も候補</strong>）</li>
+          </ul>
+        </div>
+        <div class="flat">
+          <h3>二次利用の流れ</h3>
+          <ol>
+            <li>放送音源をポッドキャスト（Spotify等）へ転載</li>
+            <li>収録映像または静止画＋音声でYouTube公開</li>
+            <li>書き起こしてnote記事化（関連記事と相互リンク）</li>
+            <li>切り抜き1〜3分をSNS（TikTok・Facebook・X）へ展開</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. 無料コンテンツ -->
+    <section>
+      <h2>8. 無料コンテンツの3層構造</h2>
+      <table>
+        <thead>
+          <tr><th style="width: 70px;">層</th><th style="width: 280px;">コンテンツ</th><th>目的</th></tr>
+        </thead>
+        <tbody>
+          <tr><td rowspan="2"><strong>入口</strong></td><td>AIが怖くなくなる最初の話（動画10〜15分）</td><td>AI不信・苦手意識を下げる</td></tr>
+          <tr><td>電子書籍の章別無料公開（note）</td><td>思想・人物像で信頼をつくる</td></tr>
+          <tr><td rowspan="3"><strong>体験</strong></td><td>AI/DX eラーニング無料体験</td><td>教材の質を体感してもらう</td></tr>
+          <tr><td>講座サイトの歩き方（動画5〜10分）</td><td>初回ログイン後の迷いをなくす</td></tr>
+          <tr><td>学習ルート診断</td><td>「何から学べばよいか」を解消する入口</td></tr>
+          <tr><td rowspan="2"><strong>関係</strong></td><td>無料セミナー・説明会（月2回・Zoom）</td><td>顔の見える関係づくり・第0期への接点</td></tr>
+          <tr><td>無料個別相談（リザーブストック予約）</td><td>課題ヒアリング・講座内容への反映</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 9. ロードマップ -->
+    <section>
+      <h2>9. ロードマップ — 2027年1月スタートからの逆算</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="when">Phase 0<br>〜7月20日</span>
+          <p><strong>設計を固める。</strong>北極星の言語化、導線図、記事10本の構成、募集コンセプト、ラジオテンプレートを準備（完了）。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="when">Phase 1<br>7月下旬〜8月</span>
+          <p><strong>発信開始。</strong>note週2本の投稿開始、電子書籍の一部無料公開、eラーニング無料体験導線・無料相談受付の整備。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="when">Phase 2<br>9月</span>
+          <p><strong>接点を深める。</strong>無料セミナー月2回、第0期候補者への個別声かけ開始、ラジオの二次利用、ステップ配信開始。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="when">Phase 3<br>10月</span>
+          <p><strong>第0期の輪郭を見せる。</strong>募集予告ページ、立ち上げ仲間向け説明会、候補者の課題ヒアリングと講座への反映。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="when">Phase 4<br>11月</span>
+          <p><strong>募集導線を完成。</strong>募集ページ公開、説明会→個別相談→申込→決済の流れを確認、候補者5〜10人を個別フォロー。</p>
+        </div>
+        <div class="timeline-item">
+          <span class="when">Phase 5<br>12月〜2027年1月</span>
+          <p><strong>第0期スタート。</strong>5〜10人で開始、初回オリエンテーション、受講者の声を収集し第1期へ展開。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. 役割分担 -->
+    <section>
+      <h2>10. 役割分担（7/20 3者MTGで認識一致）</h2>
+      <div class="grid cols-3">
+        <div class="panel">
+          <span class="tag">思想・講座設計</span>
+          <h3 style="margin-top: 10px;">渡邉社長</h3>
+          <p style="font-size: 14px;">経営・事業計画・人生後半の考え方・講座全体の思想と設計。事業計画士®︎・経営診断士の商標保有。大学講師。ラジオパーソナリティ。</p>
+        </div>
+        <div class="panel">
+          <span class="tag">AI/DX・発信</span>
+          <h3 style="margin-top: 10px;">高橋</h3>
+          <p style="font-size: 14px;">AI/DX活用・コンテンツ化・発信設計。電子書籍制作、eラーニング教材、導線・演出設計を担当。</p>
+        </div>
+        <div class="panel">
+          <span class="tag">営業・コミュニティ運営</span>
+          <h3 style="margin-top: 10px;">川崎社長</h3>
+          <p style="font-size: 14px;">営業・案件開拓・コミュニティ運営。資産形成・不動産・補助金/助成金の知見と、川崎商事の5本柱・人脈ネットワーク。</p>
+        </div>
+      </div>
+      <div class="highlight" style="margin-top: 18px;">
+        <h3>川崎社長の経験・コンテンツは、講座の大きな資産になる</h3>
+        <ul>
+          <li><strong>58歳でゼロから再スタートした独立体験そのもの</strong>が、受講生への最高のロールモデル。節税・営業手法・「サラリーマンから独立への考え方」の教材化を検討（7/20高橋提案）</li>
+          <li><strong>川崎商事の5本柱</strong>（AIシステム／光熱費削減／補助金・助成金／電子書籍ブランディング／不動産節税）は、受講生が経営支援力を実案件で試せる「実践フィールド」に</li>
+          <li>補助金・助成金の専門家チーム、医師ネットワークなどの人脈は、第0期メンバー候補・ラジオゲスト候補の母集団に</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 11. 直近アクション -->
+    <section>
+      <h2>11. 直近のアクション（7/20 3者MTGで合意）</h2>
+      <table>
+        <thead>
+          <tr><th style="width: 120px;">担当</th><th>内容</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>全員</td><td>本日の内容を踏まえた「こういうことをやっていきたい」というアイデア・案を持ち帰り、次回8/3のMTGで共有する</td></tr>
+          <tr><td>高橋</td><td>これまでの検討資料（実行プラン・設計計画）を川崎社長へ共有（本資料）／8月3日（月）11:00の3者MTG招待を送付／3人のLINEグループを作成／初期記事の公開準備</td></tr>
+          <tr><td>川崎社長</td><td>自身のコンテンツ（節税・営業手法・サラリーマンから独立への考え方）の教材化を検討</td></tr>
+          <tr><td>渡邉社長</td><td>北極星記事の執筆／ラジオ契約・開始日の確定／電子書籍の無料公開章の選定／立ち上げ仲間候補の書き出し／リザーブストック販売導線の確認（7/6MTGからの継続）</td></tr>
+        </tbody>
+      </table>
+      <div class="note" style="margin-top: 16px;">
+        <strong>次回MTG: 2026年8月3日（月）11:00〜（Zoom・3者）</strong> — 各自持ち寄りアイデアの共有、第0期立ち上げの検討、川崎社長コンテンツの教材化、認知獲得施策（note・無料コンテンツ・説明会）の具体化。
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>作成: 高橋 ／ 2026年7月20日（3者MTG後 更新）／ 出典: 7/6 渡邉社長MTG議事メモ・7/14 川崎社長MTG議事メモ・7/20 講座ビジネス立ち上げ実行プラン・7/20 3者MTG議事メモ</p>
+    </div>
+  </footer>
+</body>
+</html>
