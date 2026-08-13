@@ -1,0 +1,445 @@
+<title>ペーパートレードBot デモ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --ground:#eef1f6;
+    --surface:#ffffff;
+    --surface-2:#f5f7fb;
+    --ink:#141b2b;
+    --ink-soft:#3a4457;
+    --muted:#6b7688;
+    --line:#dde3ec;
+    --accent:#2f6bff;
+    --accent-tint:#e6eeff;
+    --buy:#12a150;
+    --buy-tint:#e3f6ec;
+    --sell:#e0403f;
+    --sell-tint:#fbe7e7;
+    --warn:#c98a10;
+    --shadow:0 8px 30px rgba(20,30,50,.08);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0c111b;
+      --surface:#141b28;
+      --surface-2:#1b2333;
+      --ink:#e8edf6;
+      --ink-soft:#c0cad9;
+      --muted:#8592a6;
+      --line:#26304180;
+      --accent:#5b8cff;
+      --accent-tint:#1a2640;
+      --buy:#2fd07e;
+      --buy-tint:#12331f;
+      --sell:#ff6b6a;
+      --sell-tint:#3a1c1c;
+      --warn:#e8b23e;
+      --shadow:0 8px 30px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0c111b;--surface:#141b28;--surface-2:#1b2333;--ink:#e8edf6;--ink-soft:#c0cad9;
+    --muted:#8592a6;--line:#26304180;--accent:#5b8cff;--accent-tint:#1a2640;--buy:#2fd07e;
+    --buy-tint:#12331f;--sell:#ff6b6a;--sell-tint:#3a1c1c;--warn:#e8b23e;--shadow:0 8px 30px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:var(--ground);color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .app{display:grid;grid-template-columns:230px 1fr;grid-template-rows:auto 1fr;height:100vh;grid-template-areas:"side head" "side main"}
+  @media(max-width:800px){.app{grid-template-columns:1fr;grid-template-areas:"head" "main" "side"}}
+  header{grid-area:head;display:flex;align-items:center;gap:16px;padding:12px 22px;background:var(--surface);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  header .brand{font-weight:800;font-size:1.05rem;letter-spacing:.01em}
+  header .brand small{display:block;font-weight:600;color:var(--muted);font-size:.72rem}
+  .price-pill{display:flex;align-items:baseline;gap:8px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:6px 14px;font-variant-numeric:tabular-nums}
+  .price-pill .sym{font-size:.78rem;color:var(--muted);font-weight:700}
+  .price-pill .val{font-size:1.35rem;font-weight:800}
+  .price-pill .chg{font-size:.85rem;font-weight:700}
+  .up{color:var(--buy)} .down{color:var(--sell)}
+  .spacer{flex:1}
+  .toggle{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:700;color:var(--ink-soft)}
+  .switch{position:relative;width:46px;height:26px;background:var(--line);border-radius:99px;cursor:pointer;transition:.2s;border:none}
+  .switch.on{background:var(--buy)}
+  .switch::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+  .switch.on::after{left:23px}
+  .btn{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:.55em 1em;font-weight:700;cursor:pointer;font-family:inherit;font-size:.9rem}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--line)}
+  .btn.buy{background:var(--buy)} .btn.sell{background:var(--sell)}
+  .btn.sm{padding:.4em .7em;font-size:.82rem}
+
+  nav{grid-area:side;background:var(--surface);border-right:1px solid var(--line);padding:16px 12px;display:flex;flex-direction:column;gap:4px}
+  @media(max-width:800px){nav{flex-direction:row;overflow-x:auto;border-right:none;border-top:1px solid var(--line)}}
+  nav button{display:flex;align-items:center;gap:10px;background:none;border:none;color:var(--ink-soft);font-family:inherit;font-weight:700;font-size:.95rem;padding:.7em .8em;border-radius:10px;cursor:pointer;text-align:left;white-space:nowrap}
+  nav button .ic{width:1.3em;text-align:center}
+  nav button:hover{background:var(--surface-2)}
+  nav button.on{background:var(--accent-tint);color:var(--accent)}
+  nav .navlabel{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;padding:.6em .8em .2em;font-weight:800}
+
+  main{grid-area:main;overflow-y:auto;padding:22px}
+  .view{display:none;max-width:1000px;margin:0 auto;animation:fade .25s ease}
+  .view.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  h2.title{margin:.1em 0 .1em;font-size:1.5rem}
+  .desc{color:var(--muted);margin:0 0 18px;font-size:.92rem}
+  .demo-banner{background:var(--warn);color:#231800;font-weight:700;font-size:.82rem;border-radius:10px;padding:.5em .9em;margin-bottom:16px}
+  @media(prefers-color-scheme:dark){:root:not([data-theme=light]) .demo-banner{color:#1a1200}}
+
+  .grid{display:grid;gap:14px}
+  .cols-4{grid-template-columns:repeat(4,1fr)} .cols-3{grid-template-columns:repeat(3,1fr)} .cols-2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:760px){.cols-4,.cols-3,.cols-2{grid-template-columns:1fr 1fr}}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+  .stat .k{font-size:.78rem;color:var(--muted);font-weight:700}
+  .stat .v{font-size:1.6rem;font-weight:800;font-variant-numeric:tabular-nums;margin-top:.15em}
+  .stat .s{font-size:.8rem;color:var(--muted);margin-top:.1em}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow);margin-top:16px}
+  .panel h3{margin:0 0 12px;font-size:1.05rem}
+  canvas{width:100%;display:block}
+  table{width:100%;border-collapse:collapse;font-size:.88rem}
+  th,td{text-align:right;padding:.55em .6em;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;white-space:nowrap}
+  th:first-child,td:first-child{text-align:left}
+  th{color:var(--muted);font-size:.76rem;text-transform:uppercase;letter-spacing:.05em}
+  .badge{display:inline-block;padding:.15em .6em;border-radius:6px;font-size:.78rem;font-weight:800}
+  .badge.buy{background:var(--buy-tint);color:var(--buy)} .badge.sell{background:var(--sell-tint);color:var(--sell)}
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+  .field label{font-weight:700;font-size:.9rem}
+  .field .hint{font-size:.78rem;color:var(--muted)}
+  input[type=number]{font-family:inherit;font-size:1rem;padding:.55em .7em;border:1px solid var(--line);border-radius:9px;background:var(--surface-2);color:var(--ink);width:100%;font-variant-numeric:tabular-nums}
+  .rulebox{display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.9rem;margin-bottom:14px}
+  .rulebox b{font-variant-numeric:tabular-nums}
+  .bigprice{font-size:3rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
+  .log{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;max-height:170px;overflow:auto;font-size:.82rem;font-variant-numeric:tabular-nums}
+  .log div{padding:.15em 0;border-bottom:1px dashed var(--line);color:var(--ink-soft)}
+  .empty{color:var(--muted);text-align:center;padding:22px;font-size:.9rem}
+  .themebtn{background:var(--surface-2);border:1px solid var(--line);border-radius:9px;padding:.45em .6em;cursor:pointer;font-size:1rem}
+  .row-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+</style>
+
+<div class="app">
+  <header>
+    <div class="brand">AI自動トレードBot <small>ペーパートレード・デモ / USD/JPY</small></div>
+    <div class="price-pill">
+      <span class="sym">USD/JPY</span>
+      <span class="val" id="hPrice">—</span>
+      <span class="chg" id="hChg">—</span>
+    </div>
+    <div class="spacer"></div>
+    <div class="toggle">自動売買
+      <button class="switch" id="autoSwitch" aria-label="自動売買切替"></button>
+    </div>
+    <button class="themebtn" id="themeBtn" title="表示切替">🌗</button>
+    <button class="btn ghost sm" id="resetBtn">リセット</button>
+  </header>
+
+  <nav>
+    <span class="navlabel">メニュー</span>
+    <button data-view="dash" class="on"><span class="ic">📊</span>ダッシュボード</button>
+    <button data-view="settings"><span class="ic">⚙️</span>設定</button>
+    <button data-view="paper"><span class="ic">▶️</span>ペーパー実行</button>
+    <button data-view="history"><span class="ic">📖</span>取引履歴</button>
+    <button data-view="backtest"><span class="ic">🧪</span>バックテスト</button>
+  </nav>
+
+  <main>
+    <!-- Dashboard -->
+    <section class="view on" id="view-dash">
+      <h2 class="title">ダッシュボード</h2>
+      <p class="desc">現在の状況をまとめて確認します。価格は擬似データが1秒ごとに更新されます。</p>
+      <div class="demo-banner">⚠️ これはデモです。価格は擬似フィード（実物ではGMOコインFXの公開APIに差し替え）。実資金は一切動きません。</div>
+      <div class="grid cols-4">
+        <div class="card stat"><div class="k">現在価格</div><div class="v" id="dPrice">—</div><div class="s" id="dChg">前回比 —</div></div>
+        <div class="card stat"><div class="k">保有ポジション</div><div class="v" id="dPos">0</div><div class="s">買いポジション数</div></div>
+        <div class="card stat"><div class="k">含み損益</div><div class="v" id="dUnreal">¥0</div><div class="s">未決済分の評価</div></div>
+        <div class="card stat"><div class="k">実現損益</div><div class="v" id="dReal">¥0</div><div class="s">決済済みの合計</div></div>
+      </div>
+      <div class="panel">
+        <h3>資産推移（実現＋含み損益）</h3>
+        <canvas id="equityChart" height="220"></canvas>
+      </div>
+      <div class="panel">
+        <h3>最近の取引</h3>
+        <div id="dRecent"></div>
+      </div>
+    </section>
+
+    <!-- Settings -->
+    <section class="view" id="view-settings">
+      <h2 class="title">設定</h2>
+      <p class="desc">自動売買のルールを決めます。ルールは「価格しきい値」方式。今は<b>買いポジションのみ</b>を自動で扱います（将来、売りも追加できる設計）。</p>
+      <div class="grid cols-2">
+        <div class="card">
+          <div class="field">
+            <label>買いしきい値（この価格<b>以下</b>で自動買い）</label>
+            <input type="number" id="sBuy" step="0.01">
+            <span class="hint">価格が上から下へこの値を割り込んだ瞬間に、1つ買います。</span>
+          </div>
+          <div class="field">
+            <label>売りしきい値（この価格<b>以上</b>で自動決済）</label>
+            <input type="number" id="sSell" step="0.01">
+            <span class="hint">価格が下から上へこの値を超えた瞬間に、保有中の買いをすべて決済します。</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="field">
+            <label>1回の取引数量</label>
+            <input type="number" id="sLot" step="1000">
+            <span class="hint">通貨単位。例：10,000 = 1万通貨。損益はこの数量で計算します。</span>
+          </div>
+          <div class="field">
+            <label>最大同時保有ポジション数</label>
+            <input type="number" id="sMax" step="1">
+            <span class="hint">「複数ポジション」を保持できます。上限を決めておきます。</span>
+          </div>
+          <div class="row-actions">
+            <button class="btn" id="saveSettings">設定を保存</button>
+            <span id="savedMsg" style="color:var(--buy);font-weight:700;font-size:.85rem;align-self:center"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Paper execution -->
+    <section class="view" id="view-paper">
+      <h2 class="title">ペーパー実行</h2>
+      <p class="desc">ブラウザを開いている間、ルールに従って自動で売買します。手動での売買もできます。</p>
+      <div class="grid cols-2">
+        <div class="card" style="text-align:center">
+          <div class="k" style="color:var(--muted);font-weight:700;font-size:.8rem">現在価格 USD/JPY</div>
+          <div class="bigprice" id="pPrice">—</div>
+          <div id="pChg" style="font-weight:700;margin-top:6px">—</div>
+          <div class="row-actions" style="justify-content:center;margin-top:14px">
+            <button class="btn buy" id="manBuy">手動で買う</button>
+            <button class="btn sell" id="manClose">すべて決済</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="rulebox" id="ruleStatus"></div>
+          <h3 style="margin:.2em 0 .5em;font-size:1rem">実行ログ</h3>
+          <div class="log" id="pLog"></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>保有中のポジション</h3>
+        <div id="pPositions"></div>
+      </div>
+    </section>
+
+    <!-- History -->
+    <section class="view" id="view-history">
+      <h2 class="title">取引履歴</h2>
+      <p class="desc">決済済みの取引の一覧です。</p>
+      <div class="grid cols-3">
+        <div class="card stat"><div class="k">取引回数</div><div class="v" id="hCount">0</div></div>
+        <div class="card stat"><div class="k">勝率</div><div class="v" id="hWin">—</div></div>
+        <div class="card stat"><div class="k">合計損益</div><div class="v" id="hPL">¥0</div></div>
+      </div>
+      <div class="panel"><div id="histTable"></div></div>
+    </section>
+
+    <!-- Backtest -->
+    <section class="view" id="view-backtest">
+      <h2 class="title">バックテスト</h2>
+      <p class="desc">過去の値動き（擬似生成）に対して、今のルールを当てはめたら成績はどうだったかを検証します。</p>
+      <div class="card">
+        <div class="grid cols-4">
+          <div class="field"><label>期間（日）</label><input type="number" id="btDays" value="30" step="1"></div>
+          <div class="field"><label>買いしきい値</label><input type="number" id="btBuy" step="0.01"></div>
+          <div class="field"><label>売りしきい値</label><input type="number" id="btSell" step="0.01"></div>
+          <div class="field"><label>数量</label><input type="number" id="btLot" step="1000"></div>
+        </div>
+        <div class="row-actions"><button class="btn" id="runBt">バックテスト実行</button></div>
+      </div>
+      <div id="btResult"></div>
+    </section>
+  </main>
+</div>
+
+<script>
+"use strict";
+const $=s=>document.querySelector(s), fmtY=n=>(n<0?"-¥":"¥")+Math.abs(Math.round(n)).toLocaleString("ja-JP");
+const KEY="tradebot_demo_v1";
+const DEF={settings:{buy:156.80,sell:157.20,lot:10000,max:5,auto:false},positions:[],history:[],realized:0,equity:[]};
+let S=load();
+let price=157.00, prevPrice=157.00, tick=0;
+
+function load(){try{const v=JSON.parse(localStorage.getItem(KEY));if(v&&v.settings)return v;}catch(e){}return structuredClone(DEF);}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){/* サンドボックス等で保存不可でも動作継続 */}}
+function reset(){if(confirm("取引データと設定をすべて初期化します。よろしいですか？")){S=structuredClone(DEF);save();price=prevPrice=157.00;render();}}
+
+/* ---- price engine (pseudo feed; real app fetches GMO public API) ---- */
+function stepPrice(){
+  prevPrice=price;
+  const meanRev=(157.00-price)*0.02;
+  price=+(price+meanRev+(Math.random()-0.5)*0.09).toFixed(3);
+}
+function log(msg){
+  const d=new Date().toLocaleTimeString("ja-JP");
+  S._log=S._log||[]; S._log.unshift(`${d}　${msg}`); S._log=S._log.slice(0,50);
+}
+
+/* ---- auto / manual trading ---- */
+function openBuy(manual){
+  if(S.positions.length>=S.settings.max){ if(manual) log("上限に達しているため買えません"); return; }
+  const p={id:Date.now()+Math.random(),side:"BUY",entry:price,lot:S.settings.lot,t:Date.now()};
+  S.positions.push(p);
+  log(`${manual?"手動":"自動"}買い　${price.toFixed(3)}　${(S.settings.lot).toLocaleString()}通貨`);
+}
+function closeAll(manual){
+  if(!S.positions.length){ if(manual) log("決済するポジションがありません"); return; }
+  let sum=0;
+  S.positions.forEach(p=>{
+    const pl=(price-p.entry)*p.lot;
+    sum+=pl;
+    S.history.unshift({side:"BUY",entry:p.entry,exit:price,lot:p.lot,pl,openT:p.t,closeT:Date.now()});
+  });
+  S.realized+=sum;
+  log(`${manual?"手動":"自動"}決済　${S.positions.length}件　損益 ${fmtY(sum)}`);
+  S.positions=[];
+}
+function autoLogic(){
+  if(!S.settings.auto) return;
+  if(prevPrice>S.settings.buy && price<=S.settings.buy) openBuy(false);
+  if(prevPrice<S.settings.sell && price>=S.settings.sell && S.positions.length) closeAll(false);
+}
+function unreal(){return S.positions.reduce((a,p)=>a+(price-p.entry)*p.lot,0);}
+
+/* ---- main loop ---- */
+function loop(){
+  stepPrice(); tick++;
+  autoLogic();
+  if(tick%3===0){ S.equity.push(+(S.realized+unreal()).toFixed(0)); S.equity=S.equity.slice(-120); }
+  save(); render();
+}
+
+/* ---- rendering ---- */
+function priceHtml(el,cls){const up=price>=prevPrice;el.textContent=price.toFixed(3);el.className=cls+" "+(up?"up":"down");}
+function chgHtml(el){const d=price-prevPrice;el.textContent=(d>=0?"▲ +":"▼ ")+d.toFixed(3);el.className=(d>=0?"up":"down")+(el.classList.contains("chg")?" chg":"");}
+
+function render(){
+  // header
+  $("#hPrice").textContent=price.toFixed(3);
+  $("#hPrice").className="val "+(price>=prevPrice?"up":"down");
+  const d=price-prevPrice; const c=$("#hChg"); c.textContent=(d>=0?"+":"")+d.toFixed(3); c.className="chg "+(d>=0?"up":"down");
+  $("#autoSwitch").classList.toggle("on",S.settings.auto);
+  // dashboard
+  $("#dPrice").textContent=price.toFixed(3); $("#dPrice").className="v "+(price>=prevPrice?"up":"down");
+  $("#dChg").textContent="前回比 "+(d>=0?"+":"")+d.toFixed(3);
+  $("#dPos").textContent=S.positions.length;
+  const u=unreal(); $("#dUnreal").textContent=fmtY(u); $("#dUnreal").className="v "+(u>=0?"up":"down");
+  $("#dReal").textContent=fmtY(S.realized); $("#dReal").className="v "+(S.realized>=0?"up":"down");
+  drawEquity($("#equityChart"),S.equity);
+  $("#dRecent").innerHTML=histTableHtml(S.history.slice(0,5));
+  // paper
+  $("#pPrice").textContent=price.toFixed(3); $("#pPrice").className="bigprice "+(price>=prevPrice?"up":"down");
+  $("#pChg").textContent=(d>=0?"▲ +":"▼ ")+d.toFixed(3); $("#pChg").className=(d>=0?"up":"down");
+  $("#ruleStatus").innerHTML=`自動売買：<b style="color:var(--${S.settings.auto?'buy':'muted'})">${S.settings.auto?"ON":"OFF"}</b>　｜　買い ≤ <b>${S.settings.buy.toFixed(2)}</b>　｜　決済 ≥ <b>${S.settings.sell.toFixed(2)}</b>　｜　数量 <b>${S.settings.lot.toLocaleString()}</b>`;
+  $("#pLog").innerHTML=(S._log||[]).map(l=>`<div>${l}</div>`).join("")||`<div class="empty" style="padding:8px">まだログはありません</div>`;
+  $("#pPositions").innerHTML=posTableHtml();
+  // history
+  const closed=S.history; $("#hCount").textContent=closed.length;
+  const wins=closed.filter(t=>t.pl>0).length;
+  $("#hWin").textContent=closed.length?Math.round(wins/closed.length*100)+"%":"—";
+  const tot=closed.reduce((a,t)=>a+t.pl,0);
+  $("#hPL").textContent=fmtY(tot); $("#hPL").className="v "+(tot>=0?"up":"down");
+  $("#histTable").innerHTML=histTableHtml(closed);
+}
+function posTableHtml(){
+  if(!S.positions.length) return `<div class="empty">保有中のポジションはありません</div>`;
+  let rows=S.positions.map(p=>{const pl=(price-p.entry)*p.lot;return `<tr><td><span class="badge buy">買い</span></td><td>${p.entry.toFixed(3)}</td><td>${price.toFixed(3)}</td><td>${p.lot.toLocaleString()}</td><td class="${pl>=0?'up':'down'}">${fmtY(pl)}</td><td>${new Date(p.t).toLocaleTimeString("ja-JP")}</td></tr>`;}).join("");
+  return `<table><thead><tr><th>種別</th><th>建値</th><th>現在値</th><th>数量</th><th>含み損益</th><th>建玉時刻</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+function histTableHtml(list){
+  if(!list||!list.length) return `<div class="empty">取引履歴はまだありません</div>`;
+  let rows=list.map(t=>`<tr><td><span class="badge buy">買い</span></td><td>${t.entry.toFixed(3)}</td><td>${t.exit.toFixed(3)}</td><td>${t.lot.toLocaleString()}</td><td class="${t.pl>=0?'up':'down'}">${fmtY(t.pl)}</td><td>${new Date(t.closeT).toLocaleTimeString("ja-JP")}</td></tr>`).join("");
+  return `<table><thead><tr><th>種別</th><th>建値</th><th>決済値</th><th>数量</th><th>損益</th><th>決済時刻</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+/* ---- charts ---- */
+function drawEquity(cv,data){
+  const dpr=devicePixelRatio||1, w=cv.clientWidth, h=220;
+  cv.width=w*dpr; cv.height=h*dpr; const x=cv.getContext("2d"); x.scale(dpr,dpr);
+  x.clearRect(0,0,w,h);
+  const css=getComputedStyle(document.documentElement);
+  const line=css.getPropertyValue("--accent").trim(), grid=css.getPropertyValue("--line").trim();
+  const buy=css.getPropertyValue("--buy").trim(), sell=css.getPropertyValue("--sell").trim();
+  if(!data||data.length<2){x.fillStyle=css.getPropertyValue("--muted");x.font="13px sans-serif";x.textAlign="center";x.fillText("データを蓄積中…（自動売買ONで動き出します）",w/2,h/2);return;}
+  const min=Math.min(...data,0),max=Math.max(...data,0),pad=24,rng=(max-min)||1;
+  const X=i=>pad+i/(data.length-1)*(w-pad*2), Y=v=>h-pad-(v-min)/rng*(h-pad*2);
+  // zero line
+  x.strokeStyle=grid;x.lineWidth=1;x.beginPath();x.moveTo(pad,Y(0));x.lineTo(w-pad,Y(0));x.stroke();
+  // area+line
+  const last=data[data.length-1];
+  x.beginPath();data.forEach((v,i)=>i?x.lineTo(X(i),Y(v)):x.moveTo(X(i),Y(v)));
+  x.strokeStyle=last>=0?buy:sell;x.lineWidth=2;x.stroke();
+  x.lineTo(X(data.length-1),Y(min));x.lineTo(X(0),Y(min));x.closePath();
+  x.fillStyle=(last>=0?buy:sell)+"22";x.fill();
+  x.fillStyle=css.getPropertyValue("--ink");x.font="bold 13px sans-serif";x.textAlign="right";
+  x.fillText(fmtY(last),w-pad,Y(last)-6);
+}
+
+/* ---- backtest ---- */
+function runBacktest(){
+  const days=Math.max(1,+$("#btDays").value||30), buy=+$("#btBuy").value, sell=+$("#btSell").value, lot=+$("#btLot").value;
+  const n=days*24; let p=157.00; const series=[];
+  for(let i=0;i<n;i++){p=+(p+(157-p)*0.02+(Math.random()-0.5)*0.14).toFixed(3);series.push(p);}
+  let pos=[], hist=[], realized=0, prev=series[0]; const eq=[]; const marks=[];
+  series.forEach((pr,i)=>{
+    if(prev>buy&&pr<=buy&&pos.length<5){pos.push({entry:pr});marks.push({i,type:"buy",pr});}
+    if(prev<sell&&pr>=sell&&pos.length){pos.forEach(o=>{const pl=(pr-o.entry)*lot;realized+=pl;hist.push({pl});});marks.push({i,type:"sell",pr});pos=[];}
+    const un=pos.reduce((a,o)=>a+(pr-o.entry)*lot,0); eq.push(realized+un); prev=pr;
+  });
+  const wins=hist.filter(t=>t.pl>0).length;
+  let peak=-1e9,dd=0; eq.forEach(v=>{peak=Math.max(peak,v);dd=Math.min(dd,v-peak);});
+  $("#btResult").innerHTML=`
+    <div class="grid cols-4" style="margin-top:16px">
+      <div class="card stat"><div class="k">取引回数</div><div class="v">${hist.length}</div></div>
+      <div class="card stat"><div class="k">勝率</div><div class="v">${hist.length?Math.round(wins/hist.length*100)+"%":"—"}</div></div>
+      <div class="card stat"><div class="k">合計損益</div><div class="v ${realized>=0?'up':'down'}">${fmtY(realized)}</div></div>
+      <div class="card stat"><div class="k">最大ドローダウン</div><div class="v down">${fmtY(dd)}</div></div>
+    </div>
+    <div class="panel"><h3>価格と売買サイン</h3><canvas id="btPrice" height="220"></canvas></div>
+    <div class="panel"><h3>資産推移</h3><canvas id="btEquity" height="200"></canvas></div>`;
+  drawSeries($("#btPrice"),series,marks);
+  drawEquity($("#btEquity"),eq);
+}
+function drawSeries(cv,series,marks){
+  const dpr=devicePixelRatio||1,w=cv.clientWidth,h=220;cv.width=w*dpr;cv.height=h*dpr;
+  const x=cv.getContext("2d");x.scale(dpr,dpr);x.clearRect(0,0,w,h);
+  const css=getComputedStyle(document.documentElement);
+  const min=Math.min(...series),max=Math.max(...series),pad=26,rng=(max-min)||1;
+  const X=i=>pad+i/(series.length-1)*(w-pad*2),Y=v=>h-pad-(v-min)/rng*(h-pad*2);
+  x.strokeStyle=css.getPropertyValue("--muted");x.globalAlpha=.9;x.lineWidth=1.4;x.beginPath();
+  series.forEach((v,i)=>i?x.lineTo(X(i),Y(v)):x.moveTo(X(i),Y(v)));x.stroke();x.globalAlpha=1;
+  marks.forEach(m=>{x.fillStyle=m.type==="buy"?css.getPropertyValue("--buy"):css.getPropertyValue("--sell");
+    x.beginPath();x.arc(X(m.i),Y(m.pr),3.4,0,7);x.fill();});
+}
+
+/* ---- nav & events ---- */
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("nav button").forEach(x=>x.classList.remove("on"));
+  document.querySelectorAll(".view").forEach(v=>v.classList.remove("on"));
+  b.classList.add("on"); $("#view-"+b.dataset.view).classList.add("on");
+  if(b.dataset.view==="dash") drawEquity($("#equityChart"),S.equity);
+});
+$("#autoSwitch").onclick=()=>{S.settings.auto=!S.settings.auto;log(`自動売買を${S.settings.auto?"ON":"OFF"}にしました`);save();render();};
+$("#resetBtn").onclick=reset;
+$("#manBuy").onclick=()=>{openBuy(true);save();render();};
+$("#manClose").onclick=()=>{closeAll(true);save();render();};
+$("#saveSettings").onclick=()=>{
+  S.settings.buy=+$("#sBuy").value; S.settings.sell=+$("#sSell").value;
+  S.settings.lot=+$("#sLot").value; S.settings.max=+$("#sMax").value;
+  save(); $("#savedMsg").textContent="保存しました ✓"; setTimeout(()=>$("#savedMsg").textContent="",1600);
+};
+$("#runBt").onclick=runBacktest;
+$("#themeBtn").onclick=()=>{const c=document.documentElement.getAttribute("data-theme");const dark=c?c==="dark":matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.setAttribute("data-theme",dark?"light":"dark");render();};
+
+function fillForms(){
+  $("#sBuy").value=S.settings.buy; $("#sSell").value=S.settings.sell; $("#sLot").value=S.settings.lot; $("#sMax").value=S.settings.max;
+  $("#btBuy").value=S.settings.buy; $("#btSell").value=S.settings.sell; $("#btLot").value=S.settings.lot;
+}
+fillForms(); render();
+setInterval(loop,1000);
+</script>

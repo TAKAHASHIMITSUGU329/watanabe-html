@@ -1,0 +1,555 @@
+<title>自分軸プロフィールページ研修</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --ground:#f5f8f2;
+    --surface:#ffffff;
+    --surface-2:#eef4ea;
+    --ink:#1a2a1e;
+    --ink-soft:#40513f;
+    --muted:#607061;
+    --line:#d8e3d3;
+    --accent:#2f8f4e;
+    --accent-deep:#1f6b39;
+    --accent-tint:#e4f1e3;
+    --prompt-bg:#0f2417;
+    --prompt-ink:#eaf6ea;
+    --prompt-line:#2f8f4e;
+    --shadow:0 10px 40px rgba(24,50,30,.10);
+  }
+  :root:not([data-theme="light"]){}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0f1712;
+      --surface:#16211a;
+      --surface-2:#1c2a20;
+      --ink:#e9f2e8;
+      --ink-soft:#c4d2c2;
+      --muted:#93a596;
+      --line:#2b3a2e;
+      --accent:#5cc47f;
+      --accent-deep:#8fe0a7;
+      --accent-tint:#1d2f22;
+      --prompt-bg:#0a1710;
+      --prompt-ink:#e6f5e8;
+      --prompt-line:#5cc47f;
+      --shadow:0 10px 40px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0f1712;
+    --surface:#16211a;
+    --surface-2:#1c2a20;
+    --ink:#e9f2e8;
+    --ink-soft:#c4d2c2;
+    --muted:#93a596;
+    --line:#2b3a2e;
+    --accent:#5cc47f;
+    --accent-deep:#8fe0a7;
+    --accent-tint:#1d2f22;
+    --prompt-bg:#0a1710;
+    --prompt-ink:#e6f5e8;
+    --prompt-line:#5cc47f;
+    --shadow:0 10px 40px rgba(0,0,0,.4);
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","YuGothic",Meiryo,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.7;
+  }
+  .deck{position:fixed;inset:0;overflow:hidden}
+  .slide{
+    position:absolute;inset:0;
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    padding:clamp(28px,5vw,90px);
+    max-width:1180px;margin:0 auto;
+    animation:fade .35s ease;
+  }
+  .slide.active{display:flex}
+  @media (prefers-reduced-motion:reduce){.slide{animation:none}}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:.5em;
+    font-size:clamp(.8rem,1.5vw,1rem);
+    font-weight:700;letter-spacing:.12em;
+    color:var(--accent-deep);
+    text-transform:uppercase;
+    margin-bottom:.9em;
+  }
+  .eyebrow .dot{width:.55em;height:.55em;border-radius:50%;background:var(--accent)}
+  h1{
+    font-size:clamp(2rem,5.6vw,4rem);
+    line-height:1.18;margin:.1em 0 .3em;
+    font-weight:800;letter-spacing:.01em;
+    text-wrap:balance;
+  }
+  h2{
+    font-size:clamp(1.6rem,4vw,2.9rem);
+    line-height:1.25;margin:.1em 0 .5em;
+    font-weight:800;text-wrap:balance;
+  }
+  .lead{
+    font-size:clamp(1.05rem,2.1vw,1.5rem);
+    color:var(--ink-soft);max-width:52ch;
+  }
+  .sub{color:var(--muted);font-size:clamp(1rem,1.8vw,1.25rem)}
+  ul.big{list-style:none;padding:0;margin:.6em 0;display:flex;flex-direction:column;gap:.7em}
+  ul.big li{
+    font-size:clamp(1.05rem,2.1vw,1.45rem);
+    padding-left:1.7em;position:relative;color:var(--ink);
+  }
+  ul.big li::before{
+    content:"";position:absolute;left:0;top:.55em;
+    width:.8em;height:.8em;border-radius:50%;
+    background:var(--accent-tint);border:.18em solid var(--accent);
+  }
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(14px,2vw,24px);margin-top:1em}
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:18px;
+    padding:clamp(18px,2.4vw,28px);box-shadow:var(--shadow);
+  }
+  .card .num{font-size:.95rem;font-weight:800;color:var(--accent-deep);letter-spacing:.08em}
+  .card h3{margin:.25em 0 .35em;font-size:clamp(1.15rem,2.2vw,1.5rem)}
+  .card p{margin:0;color:var(--muted);font-size:clamp(.98rem,1.7vw,1.15rem)}
+
+  /* flow diagram */
+  .flow{display:flex;flex-wrap:wrap;gap:.7em;align-items:stretch;margin-top:1em}
+  .flow .step{
+    flex:1 1 160px;background:var(--surface);border:1px solid var(--line);
+    border-radius:14px;padding:1em 1.1em;box-shadow:var(--shadow);position:relative;
+  }
+  .flow .step .k{font-weight:800;color:var(--accent-deep);font-size:1.05rem}
+  .flow .step .t{font-size:clamp(1rem,1.8vw,1.2rem);font-weight:700;margin-top:.15em}
+  .flow .step .d{color:var(--muted);font-size:.95rem;margin-top:.2em}
+  .flow .step.on{border-color:var(--accent);background:var(--accent-tint)}
+  .flow .step.dim{opacity:.5}
+
+  /* prompt block */
+  .promptwrap{margin-top:1em}
+  .promptlabel{display:flex;align-items:center;gap:.6em;margin-bottom:.5em;color:var(--muted);font-weight:700;font-size:1rem}
+  .prompt{
+    background:var(--prompt-bg);color:var(--prompt-ink);
+    border-left:6px solid var(--prompt-line);border-radius:12px;
+    padding:clamp(16px,2.2vw,26px);position:relative;
+    font-size:clamp(1rem,1.9vw,1.28rem);line-height:1.75;
+    white-space:pre-wrap;word-break:break-word;
+    box-shadow:var(--shadow);
+  }
+  .prompt .cmd{color:#8fe0a7;font-weight:700}
+  .copybtn{
+    position:absolute;top:12px;right:12px;
+    background:var(--accent);color:#06210f;border:none;
+    font-weight:800;font-size:.95rem;border-radius:9px;
+    padding:.5em .9em;cursor:pointer;font-family:inherit;
+    transition:transform .1s ease,background .2s ease;
+  }
+  .copybtn:hover{background:var(--accent-deep);color:#fff}
+  .copybtn:active{transform:scale(.95)}
+  .copybtn.done{background:#1f6b39;color:#fff}
+
+  .note{
+    margin-top:1em;background:var(--surface-2);border-radius:12px;
+    padding:1em 1.2em;font-size:clamp(.98rem,1.7vw,1.18rem);color:var(--ink-soft);
+    border:1px dashed var(--line);
+  }
+  .note b{color:var(--accent-deep)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2.5vw,30px);margin-top:.8em}
+  @media (max-width:720px){.two{grid-template-columns:1fr}}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:clamp(16px,2.2vw,26px);box-shadow:var(--shadow)}
+  .panel h3{margin:0 0 .4em;font-size:clamp(1.1rem,2vw,1.4rem)}
+  .panel.local{border-top:5px solid var(--muted)}
+  .panel.pub{border-top:5px solid var(--accent)}
+
+  .cover{align-items:flex-start}
+  .cover .badge{
+    display:inline-block;background:var(--accent-tint);color:var(--accent-deep);
+    font-weight:800;padding:.5em 1em;border-radius:999px;font-size:1rem;letter-spacing:.05em;margin-bottom:1em;
+  }
+  .cover h1{font-size:clamp(2.2rem,6.4vw,4.6rem)}
+  .cover .robot{font-size:clamp(2.4rem,6vw,4rem);margin-bottom:.2em}
+
+  /* chrome */
+  .bar{position:fixed;top:0;left:0;height:5px;background:var(--accent);width:0;z-index:20;transition:width .3s ease}
+  .nav{
+    position:fixed;bottom:18px;left:50%;transform:translateX(-50%);
+    display:flex;align-items:center;gap:14px;z-index:20;
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;
+    padding:8px 14px;box-shadow:var(--shadow);
+  }
+  .nav button{
+    background:none;border:none;color:var(--ink);cursor:pointer;
+    font-size:1.4rem;line-height:1;padding:.2em .4em;border-radius:8px;font-family:inherit;
+  }
+  .nav button:hover{background:var(--accent-tint);color:var(--accent-deep)}
+  .nav .count{font-variant-numeric:tabular-nums;font-weight:700;color:var(--muted);min-width:4.5em;text-align:center;font-size:1rem}
+  .themebtn{position:fixed;top:14px;right:14px;z-index:20;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:.5em .7em;cursor:pointer;font-size:1.1rem;box-shadow:var(--shadow)}
+  .hint{position:fixed;bottom:22px;right:18px;color:var(--muted);font-size:.85rem;z-index:20}
+  @media (max-width:640px){.hint{display:none}}
+  kbd{background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:.1em .5em;font-family:inherit;font-size:.85em}
+  .tag{display:inline-block;background:var(--accent-tint);color:var(--accent-deep);font-weight:700;border-radius:8px;padding:.15em .7em;font-size:.9rem;margin-bottom:.6em}
+</style>
+
+<div class="bar" id="bar"></div>
+<button class="themebtn" id="themebtn" aria-label="テーマ切替">🌗</button>
+
+<div class="deck" id="deck">
+
+  <!-- 1 cover -->
+  <section class="slide cover">
+    <span class="badge">第1回・約3時間</span>
+    <div class="robot">🌱🤖</div>
+    <h1>AIと一緒に、<br>自分の「経験知」をカタチにする</h1>
+    <p class="lead">Claude Code はじめての一歩 — 「自分軸プロフィールページ」を作って、世界に公開する</p>
+  </section>
+
+  <!-- 2 goal -->
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>今日のゴール</span>
+    <h2>今日、これを持ち帰ります</h2>
+    <div class="cards">
+      <div class="card"><div class="num">01</div><h3>自分だけのページ</h3><p>あなたの経験と自分軸をのせたWebページが完成し、URLで人に見せられる状態になる</p></div>
+      <div class="card"><div class="num">02</div><h3>作り方まるごと</h3><p>要件定義→デザイン→実装→検査→公開という、プロの開発の流れをAIと通す</p></div>
+      <div class="card"><div class="num">03</div><h3>AIとの付き合い方</h3><p>AIは自分を置きかえる道具ではなく、自分の経験を引き出し形にする相棒だと分かる</p></div>
+    </div>
+  </section>
+
+  <!-- 3 promises -->
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>3つの約束</span>
+    <h2>安心して進めるために</h2>
+    <ul class="big">
+      <li><b>コードは自分では書きません。</b>AIに日本語でお願いするだけです</li>
+      <li><b>わからないことは、そのままAIに聞けばいい。</b>それ自体が今日いちばんの学びです</li>
+      <li><b>質問や不明点は、チャットでお願いします。</b>スタッフがすぐに拾います</li>
+    </ul>
+  </section>
+
+  <!-- 4 what we build -->
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>今日つくるもの</span>
+    <h2>「自分軸プロフィールページ」</h2>
+    <p class="sub">のせる中身は、この3つだけ。これはコミュニティの「経験知の棚卸し」「自分軸宣言」そのものです。</p>
+    <div class="cards">
+      <div class="card"><div class="num">①</div><h3>わたしは何者か</h3><p>名前と、これまでしてきた仕事や役割</p></div>
+      <div class="card"><div class="num">②</div><h3>経験のたな卸し</h3><p>得意なこと・よく相談されること・伝えたい失敗</p></div>
+      <div class="card"><div class="num">③</div><h3>これからの自分軸</h3><p>これから誰の・何の役に立ちたいか（背中を押したい相手）</p></div>
+    </div>
+  </section>
+
+  <!-- 5 flow -->
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>今日の全体像</span>
+    <h2>Webページ作りから公開までの5ステップ</h2>
+    <div class="flow">
+      <div class="step"><div class="k">①</div><div class="t">環境確認</div><div class="d">AIが使える準備</div></div>
+      <div class="step"><div class="k">②</div><div class="t">開発ドキュメント</div><div class="d">要件・デザイン・計画</div></div>
+      <div class="step"><div class="k">③</div><div class="t">実装</div><div class="d">AIが自動でつくる</div></div>
+      <div class="step"><div class="k">④</div><div class="t">仕上げ</div><div class="d">確認・安全チェック</div></div>
+      <div class="step"><div class="k">⑤</div><div class="t">公開</div><div class="d">ネットに載せる</div></div>
+    </div>
+    <div class="note">今日は<b>①から⑤まで全部</b>を通します。むずかしそうに見えても、1ステップずつAIと進めれば大丈夫です。</div>
+  </section>
+
+  <!-- 6 local vs public -->
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>言葉の説明</span>
+    <h2>「パソコンの中」と「ネット公開」のちがい</h2>
+    <div class="two">
+      <div class="panel local"><h3>🖥 ローカル（パソコンの中）</h3><p class="sub">自分のPCの中だけで動くページ。まずはここで完成させます。自分だけが見られる状態です。</p></div>
+      <div class="panel pub"><h3>🌐 公開（デプロイ）</h3><p class="sub">インターネットに載せて、URLで誰でも見られる状態にすること。今日の最後にここまで進みます。</p></div>
+    </div>
+  </section>
+
+  <!-- 7 prompt collection -->
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>進め方</span>
+    <h2>プロンプト集をコピペで進みます</h2>
+    <p class="lead">これから出てくる<b>枠の中の文章</b>を、右上の「コピー」ボタンでコピーして、Claude Codeに貼り付けるだけ。順番に進めれば完成します。</p>
+    <div class="note">むずかしい言葉が出てきたら、遠慮なく「<b>もっとやさしく説明して</b>」とAIに返してOKです。</div>
+  </section>
+
+  <!-- ===== Phase 1 ===== -->
+  <section class="slide">
+    <span class="tag">STEP ①</span>
+    <h1>事前準備</h1>
+    <p class="lead">AIでページ作りができる状態にします。肩慣らしまで。</p>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>STEP① 事前準備 — 1</span>
+    <h2>まず、パソコンの状態を確認</h2>
+    <div class="promptwrap">
+      <div class="promptlabel">📋 これをコピーして貼り付け</div>
+      <div class="prompt" data-copy>このパソコンの状態を教えてください。
+・Node.js が入っているか
+・Git が入っているか
+やさしい言葉で、もし入っていなければどうすればいいかも教えてください。</div>
+    </div>
+    <div class="note">Node.js と Git は、ページ作りの<b>土台になる道具</b>です。中身は覚えなくて大丈夫。</div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>STEP① 事前準備 — 2</span>
+    <h2>プロジェクトの下ごしらえ（/init）</h2>
+    <div class="promptwrap">
+      <div class="promptlabel">📋 これをコピーして貼り付け</div>
+      <div class="prompt" data-copy><span class="cmd">/init</span> 自分の自己紹介（自分軸プロフィール）ページを作ります。難しい知識がなくても進められるよう、コメントは日本語で、専門用語には説明を添えてください。まずはパソコンの中だけで動かし、あとでインターネットに公開する予定です。パスワードなどの秘密情報はコードに書かないでください。</div>
+    </div>
+    <div class="note"><b>/init</b> は、AIにこのプロジェクトの前提を覚えてもらう合図です。</div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>STEP① 事前準備 — 3</span>
+    <h2>2つの「スキル」を入れる</h2>
+    <div class="promptwrap">
+      <div class="promptlabel">📋 これをコピーして貼り付け</div>
+      <div class="prompt" data-copy>以下2つのAgent Skillsを、このプロジェクトで使えるようにしてください。
+インストール場所はグローバル「~/.claude/ 配下」にしてください。
+・grill-me：https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me
+・goal-setter：https://github.com/gotalab/goal-setter-skill</div>
+    </div>
+    <div class="note"><b>grill-me</b>＝考えを引き出す相棒／<b>goal-setter</b>＝ゴールを決める相棒。後で使います。</div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>STEP① 事前準備 — 4</span>
+    <h2>肩慣らし：1枚だけ作ってみる</h2>
+    <div class="promptwrap">
+      <div class="promptlabel">📋 「（お名前）」を自分の名前に変えてコピー</div>
+      <div class="prompt" data-copy>このフォルダに、自己紹介ページ hello.html を作ってください。
+私の名前「（お名前）」、今日の日付、「AIと一緒に初めてページを作ります」という意気込みを、明るい雰囲気で入れてください。できたらブラウザで開く方法も教えてください。</div>
+    </div>
+    <div class="note">ブラウザで開いて表示されたら成功！ここで一度「<b>できた！</b>」を全員で共有します。</div>
+  </section>
+
+  <!-- ===== Phase 2 ===== -->
+  <section class="slide">
+    <span class="tag">STEP ②</span>
+    <h1>開発ドキュメント</h1>
+    <p class="lead">「何を作るか」をAIと固めます。要件 → デザイン → 計画。</p>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>STEP② ドキュメント — 要件定義</span>
+    <h2>grill-me に質問してもらう</h2>
+    <div class="promptwrap">
+      <div class="promptlabel">📋 これをコピーして貼り付け</div>
+      <div class="prompt" data-copy>自分軸プロフィールページを作りたいです。grill-me スキルを使って、要件定義書を作ってください。前提は以下です。
+・ページの内容は3つ　①わたしは何者か　②経験のたな卸し　③これからの自分軸
+・パソコンの中だけで動く1枚のWebページ。あとでインターネットにも公開したい
+・スマホでも見やすくしたい／写真を1枚入れたい
+この前提で docs/requirements.md に要件定義書を作りたいです。
+まだ決めていないこと・私が見落としていそうなことを、一問ずつ質問して、要件を固めてください。</div>
+    </div>
+    <div class="note">質問がまとめて来たら「<b>一問ずつ質問してください</b>」。答えに迷ったら「<b>おすすめで進めて</b>」でOK。</div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>STEP② ドキュメント — 見やすく</span>
+    <h2>要件定義書を見やすくする</h2>
+    <div class="promptwrap">
+      <div class="promptlabel">📋 これをコピーして貼り付け</div>
+      <div class="prompt" data-copy>docs/requirements.md を、見やすいHTMLにしてください。</div>
+    </div>
+    <div class="note">文字だけの書類が、ぐっと読みやすい形に変わります。</div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>STEP② ドキュメント — 完成イメージ</span>
+    <h2>デザインの下絵をつくる</h2>
+    <div class="promptwrap">
+      <div class="promptlabel">📋 これをコピーして貼り付け</div>
+      <div class="prompt" data-copy>docs/requirements.md を読んで、完成イメージが分かるUIデザインのモックを docs/ui-mock.html に作ってください。ダミーの内容でよいので、このHTMLをブラウザで開けば見た目が確認できるようにしてください。</div>
+    </div>
+    <div class="note">見て「自分のイメージと違う所」を言葉にして直してもらいましょう（色・文字の大きさ・並び順）。</div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>STEP② ドキュメント — 計画</span>
+    <h2>作る計画を立てる</h2>
+    <div class="promptwrap">
+      <div class="promptlabel">📋 これをコピーして貼り付け</div>
+      <div class="prompt" data-copy>docs/requirements.md と docs/ui-mock.html をもとに、このページを作る計画を立ててください。まずはパソコンの中だけで作り、あとでインターネット公開することも考えてください。実装はまだせず、計画だけを docs/plans.md に保存してください。</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>STEP② ドキュメント — 保存</span>
+    <h2>ここまでを保存（Git）</h2>
+    <div class="promptwrap">
+      <div class="promptlabel">📋 これをコピーして貼り付け</div>
+      <div class="prompt" data-copy>ここまでの内容を Git に保存（コミット）してください。</div>
+    </div>
+    <div class="note"><b>Git＝作業のセーブ機能</b>。あとで「前の状態に戻したい」ができるので安心です。</div>
+  </section>
+
+  <!-- ===== Phase 3 ===== -->
+  <section class="slide">
+    <span class="tag">STEP ③</span>
+    <h1>実装</h1>
+    <p class="lead">いよいよ、AIが自動でページを作ります。見守る時間です。</p>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>STEP③ 実装</span>
+    <h2>goal-setter でゴールを決めて、実行</h2>
+    <div class="promptwrap">
+      <div class="promptlabel">📋 これをコピーして貼り付け</div>
+      <div class="prompt" data-copy>goal-setter スキルを使って、以下の内容で1つのGOALプロンプトを作ってください。
+「以下の資料に沿って、パソコンの中で動く自分軸プロフィールページを作ってください。
+　要件定義書：docs/requirements.md
+　UIデザイン：docs/ui-mock.html
+　実装計画書：docs/plans.md」
+正解となる動作（何ができれば完成か）を明確に決めてください。
+確認方法として、具体的な操作手順も入れてください。</div>
+    </div>
+    <div class="note">できた<b>GOALプロンプトをコピーして実行</b>→ AIが自動で組み立てます（約20〜30分）。コーヒーでも飲みながら見守りましょう。</div>
+  </section>
+
+  <!-- ===== Phase 4 ===== -->
+  <section class="slide">
+    <span class="tag">STEP ④</span>
+    <h1>仕上げ</h1>
+    <p class="lead">見た目を整えて、公開前の安全チェックをします。</p>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>STEP④ 仕上げ — 微調整</span>
+    <h2>見た目を好みに整える</h2>
+    <div class="promptwrap">
+      <div class="promptlabel">📋 （好きな色）を書き換えてコピー</div>
+      <div class="prompt" data-copy>できたページを見て、直したいところをお願いします。
+・全体の色を（好きな色）にしてください
+・文字を大きめで読みやすくしてください
+・スマホでも崩れないようにしてください
+直したら、どこを変えたか一言で教えてください。</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>STEP④ 仕上げ — 安全チェック</span>
+    <h2>公開前の安全チェック</h2>
+    <div class="promptwrap">
+      <div class="promptlabel">📋 これをコピーして貼り付け</div>
+      <div class="prompt" data-copy><span class="cmd">/security-review</span></div>
+    </div>
+    <div class="note">気になる点が出たら「<b>この指摘を直してください</b>」と頼みます。ネットに出す前の<b>必ずやるステップ</b>です。</div>
+  </section>
+
+  <!-- ===== Phase 5 ===== -->
+  <section class="slide">
+    <span class="tag">STEP ⑤</span>
+    <h1>公開</h1>
+    <p class="lead">世界に1つのページを、インターネットに載せます。</p>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>STEP⑤ 公開</span>
+    <h2>インターネットに公開する</h2>
+    <div class="promptwrap">
+      <div class="promptlabel">📋 これをコピーして貼り付け</div>
+      <div class="prompt" data-copy>このページをインターネットに公開して、他の人にも見てもらえるようにしたいです。
+Cloudflare Pages を使って公開する手順を、順番どおりにやさしく教えてください。
+（アカウントが必要なら、その作り方も教えてください）</div>
+    </div>
+    <div class="note">発行された<b>URL</b>をQRコードにして、仲間と見せ合いましょう。「自分軸宣言」が世界に公開された瞬間です。</div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>STEP⑤ 公開 — 保存と復元</span>
+    <h2>保存する・前に戻す</h2>
+    <div class="promptwrap">
+      <div class="promptlabel">📋 これをコピーして貼り付け</div>
+      <div class="prompt" data-copy>今の状態を保存してください（コミット）。
+これまでの保存の履歴を、最新10件、メッセージつきで見せてください。
+あとで「◯◯の状態に戻したい」と言ったら、戻せるようにしてください。</div>
+    </div>
+    <div class="note">失敗しても<b>いつでも戻せる</b>。だから、どんどん試して大丈夫です。</div>
+  </section>
+
+  <!-- closing -->
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>ふりかえり</span>
+    <h2>今日、あなたがやったこと</h2>
+    <ul class="big">
+      <li>自分の経験と自分軸を、AIと言葉にした</li>
+      <li>要件定義から公開まで、開発の全工程を通した</li>
+      <li>世界に1つの自分のページを、インターネットに公開した</li>
+    </ul>
+    <div class="note">コードは1行も書いていません。それでも、ちゃんと「作れた」のです。</div>
+  </section>
+
+  <section class="slide cover">
+    <div class="robot">🌱</div>
+    <h1>AIに任せるのではなく、<br>AIで自分を鍛える。</h1>
+    <p class="lead">次回（Part-2）は、もう少し複雑なアプリづくりと、毎日の仕事をAIに手伝ってもらう自動化へ。<br><br>おつかれさまでした。</p>
+  </section>
+
+</div>
+
+<nav class="nav" aria-label="スライド操作">
+  <button id="prev" aria-label="前へ">‹</button>
+  <span class="count" id="count">1 / 1</span>
+  <button id="next" aria-label="次へ">›</button>
+</nav>
+<div class="hint">← → / スペース でめくる</div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar');
+  const count=document.getElementById('count');
+  let i=0;
+  function show(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,x)=>s.classList.toggle('active',x===i));
+    bar.style.width=((i+1)/slides.length*100)+'%';
+    count.textContent=(i+1)+' / '+slides.length;
+    if(location.hash!=='#'+(i+1)) history.replaceState(null,'','#'+(i+1));
+  }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+    else if(e.key==='Home'){show(0);}
+    else if(e.key==='End'){show(slides.length-1);}
+  });
+  // swipe
+  let sx=null;
+  document.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
+  document.addEventListener('touchend',e=>{
+    if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>50) show(i+(dx<0?1:-1)); sx=null;
+  },{passive:true});
+  // copy buttons
+  document.querySelectorAll('[data-copy]').forEach(p=>{
+    const txt=p.innerText;
+    const btn=document.createElement('button');
+    btn.className='copybtn';btn.type='button';btn.textContent='コピー';
+    btn.onclick=()=>{
+      navigator.clipboard.writeText(txt).then(()=>{
+        btn.textContent='コピー完了 ✓';btn.classList.add('done');
+        setTimeout(()=>{btn.textContent='コピー';btn.classList.remove('done');},1600);
+      });
+    };
+    p.appendChild(btn);
+  });
+  // theme toggle
+  const tb=document.getElementById('themebtn');
+  tb.onclick=()=>{
+    const cur=document.documentElement.getAttribute('data-theme');
+    const dark=cur? cur==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme',dark?'light':'dark');
+  };
+  const start=parseInt((location.hash||'').replace('#',''))||1;
+  show(start-1);
+</script>

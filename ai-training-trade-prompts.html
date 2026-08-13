@@ -1,0 +1,318 @@
+<title>トレードBot プロンプト全集</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --ground:#eef2f8;--surface:#ffffff;--surface-2:#f4f7fc;--ink:#101827;--ink-soft:#39445a;
+    --muted:#6a7688;--line:#dbe2ee;--accent:#2f6bff;--accent-deep:#1c4fd6;--accent-tint:#e5edff;
+    --code-bg:#0d1728;--code-ink:#e9f0ff;--code-line:#2f6bff;--code-cmd:#7fd0ff;--code-str:#8fe0a7;
+    --shadow:0 10px 40px rgba(16,24,39,.10);
+  }
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+    --ground:#0a0f1a;--surface:#121a29;--surface-2:#182133;--ink:#e9eefa;--ink-soft:#c4cee0;
+    --muted:#8492a8;--line:#26314780;--accent:#5b8cff;--accent-deep:#8fb0ff;--accent-tint:#182540;
+    --code-bg:#080f1c;--code-ink:#e9f0ff;--code-line:#5b8cff;--code-cmd:#7fd0ff;--code-str:#7fe3a0;
+    --shadow:0 10px 40px rgba(0,0,0,.45);
+  }}
+  :root[data-theme="dark"]{
+    --ground:#0a0f1a;--surface:#121a29;--surface-2:#182133;--ink:#e9eefa;--ink-soft:#c4cee0;
+    --muted:#8492a8;--line:#26314780;--accent:#5b8cff;--accent-deep:#8fb0ff;--accent-tint:#182540;
+    --code-bg:#080f1c;--code-ink:#e9f0ff;--code-line:#5b8cff;--code-cmd:#7fd0ff;--code-str:#7fe3a0;
+    --shadow:0 10px 40px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:var(--ground);color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.7}
+  .deck{position:fixed;inset:0;overflow:hidden}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;
+    padding:clamp(26px,5vw,84px);max-width:1120px;margin:0 auto;animation:fade .3s ease}
+  .slide.active{display:flex}
+  @media(prefers-reduced-motion:reduce){.slide{animation:none}}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .eyebrow{display:inline-flex;align-items:center;gap:.5em;font-size:clamp(.78rem,1.4vw,.98rem);font-weight:800;
+    letter-spacing:.12em;color:var(--accent-deep);text-transform:uppercase;margin-bottom:.8em}
+  .eyebrow .dot{width:.55em;height:.55em;border-radius:50%;background:var(--accent)}
+  h1{font-size:clamp(2rem,5.4vw,3.9rem);line-height:1.16;margin:.1em 0 .3em;font-weight:800;text-wrap:balance}
+  h2{font-size:clamp(1.5rem,3.6vw,2.6rem);line-height:1.25;margin:.1em 0 .4em;font-weight:800;text-wrap:balance}
+  .lead{font-size:clamp(1.05rem,2vw,1.45rem);color:var(--ink-soft);max-width:54ch}
+  .sub{color:var(--muted);font-size:clamp(.98rem,1.7vw,1.2rem);margin:.1em 0 .3em}
+  .divider{align-items:flex-start}
+  .divider .num{font-size:clamp(3.4rem,11vw,7rem);font-weight:800;color:var(--accent);line-height:.9;letter-spacing:-.02em}
+  .divider h1{margin-top:.15em}
+  .steplist{display:flex;flex-direction:column;gap:.5em;margin-top:1em;color:var(--ink-soft);font-size:clamp(1rem,1.8vw,1.25rem)}
+  .steplist span{display:inline-flex;gap:.6em}.steplist b{color:var(--accent-deep)}
+
+  .codelabel{display:flex;align-items:center;gap:.6em;margin:.2em 0 .5em;color:var(--muted);font-weight:700;font-size:1rem}
+  .code{position:relative;background:var(--code-bg);color:var(--code-ink);border-left:6px solid var(--code-line);
+    border-radius:12px;padding:clamp(16px,2.2vw,26px) clamp(16px,2.2vw,26px);box-shadow:var(--shadow);
+    font-family:"SF Mono","Consolas","Menlo","Hiragino Kaku Gothic ProN",monospace;
+    font-size:clamp(.95rem,1.75vw,1.2rem);line-height:1.8;white-space:pre-wrap;word-break:break-word;overflow:auto;max-height:62vh}
+  .code .cmd{color:var(--code-cmd);font-weight:700}
+  .code .url{color:var(--code-str)}
+  .copybtn{position:absolute;top:12px;right:12px;background:var(--accent);color:#fff;border:none;font-weight:800;
+    font-size:.92rem;border-radius:9px;padding:.5em .9em;cursor:pointer;font-family:inherit;transition:.15s}
+  .copybtn:hover{background:var(--accent-deep)}.copybtn:active{transform:scale(.95)}
+  .copybtn.done{background:#1f8a4c}
+  .note{margin-top:.9em;background:var(--surface-2);border:1px dashed var(--line);border-radius:12px;
+    padding:.8em 1.1em;font-size:clamp(.95rem,1.6vw,1.12rem);color:var(--ink-soft)}
+  .note b{color:var(--accent-deep)}
+  .tag{display:inline-block;background:var(--accent-tint);color:var(--accent-deep);font-weight:800;border-radius:8px;
+    padding:.2em .8em;font-size:.92rem;margin-bottom:.7em}
+  .demolink{display:inline-flex;align-items:center;gap:.6em;margin-top:1.1em;background:var(--accent);color:#fff;
+    text-decoration:none;font-weight:800;font-size:clamp(1rem,1.9vw,1.25rem);padding:.7em 1.4em;border-radius:12px;box-shadow:var(--shadow);transition:.15s}
+  .demolink:hover{background:var(--accent-deep)}
+  .demolink .arrow{font-size:1.2em}
+
+  .bar{position:fixed;top:0;left:0;height:5px;background:var(--accent);width:0;z-index:20;transition:width .3s ease}
+  .nav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;z-index:20;
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 14px;box-shadow:var(--shadow)}
+  .nav button{background:none;border:none;color:var(--ink);cursor:pointer;font-size:1.4rem;line-height:1;padding:.15em .4em;border-radius:8px;font-family:inherit}
+  .nav button:hover{background:var(--accent-tint);color:var(--accent-deep)}
+  .nav .count{font-variant-numeric:tabular-nums;font-weight:700;color:var(--muted);min-width:4.5em;text-align:center;font-size:.95rem}
+  .themebtn{position:fixed;top:12px;right:12px;z-index:20;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:.45em .65em;cursor:pointer;font-size:1.05rem;box-shadow:var(--shadow)}
+  .hint{position:fixed;bottom:20px;right:16px;color:var(--muted);font-size:.82rem;z-index:20}
+  @media(max-width:640px){.hint{display:none}}
+</style>
+
+<div class="bar" id="bar"></div>
+<button class="themebtn" id="themebtn" aria-label="表示切替">🌗</button>
+
+<div class="deck" id="deck">
+
+  <!-- title -->
+  <section class="slide">
+    <span class="tag">Claude Code 実践研修 Part-1</span>
+    <h1>AI自動トレードBot<br>プロンプト全集</h1>
+    <p class="lead">枠内のスクリプトを右上の「コピー」でコピーし、Claude Code に順番に貼り付けていきます。</p>
+    <a class="demolink" id="demoTop" href="https://takahashimitsugu329.github.io/watanabe-html/trade-bot-demo.html" target="_blank" rel="noopener"><span class="arrow">▶</span>完成イメージ（動くデモ）を見る</a>
+  </section>
+
+  <!-- 完成イメージ -->
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>ゴールの確認</span>
+    <h2>これが「完成イメージ」です</h2>
+    <p class="lead">今日つくるのは、この5画面（ダッシュボード／設定／ペーパー実行／取引履歴／バックテスト）が動くBotです。まず完成形を見てから始めましょう。</p>
+    <a class="demolink" id="demoMid" href="https://takahashimitsugu329.github.io/watanabe-html/trade-bot-demo.html" target="_blank" rel="noopener"><span class="arrow">▶</span>動くデモを別タブで開く</a>
+    <div class="note">デモの価格は擬似データ（実物では <b>GMOコインFXの公開API</b> に差し替え）。「自動売買」をONにすると売買が動きます。</div>
+  </section>
+
+  <!-- section 1 -->
+  <section class="slide divider">
+    <div class="num">1</div>
+    <h1>事前準備</h1>
+    <div class="steplist">
+      <span>・<b>環境確認</b></span><span>・<b>CLAUDE.md 生成</b></span>
+      <span>・<b>スキルをインストール</b></span><span>・<b>hello.html 作成</b></span>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>1｜事前準備</span>
+    <h2>環境確認</h2>
+    <div class="codelabel">📋 コピーして貼り付け</div>
+    <div class="code" data-copy>このPCの状態を知りたい。以下を確認して。
+
+・Node.js がインストールされている
+・Gitがインストールされている</div>
+    <div class="note"><b>先に：</b>本日用の新しい空フォルダを作り、ワークスペースとして開いておく。モードは「<b>自動</b>」に設定（古い場合はアップデート確認）。<br><b>✅ こうなればOK：</b>Node.jsとGitが「入っている」と表示。入っていなければ、そのまま入れ方をAIに聞けばよい。</div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>1｜事前準備</span>
+    <h2>CLAUDE.md 生成</h2>
+    <div class="codelabel">📋 コピーして貼り付け</div>
+    <div class="code" data-copy><span class="cmd">/init</span> 株の自動トレーディングBotを開発します。シンプルなWebアプリでCloudflareにデプロイすることを前提とします。秘密情報をコードに書かないでコメントは日本語でお願いします。</div>
+    <div class="note"><b>/init</b> は、このプロジェクトの前提を <b>CLAUDE.md</b> に書き出す合図。以降、AIはこの前提を踏まえて動く。<br><b>✅ こうなればOK：</b>CLAUDE.md が生成される。話題を切り替えたいときは <b>/clear</b> が基本操作。</div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>1｜事前準備</span>
+    <h2>スキルをインストール</h2>
+    <div class="codelabel">📋 コピーして貼り付け</div>
+    <div class="code" data-copy>以下、2つのAgent Skillsをこのプロジェクトで使えるようにして
+インストール場所はグローバル 「~/.CLAUDE/ 配下」とする
+
+grill-me：<span class="url">https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me</span>
+
+goal-setter：<span class="url">https://github.com/gotalab/goal-setter-skill</span>
+<span class="cmd">/plugin</span> marketplace add gotalab/goal-setter-skill</div>
+    <div class="note"><b>grill-me</b>＝考えを引き出す質問役／<b>goal-setter</b>＝ゴールを定義する役。後の工程で使う。<br><b>安全のコツ：</b>外部スキルやMCPは、使う前に <b>/security-review</b> でチェックしてから利用すると安心。</div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>1｜事前準備</span>
+    <h2>hello.html 作成</h2>
+    <div class="codelabel">📋 コピーして貼り付け</div>
+    <div class="code" data-copy>このフォルダに自己紹介ページ hello.html を作って。
+名前と今日の日付、研修への意気込みをひとこと生成して。</div>
+    <div class="note"><b>ミニ演習。</b>「AIに頼む→モノができる」を最初に体感するための肩慣らし。<br><b>✅ こうなればOK：</b>hello.html が生成され、ブラウザで開くと自己紹介ページが表示される。</div>
+  </section>
+
+  <!-- section 2 -->
+  <section class="slide divider">
+    <div class="num">2</div>
+    <h1>開発ドキュメント</h1>
+    <div class="steplist">
+      <span>・<b>Grill-me で要件を固める</b></span><span>・<b>要件定義書を HTML にする</b></span>
+      <span>・<b>UIモック HTML にする</b></span><span>・<b>開発計画を生成する</b></span><span>・<b>Git で保存する</b></span>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>2｜開発ドキュメント</span>
+    <h2>Grill-me で要件を固める</h2>
+    <div class="codelabel">📋 コピーして貼り付け</div>
+    <div class="code" data-copy>FX自動売買Botを作りたい。grill-me スキルをつかって要件定義書を作って。前提は以下の通り。
+
+- 対象はUSD/JPYのみ。実資金は一切動かさず、ペーパートレード(仮想売買)とバックテストだけを行う
+- 技術構成: 静的HTML/CSS/JavaScript + Cloudflare Pages Functions + D1(ローカル実行)。リロードしてもデータが残るようにしたい
+- 価格はGMOコイン外国為替FXのPublic APIから取得する(APIキーは使わない)
+- 画面はダッシュボード / 設定 / ペーパー実行 / 取引履歴 / バックテスト の5つ
+- 「複数ポジション」の保持を可能とする
+
+- 自動売買ルールはシンプルな価格しきい値(買い価格・売り価格)から始める。ただし、将来的にルールを追加できる設計にしたい
+- まずは「買いポジション」のみを自動売買ルールで扱えるようにする。将来的に「売りポジション」も設定できるようにしたい
+
+この前提で docs/requirements.md に要件定義書を作りたい。
+まだ決めていないこと・私が見落としていそうなことを質問して、要件を固めてほしい。</div>
+    <div class="note"><b>約20問</b>の質問に答えて要件を固める。質問がまとめて来たら「<b>一問ずつ質問してください</b>」。わからない質問は「<b>どう決めればいい？おすすめは？</b>」でOK。<br><b>✅ こうなればOK：</b>docs/requirements.md に要件定義書ができる。</div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>2｜開発ドキュメント</span>
+    <h2>要件定義書を HTML にする</h2>
+    <div class="sub">レビュー時、視認性を高めるために HTML にする</div>
+    <div class="codelabel">📋 コピーして貼り付け</div>
+    <div class="code" data-copy>docs/requirements.md をビジュアル豊かにHTMLにして</div>
+    <div class="note"><b>✅ こうなればOK：</b>文字だけのmdが、見やすいHTMLに変わる。内容のレビューがぐっと楽になる。</div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>2｜開発ドキュメント</span>
+    <h2>UIモック HTML にする</h2>
+    <div class="codelabel">📋 コピーして貼り付け</div>
+    <div class="code" data-copy>docs/requirements.md を読んで、5画面すべてを1枚のHTMLで確認できるUIデザインモックを docs/ui-mock.html に作って。
+サイドメニューで画面を切り替えられること。動作はダミーデータでよく、このHTML単体をブラウザで開いて見た目を確認できるようにして。</div>
+    <div class="note"><b>✅ こうなればOK：</b>5画面の見た目をダミーデータで確認できる。自分のイメージと違う所（色・フォント・レイアウト）を言葉にして直してもらう。</div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>2｜開発ドキュメント</span>
+    <h2>開発計画を生成する</h2>
+    <div class="codelabel">📋 コピーして貼り付け</div>
+    <div class="code" data-copy>docs/requirements.md と docs/ui-mock.html を前提に、このアプリを開発する計画を立てて。
+将来的にはCloudflareにデプロイすることを考慮してまずはローカル環境のみで構築したい。
+実装はまだせず、まず計画だけ作って、docs/plans.md に保存して。</div>
+    <div class="note"><b>ここでは実装しない。</b>作る順番の「設計図」を docs/plans.md に用意するだけ。<br><b>✅ こうなればOK：</b>plans.md に開発計画ができる。</div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>2｜開発ドキュメント</span>
+    <h2>Git で保存する</h2>
+    <div class="codelabel">📋 コピーして貼り付け</div>
+    <div class="code" data-copy>この状態でGitにコミットして</div>
+    <div class="note">ここまでの要件・デザイン・計画を、いったん<b>セーブ</b>しておきます。</div>
+  </section>
+
+  <!-- section 3 -->
+  <section class="slide divider">
+    <div class="num">3</div>
+    <h1>開発</h1>
+    <div class="steplist"><span>・<b>Goal-Setter スキルで GOAL プロンプトを作る</b></span></div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>3｜開発</span>
+    <h2>Goal-Setter で GOAL プロンプトを作る</h2>
+    <div class="codelabel">📋 コピーして貼り付け</div>
+    <div class="code" data-copy>Goal-setter で以下の内容で1つのGOALプロンプトを作って。
+以下の仕様書に沿ってローカル環境で動作するアプリを開発して。
+要件定義書：docs/requirements.md
+UIデザイン：docs/ui-mock.html
+実装計画書：docs/plans.md
+
+正解となる動作を明確に定めてください。
+検証方法として具体的なユーザーストーリーや操作方法も含めてください。</div>
+    <div class="note">できた <b>GOALプロンプトをコピーして実行</b> → 約<b>20〜30分</b>でアプリが自動で組み上がる（見守る時間）。<br><b>✅ こうなればOK：</b>ローカルで動くBotが完成。動作を確認し、必要なら自然言語で修正・カスタマイズ。公開前に <b>/security-review</b> で安全チェック。</div>
+  </section>
+
+  <!-- section 4 -->
+  <section class="slide divider">
+    <div class="num">4</div>
+    <h1>仕上げ</h1>
+    <div class="steplist">
+      <span>・<b>セーブデータを作成</b></span><span>・<b>セーブデータの確認</b></span><span>・<b>セーブデータをロード</b></span>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>4｜仕上げ・Git操作</span>
+    <h2>セーブデータを作成</h2>
+    <div class="codelabel">📋 コピーして貼り付け</div>
+    <div class="code" data-copy>この状態でGitにコミットして</div>
+    <div class="note"><b>✅ こうなればOK：</b>今の状態が1つの「セーブ地点」として記録される。</div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>4｜仕上げ・Git操作</span>
+    <h2>セーブデータの確認</h2>
+    <div class="codelabel">📋 コピーして貼り付け</div>
+    <div class="code" data-copy>現在のコミット履歴を最新10件をコミットメッセージとともに表示して</div>
+    <div class="note"><b>✅ こうなればOK：</b>これまでのセーブ地点が一覧で見える。戻したい地点の<b>コミット番号（ID）</b>を控えておく。</div>
+  </section>
+
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>4｜仕上げ・Git操作</span>
+    <h2>セーブデータをロードしたい時</h2>
+    <div class="codelabel">📋 コピーして貼り付け</div>
+    <div class="code" data-copy>コミット xxxxxxx に戻して。</div>
+    <div class="note"><b>xxxxxxx</b> は、履歴で確認したコミット番号（ID）に置き換えます。</div>
+  </section>
+
+  <!-- closing -->
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>プロンプト集</span>
+    <h2>おつかれさまでした</h2>
+    <p class="lead">以上が、AI自動トレードBotを作るための全スクリプトです。順番にコピペすれば、ローカルで動くBotが完成します。</p>
+    <div class="note">元プロンプト集（Notion）：<span style="word-break:break-all">https://make-a-change.notion.site/AI-Claude-Code-Part-1-3b77a4a4c14480c39d43e1eb2d210043</span></div>
+  </section>
+
+</div>
+
+<nav class="nav" aria-label="スライド操作">
+  <button id="prev" aria-label="前へ">‹</button>
+  <span class="count" id="count">1 / 1</span>
+  <button id="next" aria-label="次へ">›</button>
+</nav>
+<div class="hint">← → / スペース でめくる</div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const bar=document.getElementById('bar'), count=document.getElementById('count');
+  let i=0;
+  function show(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,x)=>s.classList.toggle('active',x===i));
+    bar.style.width=((i+1)/slides.length*100)+'%';
+    count.textContent=(i+1)+' / '+slides.length;
+    history.replaceState(null,'','#'+(i+1));
+  }
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('prev').onclick=()=>show(i-1);
+  document.addEventListener('keydown',e=>{
+    if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(i+1);}
+    else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  let sx=null;
+  document.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
+  document.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)show(i+(dx<0?1:-1));sx=null;},{passive:true});
+  document.querySelectorAll('[data-copy]').forEach(p=>{
+    const original=p.innerText;
+    const btn=document.createElement('button');btn.className='copybtn';btn.type='button';btn.textContent='コピー';
+    btn.onclick=()=>{navigator.clipboard.writeText(original).then(()=>{btn.textContent='コピー完了 ✓';btn.classList.add('done');setTimeout(()=>{btn.textContent='コピー';btn.classList.remove('done');},1600);});};
+    p.appendChild(btn);
+  });
+  document.getElementById('themebtn').onclick=()=>{const c=document.documentElement.getAttribute('data-theme');const dark=c?c==='dark':matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',dark?'light':'dark');};
+  show((parseInt((location.hash||'').replace('#',''))||1)-1);
+</script>
