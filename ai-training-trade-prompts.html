@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <title>トレードBot プロンプト全集</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -93,7 +94,19 @@
     <h2>これが「完成イメージ」です</h2>
     <p class="lead">今日つくるのは、この5画面（ダッシュボード／設定／ペーパー実行／取引履歴／バックテスト）が動くBotです。まず完成形を見てから始めましょう。</p>
     <a class="demolink" id="demoMid" href="https://takahashimitsugu329.github.io/watanabe-html/trade-bot-demo.html" target="_blank" rel="noopener"><span class="arrow">▶</span>動くデモを別タブで開く</a>
-    <div class="note">デモの価格は擬似データ（実物では <b>GMOコインFXの公開API</b> に差し替え）。「自動売買」をONにすると売買が動きます。</div>
+    <div class="note">デモの価格は<b>擬似データ</b>です。「自動売買」をONにすると仮想売買が動きます。公開価格データへの差し替えは、研修前に利用可否を確認できた場合のみ扱います。</div>
+  </section>
+
+  <!-- 安全上の前提 -->
+  <section class="slide">
+    <span class="eyebrow"><span class="dot"></span>はじめに・大事な前提</span>
+    <h2>お金は一切動かしません</h2>
+    <p class="lead">この研修でつくるのは<b>ペーパートレード（仮想売買）</b>のBotです。始める前に、次の3点を共有します。</p>
+    <div class="note" style="margin-top:1.1em">
+      ・<b>実資金は一切動かしません。</b>注文も出しません（<b>取引APIキーは使わない</b>）。<br>
+      ・価格は<b>公開API</b>を「見る」だけ。取得できない場合は<b>擬似価格</b>で継続します。<br>
+      ・これは<b>AIでモノづくりを学ぶ研修</b>であり、<b>投資助言ではありません</b>。成績・利益は保証しません。
+    </div>
   </section>
 
   <!-- section 1 -->
@@ -121,7 +134,7 @@
     <span class="eyebrow"><span class="dot"></span>1｜事前準備</span>
     <h2>CLAUDE.md 生成</h2>
     <div class="codelabel">📋 コピーして貼り付け</div>
-    <div class="code" data-copy><span class="cmd">/init</span> 株の自動トレーディングBotを開発します。シンプルなWebアプリでCloudflareにデプロイすることを前提とします。秘密情報をコードに書かないでコメントは日本語でお願いします。</div>
+    <div class="code" data-copy><span class="cmd">/init</span> USD/JPYを対象とするFXペーパートレードBotを開発します。実資金は一切使用しません。シンプルなWebアプリで、将来Cloudflareへデプロイすることを前提とします。秘密情報をコードに書かず、コメントは日本語でお願いします。</div>
     <div class="note"><b>/init</b> は、このプロジェクトの前提を <b>CLAUDE.md</b> に書き出す合図。以降、AIはこの前提を踏まえて動く。<br><b>✅ こうなればOK：</b>CLAUDE.md が生成される。話題を切り替えたいときは <b>/clear</b> が基本操作。</div>
   </section>
 
@@ -130,13 +143,13 @@
     <h2>スキルをインストール</h2>
     <div class="codelabel">📋 コピーして貼り付け</div>
     <div class="code" data-copy>以下、2つのAgent Skillsをこのプロジェクトで使えるようにして
-インストール場所はグローバル 「~/.CLAUDE/ 配下」とする
+インストール場所は、使用しているAI開発環境の公式手順に従う
 
 grill-me：<span class="url">https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me</span>
 
 goal-setter：<span class="url">https://github.com/gotalab/goal-setter-skill</span>
 <span class="cmd">/plugin</span> marketplace add gotalab/goal-setter-skill</div>
-    <div class="note"><b>grill-me</b>＝考えを引き出す質問役／<b>goal-setter</b>＝ゴールを定義する役。後の工程で使う。<br><b>安全のコツ：</b>外部スキルやMCPは、使う前に <b>/security-review</b> でチェックしてから利用すると安心。</div>
+    <div class="note"><b>grill-me</b>＝考えを引き出す質問役／<b>goal-setter</b>＝ゴールを定義する役。後の工程で使う。<br><b>安全のコツ：</b>外部スキルやMCPは、提供元・要求権限・内容を確認してから利用する。利用環境にセキュリティレビュー機能がある場合は、それも実行する。</div>
   </section>
 
   <section class="slide">
@@ -166,7 +179,7 @@ goal-setter：<span class="url">https://github.com/gotalab/goal-setter-skill</sp
 
 - 対象はUSD/JPYのみ。実資金は一切動かさず、ペーパートレード(仮想売買)とバックテストだけを行う
 - 技術構成: 静的HTML/CSS/JavaScript + Cloudflare Pages Functions + D1(ローカル実行)。リロードしてもデータが残るようにしたい
-- 価格はGMOコイン外国為替FXのPublic APIから取得する(APIキーは使わない)
+- 価格は研修中は擬似データを標準とする。利用可能性を事前確認できた場合のみ、APIキーを必要としない公開価格データへ差し替えられる設計にする
 - 画面はダッシュボード / 設定 / ペーパー実行 / 取引履歴 / バックテスト の5つ
 - 「複数ポジション」の保持を可能とする
 
@@ -233,7 +246,7 @@ UIデザイン：docs/ui-mock.html
 
 正解となる動作を明確に定めてください。
 検証方法として具体的なユーザーストーリーや操作方法も含めてください。</div>
-    <div class="note">できた <b>GOALプロンプトをコピーして実行</b> → 約<b>20〜30分</b>でアプリが自動で組み上がる（見守る時間）。<br><b>✅ こうなればOK：</b>ローカルで動くBotが完成。動作を確認し、必要なら自然言語で修正・カスタマイズ。公開前に <b>/security-review</b> で安全チェック。</div>
+    <div class="note">できた <b>GOALプロンプトをコピーして実行</b>します。所要時間は環境や生成内容によって変わるため、途中経過を確認しながら進めます。<br><b>✅ こうなればOK：</b>ローカルで動くBotが完成。動作を確認し、必要なら自然言語で修正・カスタマイズします。利用環境にセキュリティレビュー機能がある場合は、公開前に実行します。</div>
   </section>
 
   <!-- section 4 -->

@@ -1,0 +1,533 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI実践研修「FXペーパートレードBot構築」統合マスタープラン</title><style>:root{--ink:#18232e;--muted:#647383;--navy:#0f2e46;--blue:#126e82;--gold:#d8a94a;--paper:#fff;--bg:#edf2f5;--line:#dbe3e8}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;line-height:1.8}.hero{background:linear-gradient(135deg,#0b263b,#126e82);color:#fff;padding:64px 24px 56px;border-bottom:5px solid var(--gold)}.hero-inner{max-width:1040px;margin:auto}.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#caeaf0;font-weight:700}.hero h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.25;margin:.35em 0 .3em}.hero p{max-width:760px;color:#dbeef2;font-size:1.05rem}.layout{max-width:1240px;margin:28px auto 72px;padding:0 20px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:28px}.toc{position:sticky;top:20px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;max-height:calc(100vh - 40px);overflow:auto;box-shadow:0 8px 24px #17314912}.toc strong{display:block;color:var(--navy);margin-bottom:8px}.toc a{display:block;color:#496273;text-decoration:none;font-size:.86rem;padding:5px 7px;border-radius:6px}.toc a:hover{background:#eaf4f6;color:var(--blue)}main{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:clamp(26px,5vw,64px);box-shadow:0 12px 40px #17314912;min-width:0}main>h1:first-child{display:none}h2{color:var(--navy);font-size:1.65rem;margin:2.5em 0 .8em;padding-bottom:.35em;border-bottom:2px solid #b8d7dc}h2:first-of-type{margin-top:0}h3{color:var(--blue);margin-top:2em}h4{color:#35556b}p,li{font-size:.98rem}blockquote{margin:1.5em 0;padding:18px 22px;border-left:5px solid var(--gold);background:#fff8e8;color:#4c4030;font-size:1.08rem}code{background:#eff4f6;padding:.15em .4em;border-radius:4px;color:#9b3651}table{border-collapse:collapse;width:100%;display:block;overflow-x:auto;margin:1.4em 0}th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}th{background:#eaf4f6;color:var(--navy)}tr:nth-child(even) td{background:#f8fafb}input[type=checkbox]{accent-color:var(--blue);transform:scale(1.1);margin-right:.5em}a{color:var(--blue)}hr{border:0;border-top:1px solid var(--line)}.footer{text-align:center;color:var(--muted);padding:32px;font-size:.84rem}@media(max-width:900px){.layout{display:block}.toc{position:relative;top:0;margin-bottom:20px;max-height:none}.hero{padding-top:46px}main{border-radius:12px}}@media print{body{background:#fff}.hero{padding:24px;color:#000;background:#fff;border-bottom:2px solid #000}.hero p,.eyebrow{color:#333}.layout{display:block;margin:0;max-width:none}.toc{display:none}main{border:0;box-shadow:none;padding:18px}h2{break-after:avoid}table,blockquote{break-inside:avoid}}</style></head><body><header class="hero"><div class="hero-inner"><div class="eyebrow">JAPAN REVIVAL PROJECT / AI PRACTICAL TRAINING</div><h1>FXペーパートレードBot構築<br>統合マスタープラン</h1><p>AIとの対話から要件定義、設計、実装、検証、コミュニティ接続までを一冊に統合した実践研修の決定版。</p></div></header><div class="layout"><nav class="toc"><strong>目次</strong><div id="toc-links"></div></nav><main><h1>AI実践研修「FXペーパートレードBot構築」統合マスタープラン</h1>
+<ul>
+<li><strong>版</strong>：統合最強版 v1.0</li>
+<li><strong>更新日</strong>：2026年8月16日</li>
+<li><strong>主担当</strong>：高橋</li>
+<li><strong>位置づけ</strong>：Japan Revival Project／AIエージェント実践領域の入口研修</li>
+<li><strong>研修形式</strong>：生成AIとの対話を中心としたハンズオン</li>
+</ul>
+<h2>1. エグゼクティブサマリー</h2>
+<p>本研修は、生成AIと対話しながら、USD/JPYを題材にしたペーパートレードBotを構築する実践型AI研修である。</p>
+<p>目的はFXの売買手法や利益獲得を教えることではない。受講者が、曖昧なアイデアを要件へ変え、画面を設計し、AIに実装を依頼し、動作を検証し、改善するという一連の工程を体験することが目的である。</p>
+<p>研修では実口座・実資金・取引APIキーを一切使用しない。価格は擬似データを標準とし、ペーパートレードとバックテストだけを扱う。</p>
+<p>この研修を単発イベントで終わらせず、受講後はAI壁打ち、AIレコーダー、業務自動化、Japan Revival Network（JRN）のAIエージェント実践分科会へ接続する。</p>
+<blockquote>
+<p>AIに任せるのではなく、AIで自分を鍛える。</p>
+</blockquote>
+<h2>2. プロジェクト全体における位置づけ</h2>
+<h3>2.1 上位コンセプト</h3>
+<p>Japan Revival Projectの核は、次の考え方にある。</p>
+<blockquote>
+<p>会社軸から自分軸へ。これまでの経験を、これからの社会の力に変える。</p>
+</blockquote>
+<p>講座そのものをゴールにせず、コミュニティで実践を続けることを重視する。AIは人間を代替する存在ではなく、経験知を引き出し、判断を深め、実行を支える伴走者として位置づける。</p>
+<h3>2.2 本研修の役割</h3>
+<p>本研修は、広いAIエージェント領域のすべてを一度に教えるものではない。最初に「AIと一緒に動くシステムを完成させた」という成功体験を作る入口商品・体験企画である。</p>
+<p>研修後は、学んだ開発プロセスを次の領域へ転用する。</p>
+<ul>
+<li>自分軸・経験知を深掘りするAI壁打ち</li>
+<li>会話や気づきを蓄積するAIレコーダー</li>
+<li>発信原稿、企画書、事業計画書の作成</li>
+<li>日次・週次の振り返りと行動差分の分析</li>
+<li>定例業務、情報整理、リサーチの自動化</li>
+<li>受講者自身の経験知を生かしたサービス開発</li>
+</ul>
+<h2>3. 研修の目的と価値</h2>
+<h3>3.1 研修目的</h3>
+<ul>
+<li>生成AIへ自然言語で仕事を依頼する基本を身につける</li>
+<li>アイデアを目的・対象・機能・制約に分解する</li>
+<li>AIとの質疑を通じて要件を明確にする</li>
+<li>要件定義、UI設計、実装、テスト、改善の流れを体験する</li>
+<li>AIの出力を人間が確認・判断する習慣を身につける</li>
+<li>完成した仕組みを別の仕事や事業へ応用する視点を得る</li>
+</ul>
+<h3>3.2 受講者に提供する価値</h3>
+<ul>
+<li>コードを書けなくても、AIとシステムを作れる実感</li>
+<li>抽象的な構想を具体的な成果物へ変える経験</li>
+<li>AIへ質問し、修正を依頼する心理的ハードルの低下</li>
+<li>「AIに仕事を奪われる不安」から「AIを伴走者として使う自信」への転換</li>
+<li>自分の経験知を商品・サービスへ変えるための開発プロセス</li>
+</ul>
+<h3>3.3 本研修で扱わないこと</h3>
+<ul>
+<li>投資助言、売買推奨、利益保証</li>
+<li>実口座への接続</li>
+<li>実資金による自動売買</li>
+<li>実運用に耐える投資戦略の認定</li>
+<li>バックテスト結果だけを根拠にした投資判断</li>
+<li>金融商品の販売・勧誘</li>
+</ul>
+<h2>4. 想定受講者</h2>
+<h3>4.1 中心対象</h3>
+<ul>
+<li>50〜65歳を中心とする会社員、経営者、元経営者、専門職、個人事業主</li>
+<li>生成AIを使ったことはあるが、開発経験が少ない人</li>
+<li>AIを仕事や第二のキャリアに活用したい人</li>
+<li>自分の経験をサービスや仕組みに変えたい人</li>
+<li>プログラムを手書きすることより、AIへの依頼・確認・改善方法を学びたい人</li>
+</ul>
+<h3>4.2 前提知識</h3>
+<ul>
+<li>FXや投資の専門知識は不要</li>
+<li>プログラミング経験は不要</li>
+<li>ファイル、フォルダ、ブラウザなどの基本操作は必要</li>
+<li>分からないことをAIや講師へ質問する姿勢が必要</li>
+</ul>
+<h2>5. 到達目標</h2>
+<p>研修終了時に、受講者が次のことを説明・実行できる状態を目指す。</p>
+<ol>
+<li>作りたいものを、目的・利用者・機能・制約に分けて説明できる</li>
+<li>AIからの確認質問に答え、要件定義書を作成できる</li>
+<li>要件からUIモックと開発計画を作成できる</li>
+<li>AIが生成したWebアプリをローカルで起動できる</li>
+<li>画面と主要機能を自分で操作・確認できる</li>
+<li>不具合を再現手順・期待結果・実際の結果に分けてAIへ報告できる</li>
+<li>Gitを作業のセーブ地点として利用できる</li>
+<li>AIの提案を鵜呑みにせず、安全性と妥当性を確認できる</li>
+<li>同じ進め方を、自分の仕事や事業テーマへ応用できる</li>
+</ol>
+<h2>6. 構築するBotの仕様</h2>
+<h3>6.1 基本仕様</h3>
+<ul>
+<li>対象通貨：USD/JPY</li>
+<li>取引形式：ペーパートレードのみ</li>
+<li>価格：擬似生成データを標準とする</li>
+<li>ポジション：複数の買いポジションを保持可能</li>
+<li>初期ルール：買い価格・売り価格による価格しきい値方式</li>
+<li>保存対象：設定、保有ポジション、取引履歴など</li>
+<li>検証：擬似過去データによるバックテスト</li>
+<li>実資金・実口座・秘密鍵・取引APIキー：使用禁止</li>
+</ul>
+<h3>6.2 画面構成</h3>
+<ol>
+<li><strong>ダッシュボード</strong>：現在価格、保有ポジション、実現損益、含み損益、資産推移</li>
+<li><strong>設定</strong>：買い価格、売り価格、数量、最大ポジション数など</li>
+<li><strong>ペーパー実行</strong>：自動売買の開始・停止、手動操作、実行ログ</li>
+<li><strong>取引履歴</strong>：建値、決済値、数量、損益、決済時刻</li>
+<li><strong>バックテスト</strong>：売買サイン、損益、資産推移、基本的な結果指標</li>
+</ol>
+<h3>6.3 拡張候補</h3>
+<ul>
+<li>売りポジション</li>
+<li>移動平均などの追加ルール</li>
+<li>ルールを差し替えられる構造</li>
+<li>公開価格データへの接続</li>
+<li>Cloudflare Pagesへの公開</li>
+<li>Pages FunctionsとD1によるデータ保存</li>
+</ul>
+<p>拡張機能は基礎研修の必須範囲に含めない。外部APIやクラウドサービスは仕様変更や利用制限があるため、事前検証済みの場合のみ扱う。</p>
+<h2>7. 技術構成</h2>
+<h3>7.1 基礎研修の推奨構成</h3>
+<ul>
+<li>HTML</li>
+<li>CSS</li>
+<li>JavaScript</li>
+<li>ブラウザでのローカル実行</li>
+<li>擬似価格データ</li>
+<li>ローカル保存</li>
+<li>Gitによるバージョン管理</li>
+<li>生成AIを利用できるコーディング環境</li>
+</ul>
+<h3>7.2 発展構成</h3>
+<ul>
+<li>Cloudflare Pages</li>
+<li>Cloudflare Pages Functions</li>
+<li>Cloudflare D1</li>
+<li>利用可能性と利用条件を確認済みの公開価格データ</li>
+</ul>
+<p>基礎研修では、環境差による失敗を減らし、全員が完成体験を得ることを優先する。</p>
+<h2>8. 推奨カリキュラム</h2>
+<p>初心者が一度に全工程を扱うと、要件定義の質疑や環境トラブルだけで時間を使い切る可能性がある。基本は3回構成とし、各回90〜120分を目安とする。</p>
+<h3>第1回：AIとの対話と設計</h3>
+<h4>内容</h4>
+<ul>
+<li>プロジェクトと研修目的の共有</li>
+<li>投資研修ではないこと、安全上の前提の確認</li>
+<li>完成デモの操作</li>
+<li>開発環境の確認</li>
+<li><code>hello.html</code>を作る肩慣らし</li>
+<li>AIによる要件ヒアリング</li>
+<li>要件定義書の作成</li>
+<li>5画面のUIモック作成</li>
+<li>開発計画の作成</li>
+<li>Gitへの初回保存</li>
+</ul>
+<h4>成果物</h4>
+<ul>
+<li><code>docs/requirements.md</code></li>
+<li><code>docs/ui-mock.html</code></li>
+<li><code>docs/plans.md</code></li>
+<li>最初のGitコミット</li>
+</ul>
+<h3>第2回：実装と動作確認</h3>
+<h4>内容</h4>
+<ul>
+<li>要件・UI・計画のレビュー</li>
+<li>AIへ完成条件と検証方法を含む実装依頼</li>
+<li>アプリのローカル起動</li>
+<li>5画面の表示確認</li>
+<li>設定保存の確認</li>
+<li>ペーパートレードの実行</li>
+<li>ポジションと取引履歴の確認</li>
+<li>不具合の言語化と修正依頼</li>
+<li>Gitへの中間保存</li>
+</ul>
+<h4>成果物</h4>
+<ul>
+<li>ローカルで動作するペーパートレードBot</li>
+<li>動作確認チェックリスト</li>
+<li>修正履歴</li>
+<li>中間Gitコミット</li>
+</ul>
+<h3>第3回：検証・改善・応用</h3>
+<h4>内容</h4>
+<ul>
+<li>バックテストの実行</li>
+<li>結果の読み方と限界の確認</li>
+<li>画面またはルールの改善</li>
+<li>保存と復元の確認</li>
+<li>セキュリティ・プライバシー確認</li>
+<li>最終Gitコミット</li>
+<li>自分の仕事へ応用するテーマの検討</li>
+<li>AI実践分科会と次の学習への案内</li>
+</ul>
+<h4>成果物</h4>
+<ul>
+<li>バックテスト結果</li>
+<li>改善版Bot</li>
+<li>最終Gitコミット</li>
+<li>受講後の応用アイデアシート</li>
+</ul>
+<h2>9. 当日の標準進行</h2>
+<p>各回は次のリズムで進める。</p>
+<ol>
+<li>講師による目的と完成条件の説明</li>
+<li>完成見本または前回成果の確認</li>
+<li>プロンプトの意図を説明</li>
+<li>受講者がAIへプロンプトを入力</li>
+<li>AIの質問や出力を受講者自身が確認</li>
+<li>ペアまたは全体で結果を共有</li>
+<li>問題があれば、状況を言語化してAIへ修正依頼</li>
+<li>チェックポイントで講師が進捗確認</li>
+<li>Gitへ保存</li>
+<li>振り返りと次回課題</li>
+</ol>
+<p>単なるコピー＆ペーストで終わらせず、「なぜこの指示を出すのか」「何を確認すべきか」を毎工程で説明する。</p>
+<h2>10. 事前準備</h2>
+<h3>10.1 講師側</h3>
+<ul>
+<li>完成デモ</li>
+<li>研修スライド</li>
+<li>研修用プロンプト全集</li>
+<li>擬似価格データ</li>
+<li>受講者用スターターフォルダ</li>
+<li>各回の完成済み中間データ</li>
+<li>動作確認チェックリスト</li>
+<li>トラブルシューティング集</li>
+<li>振り返りシート</li>
+<li>投資助言ではないことを示す注意書き</li>
+<li>外部スキル、プラグイン、APIの提供元・権限・利用条件の事前確認</li>
+</ul>
+<h3>10.2 受講者側</h3>
+<ul>
+<li>パソコン</li>
+<li>安定したインターネット接続</li>
+<li>生成AIを利用できるコーディング環境</li>
+<li>Node.jsとGit</li>
+<li>研修専用の新しい作業フォルダ</li>
+</ul>
+<h3>10.3 研修前チェック</h3>
+<ul>
+<li>主要OSで起動手順を確認する</li>
+<li>必要なアカウントへログインできることを確認する</li>
+<li>デモとスターターデータをオフラインでも参照可能にする</li>
+<li>外部APIなしで全工程を完了できることを確認する</li>
+<li>受講者の環境構築時間を本編と分離する</li>
+</ul>
+<h2>11. 完成条件</h2>
+<p>以下をすべて満たした状態を基礎課題の完成とする。</p>
+<ul>
+<li><input disabled="" type="checkbox"> 5画面を切り替えて表示できる</li>
+<li><input disabled="" type="checkbox"> 売買条件を入力・保存できる</li>
+<li><input disabled="" type="checkbox"> 擬似価格が更新される</li>
+<li><input disabled="" type="checkbox"> 買いポジションを作成できる</li>
+<li><input disabled="" type="checkbox"> 保有ポジションを決済できる</li>
+<li><input disabled="" type="checkbox"> 保有ポジションと含み損益を確認できる</li>
+<li><input disabled="" type="checkbox"> 決済済み取引と実現損益を確認できる</li>
+<li><input disabled="" type="checkbox"> バックテストを実行できる</li>
+<li><input disabled="" type="checkbox"> バックテスト結果を画面で確認できる</li>
+<li><input disabled="" type="checkbox"> 再読み込み後も必要な設定または履歴が保持される</li>
+<li><input disabled="" type="checkbox"> エラー時に受講者向けの説明が表示される</li>
+<li><input disabled="" type="checkbox"> Gitに完成状態が保存されている</li>
+<li><input disabled="" type="checkbox"> 実口座・実資金・秘密情報を使用していない</li>
+</ul>
+<h2>12. 評価設計</h2>
+<p>コード量や利益額ではなく、AIと協働するプロセスを評価する。</p>
+<table>
+<thead>
+<tr>
+<th>評価観点</th>
+<th>確認内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>目的設定</td>
+<td>作りたい理由と利用者を説明できるか</td>
+</tr>
+<tr>
+<td>要件化</td>
+<td>機能と制約を具体的に伝えられるか</td>
+</tr>
+<tr>
+<td>対話</td>
+<td>AIの質問へ自分の判断で答えられるか</td>
+</tr>
+<tr>
+<td>検証</td>
+<td>画面と動作を自分で確認したか</td>
+</tr>
+<tr>
+<td>修正</td>
+<td>不具合を再現手順とともに説明できるか</td>
+</tr>
+<tr>
+<td>判断</td>
+<td>AIの提案を鵜呑みにしていないか</td>
+</tr>
+<tr>
+<td>安全</td>
+<td>実資金・秘密情報を扱っていないか</td>
+</tr>
+<tr>
+<td>応用</td>
+<td>自分の業務への転用案を言語化できるか</td>
+</tr>
+</tbody></table>
+<h3>受講後アンケートの指標</h3>
+<ul>
+<li>Botの基本機能を完成できた割合</li>
+<li>AIへの指示に対する自己効力感の変化</li>
+<li>不具合修正を自分で依頼できた割合</li>
+<li>研修後30日以内に別テーマへ応用した割合</li>
+<li>AI実践分科会への参加意向</li>
+</ul>
+<h2>13. 安全・倫理・運用原則</h2>
+<h3>13.1 投資に関する原則</h3>
+<ul>
+<li>本研修はAI開発の教育目的であり、投資助言ではない</li>
+<li>実口座、実資金、秘密鍵、取引APIキーを使用しない</li>
+<li>成績や利益を保証する表現を使用しない</li>
+<li>擬似データの結果を実市場の成果として扱わない</li>
+<li>バックテストには過剰最適化や将来再現性の限界があることを説明する</li>
+<li>実取引への転用は研修対象外とする</li>
+</ul>
+<h3>13.2 AI・開発に関する原則</h3>
+<ul>
+<li>AIが生成したコードや説明は必ず人間が確認する</li>
+<li>個人情報、顧客情報、社内機密を入力しない</li>
+<li>パスワードや秘密情報をコードへ直接書かない</li>
+<li>外部スキル、プラグイン、MCP、APIは提供元と要求権限を確認する</li>
+<li>破壊的な操作や公開操作は対象と影響範囲を確認してから行う</li>
+<li>公開する場合は、デモであることと免責事項を画面に表示する</li>
+</ul>
+<h2>14. つまずき対策</h2>
+<table>
+<thead>
+<tr>
+<th>想定トラブル</th>
+<th>対応</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Node.jsやGitがない</td>
+<td>事前環境構築会またはチェック手順を提供</td>
+</tr>
+<tr>
+<td>AIの質問が多すぎる</td>
+<td>一問ずつ質問するよう依頼する</td>
+</tr>
+<tr>
+<td>用語が分からない</td>
+<td>「初心者向けに例を使って説明して」とAIへ返す</td>
+</tr>
+<tr>
+<td>実装が途中で止まる</td>
+<td>エラー全文と直前の操作をAIへ伝える</td>
+</tr>
+<tr>
+<td>受講者間で進捗差が出る</td>
+<td>完成済み中間データから再開する</td>
+</tr>
+<tr>
+<td>外部APIが使えない</td>
+<td>擬似価格データへ切り替える</td>
+</tr>
+<tr>
+<td>元に戻せない</td>
+<td>Gitのコミットから復元する</td>
+</tr>
+<tr>
+<td>公開に不安がある</td>
+<td>基礎研修はローカル完成を合格条件とする</td>
+</tr>
+</tbody></table>
+<h2>15. コミュニティと参加導線</h2>
+<h3>15.1 推奨ファネル</h3>
+<p>ラジオ・ブログ・メルマガ・stand.fm・AI発信<br>→ LINE登録<br>→ 完成デモを見る<br>→ 無料説明会またはミニ体験<br>→ FXペーパートレードBot構築研修<br>→ JRNコミュニティ体験<br>→ AIエージェント実践分科会<br>→ AI壁打ち・AIレコーダー・業務応用<br>→ 本講座または個別プロジェクト</p>
+<h3>15.2 入口メッセージ案</h3>
+<blockquote>
+<p>コードを書けなくても大丈夫。日本語でAIと対話しながら、動くWebアプリを完成させる実践研修です。</p>
+</blockquote>
+<h3>15.3 プロジェクトとの接続メッセージ案</h3>
+<blockquote>
+<p>自分の経験をAIに置き換えるのではなく、AIとともに経験を仕組みへ変える。</p>
+</blockquote>
+<h3>15.4 LINE登録後の配信案</h3>
+<ol>
+<li>研修の目的と安全性</li>
+<li>完成デモ</li>
+<li>「AIに頼む→形になる」ミニ体験</li>
+<li>受講者が身につけること</li>
+<li>研修日程・準備物・参加案内</li>
+<li>研修後に広がるAI活用例</li>
+<li>コミュニティ・分科会の案内</li>
+</ol>
+<h2>16. 研修後の発展ロードマップ</h2>
+<h3>Step 1：完成体験</h3>
+<p>FXペーパートレードBotをAIと構築する。</p>
+<h3>Step 2：改善体験</h3>
+<p>画面、ルール、レポートなど、自分で追加要件を決めて改善する。</p>
+<h3>Step 3：業務転用</h3>
+<p>同じ開発工程を、見積作成、顧客管理、議事録、発信、事業計画などへ転用する。</p>
+<h3>Step 4：自分軸との接続</h3>
+<p>AI壁打ちとAIレコーダーを使い、自分の経験知・判断基準・価値観を言語化する。</p>
+<h3>Step 5：社会価値への変換</h3>
+<p>経験知を相談、講座、伴走支援、地域活動、サービスへ変える。</p>
+<h3>Step 6：コミュニティ実践</h3>
+<p>JRNのAIエージェント実践分科会で成果・失敗・プロンプト・業務フローを共有する。</p>
+<h2>17. 高橋担当の成果物</h2>
+<h3>優先度A：研修実施に必須</h3>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 動くペーパートレードBotデモ</li>
+<li><input checked="" disabled="" type="checkbox"> 研修用プロンプト全集</li>
+<li><input checked="" disabled="" type="checkbox"> 入門研修スライド</li>
+<li><input disabled="" type="checkbox"> 3回構成に合わせたスライド再編</li>
+<li><input disabled="" type="checkbox"> 受講者用スターターフォルダ</li>
+<li><input disabled="" type="checkbox"> 完成済み中間データ</li>
+<li><input disabled="" type="checkbox"> 動作確認チェックリスト</li>
+<li><input disabled="" type="checkbox"> トラブルシューティング集</li>
+<li><input disabled="" type="checkbox"> 受講後振り返りシート</li>
+<li><input disabled="" type="checkbox"> 免責・安全説明ページ</li>
+</ul>
+<h3>優先度B：集客とコミュニティ接続</h3>
+<ul>
+<li><input disabled="" type="checkbox"> LINE中心の参加導線図</li>
+<li><input disabled="" type="checkbox"> LINE登録後の配信シナリオ</li>
+<li><input disabled="" type="checkbox"> 無料説明会または30分ミニ体験版</li>
+<li><input disabled="" type="checkbox"> 研修案内文・CTA</li>
+<li><input disabled="" type="checkbox"> JRN AIエージェント実践分科会の概要</li>
+</ul>
+<h3>優先度C：次段階のAI活用</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 自分軸AI壁打ちシステムのプロトタイプ</li>
+<li><input disabled="" type="checkbox"> AIレコーダー活用フロー</li>
+<li><input disabled="" type="checkbox"> 日次・週次レポートのサンプル</li>
+<li><input disabled="" type="checkbox"> データ保存・個人情報保護方針案</li>
+</ul>
+<h2>18. 3者の役割</h2>
+<table>
+<thead>
+<tr>
+<th>担当</th>
+<th>主な役割</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>渡邉社長</td>
+<td>プロジェクト思想、自分軸、心の在り方、事業計画、全体監修、ラジオ・ブログ発信</td>
+</tr>
+<tr>
+<td>川崎社長</td>
+<td>資産運営の教育的補足、営業、案件開拓、stand.fm発信、コミュニティ運営</td>
+</tr>
+<tr>
+<td>高橋</td>
+<td>AI研修、Bot教材、AI壁打ち、AIレコーダー、コンテンツ統合、LINE導線</td>
+</tr>
+<tr>
+<td>3者共通</td>
+<td>共通スローガンの合意、コミュニティ方針、参加条件、成果事例の発信</td>
+</tr>
+</tbody></table>
+<p>資産運営の説明とAI開発研修を混同しない。川崎社長の専門領域は、必要に応じて別講義または分科会で扱う。</p>
+<h2>19. 実施前に決める事項</h2>
+<h3>研修固有</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 正式名称</li>
+<li><input disabled="" type="checkbox"> 開催日と全体時間</li>
+<li><input disabled="" type="checkbox"> 1回完結か3回構成か</li>
+<li><input disabled="" type="checkbox"> 定員と講師・サポート人数</li>
+<li><input disabled="" type="checkbox"> 対面・オンライン・ハイブリッドの別</li>
+<li><input disabled="" type="checkbox"> 受講料または無料体験の範囲</li>
+<li><input disabled="" type="checkbox"> 使用する生成AI開発環境</li>
+<li><input disabled="" type="checkbox"> 対応OS</li>
+<li><input disabled="" type="checkbox"> クラウド公開を必須にするか</li>
+<li><input disabled="" type="checkbox"> 外部スキルを必須にするか</li>
+<li><input disabled="" type="checkbox"> 受講者データの保存期間</li>
+</ul>
+<h3>プロジェクト全体</h3>
+<ul>
+<li><input disabled="" type="checkbox"> 共通スローガン</li>
+<li><input disabled="" type="checkbox"> 9月に開始する範囲</li>
+<li><input disabled="" type="checkbox"> JRNの参加条件と運営ルール</li>
+<li><input disabled="" type="checkbox"> AIエージェント実践分科会の会費と開催頻度</li>
+<li><input disabled="" type="checkbox"> 本講座との接続方法</li>
+<li><input disabled="" type="checkbox"> AI壁打ちシステムの情報保存・個人情報保護方針</li>
+</ul>
+<h2>20. 推奨する次の実行順序</h2>
+<ol>
+<li>研修形式を「3回構成・各90〜120分・ローカル完成」に仮決定する</li>
+<li>既存スライドを3回構成へ分割する</li>
+<li>受講者用スターターフォルダと中間データを作る</li>
+<li>完成条件に沿った動作確認チェックリストを作る</li>
+<li>初心者1〜3名でパイロット研修を行う</li>
+<li>所要時間、離脱点、質問内容を記録する</li>
+<li>プロンプトと教材を改善する</li>
+<li>30分の無料ミニ体験版を作る</li>
+<li>LINE導線と案内文を整備する</li>
+<li>JRNのAIエージェント実践分科会へ接続する</li>
+</ol>
+<h2>21. 成功指標</h2>
+<h3>研修当日</h3>
+<ul>
+<li>受講者の80%以上が基礎完成条件を達成する</li>
+<li>受講者の90%以上がAIへ1回以上、自分の言葉で修正依頼を行う</li>
+<li>実資金・秘密情報の使用を0件にする</li>
+<li>重大な環境トラブルによる離脱を0件にする</li>
+</ul>
+<h3>研修後30日</h3>
+<ul>
+<li>受講者の50%以上が別テーマでAI開発を試す</li>
+<li>受講者の50%以上がコミュニティの実践共有へ参加する</li>
+<li>受講者による改善版・応用版の事例を3件以上作る</li>
+</ul>
+<p>初回パイロットでは数値を検証し、実績に応じて目標値を更新する。</p>
+<h2>22. 参照資料</h2>
+<ul>
+<li><code>2026-08-03-sansha-minutes.html</code>：最新3者MTGの決定事項と宿題</li>
+<li><code>2026-08-03-course-update.html</code>：全10回講座とAIエージェント領域の統合案</li>
+<li><code>2026-08-03-takahashi-action-items.md</code>：高橋担当の宿題</li>
+<li><code>2026-07-20-sansha-minutes.html</code>：会社軸から自分軸への転換と役割分担</li>
+<li><code>2026-06-09-meeting-minutes.html</code>：AI/eラーニング導線とコミュニティ価値</li>
+<li><code>2026-05-28-meeting-minutes.html</code>：集客ファネルと初期の役割分担</li>
+<li><code>ai-training-intro-slides.html</code>：受講者向け入門研修スライド</li>
+<li><code>ai-training-trade-prompts.html</code>：FX Bot構築プロンプト全集</li>
+<li><code>trade-bot-demo.html</code>：ペーパートレードBot完成デモ</li>
+</ul>
+<h2>23. 最終定義</h2>
+<blockquote>
+<p>本研修は、ミドルシニアを中心とする受講者が、実資金を使わないFXペーパートレードBotの構築を通じて、AIとの対話、要件定義、設計、実装、検証、改善を一貫して体験し、その方法を自分の経験知・仕事・次の事業へ応用するための実践型AI研修である。</p>
+</blockquote>
+</main></div><footer class="footer">AI実践研修「FXペーパートレードBot構築」統合マスタープラン v1.0 / 2026年8月16日</footer><script>const hs=[...document.querySelectorAll("main h2")];hs.forEach((h,i)=>{h.id="section-"+(i+1);const a=document.createElement("a");a.href="#"+h.id;a.textContent=h.textContent;document.getElementById("toc-links").appendChild(a)});</script></body></html>
