@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-08-17 MTG 議事メモ — AI講座とコミュニティ設計</title>
+  <style>
+    :root { --ink:#172033; --muted:#626b7b; --line:#d9dee8; --paper:#f7f8fb; --panel:#fff; --navy:#1d3761; --green:#1f7a5a; --deep-green:#155f49; --gold:#b78a2c; --blue-soft:#e9f0f8; --green-soft:#e9f6f0; --gold-soft:#fbf4e5; --shadow:0 14px 35px rgba(23,32,51,.08); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic","YuGothic","Noto Sans JP",sans-serif; line-height:1.75; }
+    header { background:#fff; border-bottom:1px solid var(--line); }
+    .wrap { width:min(1160px,calc(100% - 40px)); margin:0 auto; }
+    .hero { display:grid; grid-template-columns:1.08fr .92fr; gap:34px; align-items:end; padding:52px 0 36px; }
+    .eyebrow { margin:0 0 12px; color:var(--green); font-size:14px; font-weight:800; }
+    h1 { margin:0; font-size:clamp(30px,5vw,46px); line-height:1.16; }
+    h2 { margin:0 0 16px; font-size:26px; line-height:1.35; }
+    h3 { margin:0 0 10px; font-size:18px; line-height:1.45; }
+    p { margin:0 0 12px; }
+    ul { margin:8px 0 0; padding-left:1.3em; }
+    li { margin:5px 0; }
+    main { padding:34px 0 70px; }
+    section { margin-top:40px; }
+    table { width:100%; border-collapse:collapse; background:#fff; }
+    th,td { padding:12px 14px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+    th { color:var(--deep-green); background:var(--green-soft); font-weight:900; }
+    .lead { margin:18px 0 0; color:var(--muted); font-size:17px; }
+    .meta { padding:22px; border:1px solid var(--line); border-radius:8px; background:var(--green-soft); }
+    .meta dl { display:grid; grid-template-columns:84px 1fr; gap:8px 14px; margin:0; font-size:15px; }
+    .meta dt { color:var(--deep-green); font-weight:800; }
+    .meta dd { margin:0; }
+    .grid { display:grid; gap:18px; }
+    .cols-2 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .panel { padding:22px; border:1px solid var(--line); border-radius:8px; background:var(--panel); box-shadow:var(--shadow); }
+    .flat { padding:22px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+    .highlight { padding:18px 20px; border-left:5px solid var(--green); border-radius:8px; background:var(--green-soft); }
+    .note { padding:18px 20px; border-left:5px solid var(--gold); border-radius:8px; background:var(--gold-soft); }
+    .tag { display:inline-flex; align-items:center; padding:3px 10px; border-radius:999px; background:var(--blue-soft); color:var(--navy); font-size:12px; font-weight:800; margin:0 6px 10px 0; }
+    .tag.g { background:var(--green-soft); color:var(--deep-green); }
+    .num { text-align:right; white-space:nowrap; }
+    .todo { font-weight:800; color:var(--deep-green); }
+    footer { padding:26px 0 48px; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
+    @media (max-width:900px) { .hero,.cols-2 { grid-template-columns:1fr; } .hero { align-items:start; } }
+    @media print { body { background:#fff; } .panel { box-shadow:none; } section { break-inside:avoid; } }
+  </style>
+</head>
+<body>
+  <header><div class="wrap hero"><div><p class="eyebrow">2026年8月17日（月）MTG 議事メモ ／ 記録: 高橋</p><h1>AI講座とコミュニティ設計</h1><p class="lead">AI操作の習得だけでなく、自己理解・キャリアの棚卸し・自分軸づくりを土台に据えた講座へ。少人数パイロット版と反転学習の具体像を整理した。</p></div><div class="meta"><dl><dt>日時</dt><dd>2026年8月17日（月）・約63分</dd><dt>形式</dt><dd>オンライン（Zoom）</dd><dt>参加者</dt><dd>高橋貢、渡辺ひとし</dd><dt>欠席</dt><dd>川崎社長</dd><dt>出典</dt><dd>Zoom録画の文字起こし（自動生成）</dd></dl></div></div></header>
+  <main class="wrap">
+    <section><h2>本日の総括</h2><div class="highlight"><p style="margin:0"><strong>AIスキルと自己理解を一体化した講座</strong>を、反転学習と参加者主体のシェアで運営する方向性を確認。初級の小さな成功体験からLP・ダッシュボード・動画へ段階的に進み、4〜5名のパイロット版を準備する。</p></div></section>
+
+    <section><h2>1. ラジオ契約の状況</h2><div class="flat"><ul style="margin:0"><li>契約手続きは一旦延期。</li><li>主な懸念は、番組上の問題に対する損害賠償責任に上限がないことと、事前協議なく番組終了・アカウント削除となり得ること。</li><li>渡辺さんは、損害賠償額の上限と、問題発生時の連絡・協議期間を覚書で補うことを先方へ打診中。</li><li>条件が整わない場合は、無理に契約を進めない考えを共有した。</li></ul></div></section>
+
+    <section><h2>2. AI講座の段階設計</h2><div class="grid cols-2"><div class="panel"><span class="tag g">初級</span><h3>小さな成功体験</h3><p style="margin:0">サムネイル作成など、チャットの延長で取り組める成果物から始める。AIへの抵抗感を減らし、達成感を作る。</p></div><div class="panel"><span class="tag">中級</span><h3>見える成果物</h3><p style="margin:0">LP、ダッシュボード、動画などへ進む。画面上で動く成果を通じて、AI活用の可能性を実感してもらう。</p></div><div class="panel"><span class="tag">学習支援</span><h3>置いていかない仕組み</h3><p style="margin:0">学習ガイドや支援用GPTを用意し、ハンズオンで遅れた参加者が自力で追いつけるようにする。</p></div><div class="panel"><span class="tag">上級</span><h3>学ぶ側から支える側へ</h3><p style="margin:0">自走できる参加者は、将来的に講師・支援側へ回り、コミュニティへ知見を還元する。</p></div></div></section>
+
+    <section><h2>3. 講座の中核テーマ</h2><div class="grid cols-2"><div class="flat"><h3>自己理解をAI活用の土台に</h3><p style="margin:0">AI時代は表面的な操作スキルより、本人固有の経験・実績・価値観・文脈が重要。キャリアの棚卸し、強みの発見、自分軸づくりを本講座の土台とする。</p></div><div class="flat"><h3>一次情報を蓄積する</h3><p style="margin:0">日々の行動、つまずき、判断、感情などのログを残し、本人ならではの発信やAI活用につなげる。</p></div><div class="flat"><h3>AIと自己理解の循環</h3><p style="margin:0">AIを使うことで過去の経験や顧客課題を思い出し、自己理解が深まる。自己理解からAI活用へ進む一方向ではなく、相互に行き来する設計とする。</p></div><div class="flat"><h3>人間側の成長</h3><p style="margin:0">AIの能力が高まるほど、人間には判断力、EQ、リベラルアーツ、自分の軸が求められる。AIに使われず、人生の主役としてAIを使うことを目指す。</p></div></div></section>
+
+    <section><h2>4. 講座・コミュニティの運営方針</h2><div class="flat"><ul style="margin:0"><li>当初は<strong>4〜5名程度</strong>の少人数でパイロット版を実施する。</li><li>動画・テキストによる事前学習と課題実践の後、参加者が集まる<strong>反転学習</strong>を採用する。</li><li>集合回は講師の説明を最小限にし、参加者の発表・対話・相互学習を中心にする。</li><li>講師と受講生の上下関係を弱め、初期メンバーにはパートナーに近い立場で講座改善へ参加してもらう。</li><li>3か月程度の講座後も、コミュニティで実践成果を共有する流れを想定する。</li><li>パイロット版の集客・開始は<strong>2027年1月頃</strong>を目安に検討する。</li></ul></div></section>
+
+    <section><h2>5. 決定事項</h2><table><thead><tr><th class="num">No.</th><th>項目</th><th>決定・方向性</th></tr></thead><tbody><tr><td class="num">1</td><td>講座テーマ</td><td><strong>AIスキル</strong>と<strong>自己理解・自分軸づくり</strong>を組み合わせる</td></tr><tr><td class="num">2</td><td>学習段階</td><td>初級の小さな成果物から、LP・ダッシュボード等へ段階的に進む</td></tr><tr><td class="num">3</td><td>運営方式</td><td>反転学習と参加者主体のシェアを中心に据える</td></tr><tr><td class="num">4</td><td>次回議題</td><td>川崎社長を含む3名でフロント講座の内容案を検討する</td></tr><tr><td class="num">5</td><td>次回候補日</td><td>まず<strong>2026年9月7日</strong>を提示し、難しい場合は3名で再調整する</td></tr></tbody></table></section>
+
+    <section><h2>6. 次回までのアクション</h2><table><thead><tr><th>担当</th><th>アクション</th></tr></thead><tbody><tr><td class="todo">高橋</td><td>LINE導線の構築イメージを調査し、次回までにサンプルを作成する</td></tr><tr><td class="todo">高橋</td><td>自己理解・価値観の明確化を含むフロント講座案を、箇条書き等で提示できる形にする</td></tr><tr><td class="todo">高橋</td><td>川崎社長を含む次回日程として、まず2026年9月7日の都合を確認する</td></tr><tr><td class="todo">渡辺・川崎</td><td>各自が考えるフロント講座の内容案を次回持ち寄る</td></tr><tr><td class="todo">渡辺</td><td>ラジオ契約の覚書・条件調整について先方の回答を待ち、状況を共有する</td></tr></tbody></table></section>
+
+    <section><h2>7. 継続検討</h2><div class="note"><ul style="margin:0"><li>フロント講座の具体的なカリキュラムと各担当領域</li><li>LINEを使った集客・参加・講座への導線</li><li>パイロット版の募集方法、料金、開始時期</li><li>初級・中級・上級の到達目標と成果物</li><li>コミュニティ内の呼称や運営ルールなど、フラットな関係を作る仕組み</li></ul></div></section>
+
+    <footer><p>記録: 高橋 ／ 2026年8月17日 MTG 議事メモ ／ 出典: Zoom録画の自動文字起こし</p></footer>
+  </main>
+</body>
+</html>
